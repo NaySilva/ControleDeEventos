@@ -6,22 +6,18 @@ import java.util.Date;
 import java.util.List;
 
 import br.edu.ifpi.eventos.util.Agenda;
+import br.edu.ifpi.eventos.util.StatusDoEventoEnum;
 
-public class Evento extends Atividade {
+public abstract class Evento extends Atividade {
+	
+	private Instituicao instituicao;
+	private StatusDoEventoEnum status;
+	private List<Atividade> atividades;
 	
 	public Evento(String nome, Agenda horario) {
 		super(nome, horario);
-		// TODO Auto-generated constructor stub
+		this.atividades = new ArrayList<Atividade>();
 	}
-
-	public final static String EM_ANDAMENTO = "Em andamento";
-	public final static String INSCRICOES = "Inscrições";
-	public final static String FINALIZADA = "Finalizada"; 
-
-	
-	
-	private Instituicao instituicao;
-	private List<Atividade> atividades = new ArrayList<Atividade>();
 	
 	public void adicionarAtividade(Atividade atividade){
 		atividades.add(atividade);
@@ -29,6 +25,10 @@ public class Evento extends Atividade {
 	
 	public List<Atividade> getAtividades() {
 		return atividades;
+	}
+
+	public StatusDoEventoEnum getStatus() {
+		return status;
 	}
 	
 	
