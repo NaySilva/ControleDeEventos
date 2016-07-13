@@ -1,8 +1,6 @@
 package br.edu.ifpi.eventos.modelo;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import br.edu.ifpi.eventos.util.Agenda;
@@ -11,11 +9,10 @@ import br.edu.ifpi.eventos.util.StatusDoEventoEnum;
 public abstract class Evento extends Atividade {
 	
 	private Instituicao instituicao;
-	private StatusDoEventoEnum status;
 	private List<Atividade> atividades;
 	
-	public Evento(String nome, Agenda horario) {
-		super(nome, horario);
+	public Evento(String nome, Agenda inicio, Agenda fim) {
+		super(nome, inicio, fim);
 		this.atividades = new ArrayList<Atividade>();
 	}
 	
@@ -27,9 +24,6 @@ public abstract class Evento extends Atividade {
 		return atividades;
 	}
 
-	public StatusDoEventoEnum getStatus() {
-		return status;
-	}
 	
 	
 

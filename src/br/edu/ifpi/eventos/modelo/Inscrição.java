@@ -22,7 +22,7 @@ public class Inscrição {
 	public String adicionarAtividadeDesejada(Atividade atividade){
 		String deuCerto = "A atividade foi adicionada!";
 		String deuErrado = "Já existe outro compromisso nesse hórario";
-		if (verificarDisponibilidade(atividade)){
+		if (verificarDisponibilidade(atividade) && evento.getAtividades().contains(atividade)){
 			this.atividadesDesejadas.add(atividade);
 			atividade.adicionarInscricao(this);
 			return deuCerto;
@@ -38,6 +38,10 @@ public class Inscrição {
 	}
 	public List<Atividade> getAtividadesDesejadas() {
 		return atividadesDesejadas;
+	}
+	
+	public Evento getEvento() {
+		return evento;
 	}
 	
 	

@@ -2,47 +2,44 @@ package br.edu.ifpi.eventos.util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.Period;
 
 public class Agenda {
 	
 	
-	private String data;
-	private String hora;
+	private LocalDate data;
+	private	LocalTime hora;
 	
-	public Agenda(String data, String hora) {
+	public Agenda(LocalDate data, LocalTime hora) {
 		this.data = data;
 		this.hora = hora;
 	}
-	
-	public String dataFormatada() throws ParseException{
-		SimpleDateFormat formato1 = new SimpleDateFormat("ddMMyyyy");
-		SimpleDateFormat formato2 = new SimpleDateFormat("dd/MM/yyyy");
-		return formato2.format(formato1.parse(data));
-	}
-	
-	public String horarioFormatado() throws ParseException {
-		SimpleDateFormat formato1 = new SimpleDateFormat("hhmm");
-		SimpleDateFormat formato2 = new SimpleDateFormat("hh:mm");
-		return formato2.format(formato1.parse(hora));
-	}
 
-	public String getData() {
+	public LocalDate getData() {
 		return data;
 	}
 
-	public String getHora() {
+	public LocalTime getHora() {
 		return hora;
 	}
 	
 	@Override
 	public String toString() {
-		String agenda;
-		try {
-			agenda = dataFormatada() + " - " + horarioFormatado() + "\n";
-		} catch (ParseException e) {
-			agenda = "Erro na Agenda";
-		}
-		return agenda;
+		return data.toString() + " " + hora.toString();
+	}
+
+	public int periodoEmDias(Agenda fim) {
+		Period periodo = Period.between(this.data, fim.data);		
+		return periodo.getDays();
+	}
+
+	public long duraçãoEmMinutos(Agenda fim) {
+		Duration duracao = Duration.between(this.hora, fim.hora);
+		return duracao.toMinutes();
+		
 	}
 	
 

@@ -11,5 +11,8 @@ public class Instituicao {
 		this.nome = nome;
 	}
 	
+	public void adicionarEvento(Evento ev){
+		this.eventos.add(ev);
+	}
 
 }

@@ -3,29 +3,37 @@ package br.edu.ifpi.eventos.testes;
 import static org.junit.Assert.*;
 
 import java.text.ParseException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import br.edu.ifpi.eventos.util.Agenda;
 
 public class AgendaTeste {
+	
+	Agenda ag1, ag2;
+	
+	@Before
+	public void inicialização(){
+		ag1 = new Agenda(LocalDate.of(2016, 7, 1), LocalTime.of(8, 00));
+		ag2 = new Agenda(LocalDate.of(2016, 7, 3), LocalTime.of(10, 30));
+	}
 
 	@Test
 	public void Deve_Retornar_Data_E_Hora_Formatadas(){
-		Agenda ag = new Agenda("01072016", "1030");
-		String resposta = "01/07/2016 - 10:30\n";
-		assertEquals(resposta, ag.toString());
+		String resposta = "2016-07-01 08:00";
+		assertEquals(resposta, ag1.toString());
 	}
 	
-	@Test(expected=ParseException.class)
-	public void Deve_Retornar_Erro_Por_Data_Invalida() throws ParseException{
-		Agenda ag = new Agenda("sssss", "1030");
-		ag.dataFormatada();
+	@Test
+	public void Deve_Mostra_Duração_Entre_Duas_Datas_Em_Dias(){
+		assertEquals(2, ag1.periodoEmDias(ag2));
 	}
 	
-	@Test(expected=ParseException.class)
-	public void Deve_Retornar_Erro_Por_Hora_Invalida() throws ParseException{
-		Agenda ag = new Agenda("01072016", "ss");
-		ag.horarioFormatado();
+	@Test
+	public void Deve_Mostra_Duracao_Ente_Duas_Horas_Em_Minutos(){
+		assertEquals(150, ag1.duraçãoEmMinutos(ag2));
 	}
 }

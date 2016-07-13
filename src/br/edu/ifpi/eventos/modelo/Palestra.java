@@ -7,8 +7,8 @@ public class Palestra extends Atividade {
 
 	private Usuario palestrante;
 
-	public Palestra(String nome, Agenda horario) {
-		super(nome, horario);
+	public Palestra(String nome, Agenda começo, Agenda fim) {
+		super(nome, começo, fim);
 		// TODO Auto-generated constructor stub
 	}
 
