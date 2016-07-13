@@ -1,13 +1,13 @@
 package br.edu.ifpi.eventos.modelo;
 
-import br.edu.ifpi.eventos.util.Agenda;
+import br.edu.ifpi.eventos.util.DataEHora;
 
 public class Minicurso extends Atividade {
 	
 	private boolean temCertificado;
 
-	public Minicurso(String nome, Agenda comeco, Agenda fim) {
-		super(nome, comeco, fim);
+	public Minicurso(String nome, Agenda agenda) {
+		super(nome, agenda);
 		this.temCertificado = false;
 	}
 

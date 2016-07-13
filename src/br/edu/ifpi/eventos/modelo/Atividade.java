@@ -4,29 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-import br.edu.ifpi.eventos.util.Agenda;
+import br.edu.ifpi.eventos.util.DataEHora;
 
 public abstract class Atividade {
 	
 	private String nome;
-	private Agenda começo;
-	private Agenda fim;
+	private Agenda agenda;
 	private double preco;
 	private List<Inscrição> inscrições;
 	private int capacidade;
 	
-	public Atividade(String nome, Agenda começo, Agenda fim) {
+	public Atividade(String nome, Agenda agenda) {
 		this.nome = nome;
-		this.começo = começo;
-		this.fim = fim;
+		this.agenda = agenda;
 		this.preco = 0.0;
 		this.inscrições = new ArrayList<>();
-	}
-	
-	public String duração(){
-		int dias = começo.periodoEmDias(fim);
-		long minutos = começo.duraçãoEmMinutos(fim);
-		return dias + " - " + minutos;
 	}
 	
 	public void adicionarInscricao(Inscrição inscrição){
@@ -34,24 +26,15 @@ public abstract class Atividade {
 	}
 	
 	public boolean compararHorario(Atividade at){//true se está no mesmo horario
-		boolean antes = começo.getHora().compareTo(at.getFim().getHora())==1;
-		boolean depois = fim.getHora().compareTo(at.getComeço().getHora())==-1;
-		return !antes && !depois;
+		return agenda.compararHorario(at.getAgenda());
 	}
 	
-	private Agenda getFim() {
-		return fim;
-	}
 	public int verificarVagas(){
 		return capacidade - inscrições.size();
 	}
 	
 	public String getNome() {
 		return nome;
-	}
-
-	public Agenda getComeço() {
-		return começo;
 	}
 
 	public void setCapacidade(int capacidade) {
@@ -64,6 +47,11 @@ public abstract class Atividade {
 	public void setPreco(double preco) {
 		this.preco = preco;
 	}
+
+	public Agenda getAgenda() {
+		return agenda;
+	}
+	
 	
 	
 	

@@ -8,26 +8,30 @@ import java.time.LocalTime;
 import org.junit.Before;
 import org.junit.Test;
 
+import br.edu.ifpi.eventos.modelo.Agenda;
 import br.edu.ifpi.eventos.modelo.Atividade;
 import br.edu.ifpi.eventos.modelo.Inscrição;
 import br.edu.ifpi.eventos.modelo.Minicurso;
 import br.edu.ifpi.eventos.modelo.Palestra;
-import br.edu.ifpi.eventos.util.Agenda;
+import br.edu.ifpi.eventos.util.DataEHora;
 
 public class AtividadeTeste {
 	
-	Agenda ag1, ag2, ag3, ag4;
+	DataEHora dh1, dh2, dh3, dh4;
+	Agenda ag1, ag2;
 	Atividade mc, p, p2;
 	
 	@Before
 	public void inicialização(){
-		ag1 = new Agenda(LocalDate.of(2016, 7, 7),LocalTime.of(8, 00));
-		ag2 = new Agenda(LocalDate.of(2016, 7, 7),LocalTime.of(12, 00));
-		ag3 = new Agenda(LocalDate.of(2016, 7, 7), LocalTime.of(14, 00));
-		ag4 = new Agenda(LocalDate.of(2016, 7, 7), LocalTime.of(18,00));
-		mc = new Minicurso("Banco de dados",ag1, ag2);
-		p = new Palestra("Python",ag3, ag4);
-		p2 = new Palestra("Java",ag1,ag2);
+		dh1 = new DataEHora(LocalDate.of(2016, 7, 7),LocalTime.of(8, 00));
+		dh2 = new DataEHora(LocalDate.of(2016, 7, 7),LocalTime.of(12, 00));
+		dh3 = new DataEHora(LocalDate.of(2016, 7, 7), LocalTime.of(14, 00));
+		dh4 = new DataEHora(LocalDate.of(2016, 7, 7), LocalTime.of(18,00));
+		ag1 = new Agenda(dh1,dh2);
+		ag2 = new Agenda(dh3, dh4);
+		mc = new Minicurso("Banco de dados",ag1);
+		p = new Palestra("Python", ag2);
+		p2 = new Palestra("Java",ag1);
 		
 	}
 
@@ -56,7 +60,7 @@ public class AtividadeTeste {
 	
 	@Test
 	public void Deve_verificar_A_Duracao_Da_Atividade(){
-		assertEquals("0 - 240", mc.duração());
+		assertEquals("0 - 240", mc.getAgenda().duração());
 		
 	}
 

@@ -7,13 +7,13 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.Period;
 
-public class Agenda {
+public class DataEHora {
 	
 	
 	private LocalDate data;
 	private	LocalTime hora;
 	
-	public Agenda(LocalDate data, LocalTime hora) {
+	public DataEHora(LocalDate data, LocalTime hora) {
 		this.data = data;
 		this.hora = hora;
 	}
@@ -31,12 +31,12 @@ public class Agenda {
 		return data.toString() + " " + hora.toString();
 	}
 
-	public int periodoEmDias(Agenda fim) {
+	public int periodoEmDias(DataEHora fim) {
 		Period periodo = Period.between(this.data, fim.data);		
 		return periodo.getDays();
 	}
 
-	public long duraçãoEmMinutos(Agenda fim) {
+	public long duraçãoEmMinutos(DataEHora fim) {
 		Duration duracao = Duration.between(this.hora, fim.hora);
 		return duracao.toMinutes();
 		

@@ -9,16 +9,16 @@ import java.time.LocalTime;
 import org.junit.Before;
 import org.junit.Test;
 
-import br.edu.ifpi.eventos.util.Agenda;
+import br.edu.ifpi.eventos.util.DataEHora;
 
-public class AgendaTeste {
+public class DataEHoraTeste {
 	
-	Agenda ag1, ag2;
+	DataEHora ag1, ag2;
 	
 	@Before
 	public void inicialização(){
-		ag1 = new Agenda(LocalDate.of(2016, 7, 1), LocalTime.of(8, 00));
-		ag2 = new Agenda(LocalDate.of(2016, 7, 3), LocalTime.of(10, 30));
+		ag1 = new DataEHora(LocalDate.of(2016, 7, 1), LocalTime.of(8, 00));
+		ag2 = new DataEHora(LocalDate.of(2016, 7, 3), LocalTime.of(10, 30));
 	}
 
 	@Test

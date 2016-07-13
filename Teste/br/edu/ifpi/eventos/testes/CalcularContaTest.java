@@ -10,6 +10,7 @@ import org.junit.Test;
 
 import br.edu.ifpi.eventos.cupom.Lote_I;
 import br.edu.ifpi.eventos.cupom.Palestras_50;
+import br.edu.ifpi.eventos.modelo.Agenda;
 import br.edu.ifpi.eventos.modelo.Atividade;
 import br.edu.ifpi.eventos.modelo.CalcularConta;
 import br.edu.ifpi.eventos.modelo.CupomPromocional;
@@ -20,11 +21,12 @@ import br.edu.ifpi.eventos.modelo.Palestra;
 import br.edu.ifpi.eventos.modelo.PerfilDeUsuario;
 import br.edu.ifpi.eventos.modelo.Semana;
 import br.edu.ifpi.eventos.modelo.Usuario;
-import br.edu.ifpi.eventos.util.Agenda;
+import br.edu.ifpi.eventos.util.DataEHora;
 
 public class CalcularContaTest {
 	
-	Agenda ag1, ag2, ag3, ag4, ag5, ag6;
+	DataEHora dh1, dh2, dh3, dh4, dh5, dh6;
+	Agenda ag1, ag2, ag3, ag4;
 	Evento sem;
 	Usuario usu;
 	Inscrição insc;
@@ -33,18 +35,22 @@ public class CalcularContaTest {
 	
 	@Before
 	public void inicialização(){
-		ag1 = new Agenda(LocalDate.of(2016, 7, 11), LocalTime.of(8, 00));
-		ag2 = new Agenda(LocalDate.of(2016, 7, 15), LocalTime.of(18, 00));
-		ag3 = new Agenda(LocalDate.of(2016, 7, 11), LocalTime.of(12, 00));
-		ag4 = new Agenda(LocalDate.of(2016, 7, 13), LocalTime.of(14, 00));
-		ag5 = new Agenda(LocalDate.of(2016, 7, 13), LocalTime.of(16, 00));
-		ag6 = new Agenda(LocalDate.of(2016, 7, 13), LocalTime.of(18, 00));
-		sem = new Semana("Semana de Quimica", ag1, ag2);
+		dh1 = new DataEHora(LocalDate.of(2016, 7, 11), LocalTime.of(8, 00));
+		dh2 = new DataEHora(LocalDate.of(2016, 7, 15), LocalTime.of(18, 00));
+		dh3 = new DataEHora(LocalDate.of(2016, 7, 11), LocalTime.of(12, 00));
+		dh4 = new DataEHora(LocalDate.of(2016, 7, 13), LocalTime.of(14, 00));
+		dh5 = new DataEHora(LocalDate.of(2016, 7, 13), LocalTime.of(16, 00));
+		dh6 = new DataEHora(LocalDate.of(2016, 7, 13), LocalTime.of(18, 00));
+		ag1 = new Agenda(dh1, dh2);
+		ag2 = new Agenda(dh1, dh3);
+		ag3 = new Agenda(dh4, dh5);
+		ag4 = new Agenda(dh4, dh6);
+		sem = new Semana("Semana de Quimica", ag1);
 		usu = new Usuario("Maria",new PerfilDeUsuario("Participante"));
 		insc = new Inscrição(sem, usu);
-		mc = new Minicurso("Analitica", ag1, ag3);
-		p = new Palestra("GMRV", ag4, ag5);
-		p2 = new Palestra("Nanometria", ag4, ag6);
+		mc = new Minicurso("Analitica", ag2);
+		p = new Palestra("GMRV", ag3);
+		p2 = new Palestra("Nanometria", ag4);
 		cc = new CalcularConta(insc);
 		sem.setPreco(60.00);
 		mc.setPreco(50.00);
