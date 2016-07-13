@@ -15,4 +15,10 @@ public class Instituicao {
 		this.eventos.add(ev);
 	}
 
+	public String getNome() {
+		return nome;
+	}
+	
+	
+
 }

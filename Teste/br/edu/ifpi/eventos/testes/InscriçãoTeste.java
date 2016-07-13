@@ -2,10 +2,8 @@ package br.edu.ifpi.eventos.testes;
 
 import static org.junit.Assert.*;
 
-import java.rmi.server.UID;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.spi.TimeZoneNameProvider;
 
 import org.junit.Before;
 import org.junit.Test;

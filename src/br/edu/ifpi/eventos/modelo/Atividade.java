@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-import br.edu.ifpi.eventos.util.DataEHora;
-
 public abstract class Atividade {
 	
 	private String nome;
@@ -25,7 +23,7 @@ public abstract class Atividade {
 		this.inscrições.add(inscrição);
 	}
 	
-	public boolean compararHorario(Atividade at){//true se está no mesmo horario
+	public boolean compararHorario(Atividade at){
 		return agenda.compararHorario(at.getAgenda());
 	}
 	
@@ -33,10 +31,6 @@ public abstract class Atividade {
 		return capacidade - inscrições.size();
 	}
 	
-	public String getNome() {
-		return nome;
-	}
-
 	public void setCapacidade(int capacidade) {
 		this.capacidade = capacidade;
 	}
@@ -51,6 +45,11 @@ public abstract class Atividade {
 	public Agenda getAgenda() {
 		return agenda;
 	}
+	
+	public String getNome() {
+		return nome;
+	}
+
 	
 	
 	

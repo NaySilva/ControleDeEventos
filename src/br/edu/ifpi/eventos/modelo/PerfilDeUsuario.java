@@ -7,6 +7,10 @@ public class PerfilDeUsuario {
 	public PerfilDeUsuario(String descrição) {
 		this.descrição = descrição;
 	}
+
+	public String getDescrição() {
+		return descrição;
+	}
 	
 	
 

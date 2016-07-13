@@ -49,6 +49,10 @@ public abstract class Evento extends Atividade {
 	public List<Atividade> getAtividades() {
 		return atividades;
 	}
+	
+	public Instituicao getInstituição(){
+		return instituicao;
+	}
 
 	
 	

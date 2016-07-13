@@ -2,7 +2,6 @@ package br.edu.ifpi.eventos.testes;
 
 import static org.junit.Assert.*;
 
-import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
