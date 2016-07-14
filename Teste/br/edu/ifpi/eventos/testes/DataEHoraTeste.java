@@ -35,4 +35,5 @@ public class DataEHoraTeste {
 	public void Deve_Mostra_Duracao_Ente_Duas_Horas_Em_Minutos(){
 		assertEquals(150, ag1.duraçãoEmMinutos(ag2));
 	}
+	
 }

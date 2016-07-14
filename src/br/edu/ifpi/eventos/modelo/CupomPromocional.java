@@ -1,8 +1,35 @@
 package br.edu.ifpi.eventos.modelo;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 
-public interface CupomPromocional {
+import br.edu.ifpi.eventos.util.Agenda;
+import br.edu.ifpi.eventos.util.DataEHora;
+import br.edu.ifpi.eventos.util.TipoDeCupom;
+
+public abstract class CupomPromocional {
 	
-	double valorDoDesconto(Inscrição insc);
+	private Agenda validade;
+	private TipoDeCupom tipo; 
+	private boolean ativo;
+	
+	public CupomPromocional(Agenda validade, TipoDeCupom tipo) {
+		this.validade = validade;
+		this.tipo = tipo;
+		verificarAValidade();
+	}
+	
+	public void verificarAValidade(){
+		Agenda hoje = new Agenda(new DataEHora(LocalDate.now(), LocalTime.now()));
+		ativo = validade.depoisDoFim(hoje.getFim()) ? false : true;
+	}
+	
+	public abstract double valorDoDesconto(Inscrição insc);
+	
+	public boolean getAtivo() {
+		return ativo;
+	}
+	
+	
 
 }

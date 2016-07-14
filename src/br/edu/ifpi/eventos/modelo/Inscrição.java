@@ -2,6 +2,7 @@ package br.edu.ifpi.eventos.modelo;
 
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Inscrição {
@@ -11,18 +12,26 @@ public class Inscrição {
 	private List<Atividade> atividadesDesejadas = new ArrayList<Atividade>();
 	private boolean pago;
 	
-	public Inscrição(Evento evento, Usuario usuario) {
+	public Inscrição(Evento evento, Usuario usuario){
 		this.evento = evento;
 		this.usuario = usuario;
+		this.pago = false;
+		evento.adicionarInscricao(this);
 	}
-	public Inscrição() {
-		// TODO Auto-generated constructor stub
+	
+	public void pagarInscrição(double valor){
+		CalcularConta cc = new CalcularConta(this); 
+		double total = cc.calcularTotalComDesconto();
+		this.pago = (total == valor) ? true : false;		
 	}
 
 	public String adicionarAtividadeDesejada(Atividade atividade){
 		String deuCerto = "A atividade foi adicionada!";
-		String deuErrado = "Já existe outro compromisso nesse hórario";
-		if (verificarDisponibilidade(atividade) && evento.getAtividades().contains(atividade)){
+		String deuErrado = "Não foi possivel adicionar essa atividade";
+		boolean semAtivRepetidas = !atividadesDesejadas.contains(atividade);
+		boolean ativNoEvento = evento.getAtividades().contains(atividade);
+		boolean horarioDisponivel = verificarDisponibilidade(atividade);
+		if (horarioDisponivel && ativNoEvento && semAtivRepetidas && !isPago()){
 			this.atividadesDesejadas.add(atividade);
 			atividade.adicionarInscricao(this);
 			return deuCerto;
@@ -31,18 +40,25 @@ public class Inscrição {
 	}
 
 	public boolean verificarDisponibilidade(Atividade atividade) {
+		if (atividadesDesejadas.isEmpty()) return true;
 		for (Atividade at : atividadesDesejadas) {
-			if (atividade.compararHorario(at)) return false;
+			if (atividade.getAgenda().praDarCerto(at.getAgenda()) ) return true;
 		}
-		return true;
+		return false;
 	}
 	public List<Atividade> getAtividadesDesejadas() {
-		return atividadesDesejadas;
+		return Collections.unmodifiableList(atividadesDesejadas);
 	}
 	
 	public Evento getEvento() {
 		return evento;
 	}
+
+	public boolean isPago() {
+		return pago;
+	}
+	
+	
 	
 	
 	

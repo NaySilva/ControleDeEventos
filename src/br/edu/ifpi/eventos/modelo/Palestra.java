@@ -1,5 +1,7 @@
 package br.edu.ifpi.eventos.modelo;
 
+import br.edu.ifpi.eventos.util.Agenda;
+
 public class Palestra extends Atividade {
 	
 	public Palestra(String nome, Agenda agenda) {

@@ -1,6 +1,8 @@
 package br.edu.ifpi.eventos.modelo;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class CalcularConta {
@@ -15,7 +17,7 @@ public class CalcularConta {
 	}
 
 	public void adicionarCupom(CupomPromocional cupom){
-		cupons.add(cupom);
+		if (cupom.getAtivo()) cupons.add(cupom);
 	}
 
 	public double calcularTotalBruto(){
@@ -46,6 +48,10 @@ public class CalcularConta {
 
 	public Inscrição getInscrição() {
 		return inscrição;
+	}
+
+	public List<CupomPromocional> getCupons() {
+		return Collections.unmodifiableList(cupons);
 	}
 	
 	

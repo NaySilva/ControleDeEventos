@@ -1,7 +1,10 @@
 package br.edu.ifpi.eventos.modelo;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+
+import br.edu.ifpi.eventos.util.Agenda;
 
 
 public abstract class Atividade {
@@ -21,10 +24,6 @@ public abstract class Atividade {
 	
 	public void adicionarInscricao(Inscrição inscrição){
 		this.inscrições.add(inscrição);
-	}
-	
-	public boolean compararHorario(Atividade at){
-		return agenda.compararHorario(at.getAgenda());
 	}
 	
 	public int verificarVagas(){
@@ -50,6 +49,11 @@ public abstract class Atividade {
 		return nome;
 	}
 
+	public List<Inscrição> getInscrições() {
+		return Collections.unmodifiableList(inscrições);
+	}
+
+	
 	
 	
 	
