@@ -1,7 +1,5 @@
 package br.edu.ifpi.eventos.util;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;

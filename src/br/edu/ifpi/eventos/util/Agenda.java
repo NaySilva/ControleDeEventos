@@ -13,26 +13,18 @@ public class Agenda {
 		this.fim = dia;
 	}
 	
-	public boolean praDarCerto(Agenda ag){
+	public boolean compararHorario(Agenda ag){
 		boolean antes = antesDoComeço(ag.começo) && (antesDoComeço(ag.fim) || começo.equals(ag.fim));
 		boolean depois = (depoisDoFim(ag.começo) || fim.equals(ag.começo)) && depoisDoFim(ag.fim);
 		return antes || depois;
 	}
 	
 	public boolean noMeio(DataEHora parte){
-		return antes(parte) && depois(parte);
-	}
-
-	public boolean depois(DataEHora parte) {
-		return fim.getData().compareTo(parte.getData())>0 && fim.getHora().compareTo(parte.getHora())>0;
+		return !antesDoComeço(parte) && !depoisDoFim(parte);
 	}
 	
 	public boolean depoisDoFim(DataEHora parte){
 		return (fim.getData().compareTo(parte.getData()) < 0) || (fim.getData().equals(parte.getData()) && fim.getHora().compareTo(parte.getHora())<0);
-	}
-
-	public boolean antes(DataEHora parte) {
-		return começo.getData().compareTo(parte.getData())<0 && começo.getHora().compareTo(parte.getHora())<0;
 	}
 	
 	public boolean antesDoComeço(DataEHora parte){

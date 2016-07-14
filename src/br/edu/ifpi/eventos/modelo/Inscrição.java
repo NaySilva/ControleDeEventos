@@ -42,7 +42,7 @@ public class Inscrição {
 	public boolean verificarDisponibilidade(Atividade atividade) {
 		if (atividadesDesejadas.isEmpty()) return true;
 		for (Atividade at : atividadesDesejadas) {
-			if (atividade.getAgenda().praDarCerto(at.getAgenda()) ) return true;
+			if (atividade.getAgenda().compararHorario(at.getAgenda()) ) return true;
 		}
 		return false;
 	}
