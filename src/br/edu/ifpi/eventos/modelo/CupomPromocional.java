@@ -4,7 +4,6 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 import br.edu.ifpi.eventos.util.Agenda;
-import br.edu.ifpi.eventos.util.DataEHora;
 import br.edu.ifpi.eventos.util.TipoDeCupom;
 
 public abstract class CupomPromocional {
@@ -20,8 +19,8 @@ public abstract class CupomPromocional {
 	}
 	
 	public void verificarAValidade(){
-		Agenda hoje = new Agenda(new DataEHora(LocalDate.now(), LocalTime.now()));
-		ativo = validade.depoisDoFim(hoje.getFim()) ? false : true;
+		Agenda hoje = new Agenda(LocalDate.now(), LocalTime.now());
+		ativo = validade.depoisDoFim(hoje.getDiaFim(), hoje.getHoraFim()) ? false : true;
 	}
 	
 	public abstract double valorDoDesconto(Inscrição insc);

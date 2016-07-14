@@ -1,7 +1,6 @@
 package br.edu.ifpi.eventos.modelo;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import br.edu.ifpi.eventos.util.Agenda;
@@ -20,10 +19,6 @@ public abstract class Atividade {
 		this.agenda = agenda;
 		this.preco = 0.0;
 		this.inscrições = new ArrayList<>();
-	}
-	
-	public void adicionarInscricao(Inscrição inscrição){
-		this.inscrições.add(inscrição);
 	}
 	
 	public int verificarVagas(){
@@ -50,7 +45,7 @@ public abstract class Atividade {
 	}
 
 	public List<Inscrição> getInscrições() {
-		return Collections.unmodifiableList(inscrições);
+		return inscrições;
 	}
 
 	

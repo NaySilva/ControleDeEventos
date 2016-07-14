@@ -1,5 +1,6 @@
 package br.edu.ifpi.eventos.modelo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Instituicao {
@@ -9,10 +10,7 @@ public class Instituicao {
 	
 	public Instituicao(String nome) {
 		this.nome = nome;
-	}
-	
-	public void adicionarEvento(Evento ev){
-		this.eventos.add(ev);
+		this.eventos = new ArrayList<Evento>();
 	}
 
 	public String getNome() {

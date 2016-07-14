@@ -1,12 +1,9 @@
 package br.edu.ifpi.eventos.modelo;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
 import br.edu.ifpi.eventos.util.Agenda;
-import br.edu.ifpi.eventos.util.DataEHora;
 import br.edu.ifpi.eventos.util.StatusDoEventoEnum;
 
 public abstract class Evento extends Atividade {
@@ -14,7 +11,6 @@ public abstract class Evento extends Atividade {
 	private Instituicao instituicao;
 	private List<Atividade> atividades;
 	private Agenda periodoDeInscrição;
-	private String local;
 	
 	public Evento(String nome, Agenda agenda) {
 		super(nome, agenda);
@@ -23,19 +19,19 @@ public abstract class Evento extends Atividade {
 	}
 
 	public void verificarData(Agenda agenda) {
-		Agenda hoje = new Agenda(new DataEHora(LocalDate.now(), LocalTime.now()));
-		if (agenda.depoisDoFim(hoje.getFim())){
+		Agenda hoje = Agenda.hoje;
+		if (agenda.depoisDoFim(hoje.getDiaFim(), hoje.getHoraFim())){
 			throw new IllegalArgumentException("Data Passada");
 		}
 	}
 	
 	public StatusDoEventoEnum verificarStatus(){
 		StatusDoEventoEnum status;
-		Agenda hoje = new Agenda(new DataEHora(LocalDate.now(), LocalTime.now()));
-		boolean entreOsDias = periodoDeInscrição.noMeio(hoje.getFim());
+		Agenda hoje = Agenda.hoje;
+		boolean entreOsDias = periodoDeInscrição.noMeio(hoje.getDiaFim(), hoje.getHoraFim());
 		if (entreOsDias){
 			status = StatusDoEventoEnum.InscriçõesAbertas;
-		}else if (super.getAgenda().depoisDoFim(hoje.getFim())){
+		}else if (super.getAgenda().depoisDoFim(hoje.getDiaFim(), hoje.getHoraFim())){
 			status = StatusDoEventoEnum.Finalizado;
 		}else{
 			status = StatusDoEventoEnum.EmAndamento;
@@ -61,10 +57,6 @@ public abstract class Evento extends Atividade {
 	
 	public Instituicao getInstituição(){
 		return instituicao;
-	}
-	
-	public String getLocal(){
-		return local;
 	}
 	
 	

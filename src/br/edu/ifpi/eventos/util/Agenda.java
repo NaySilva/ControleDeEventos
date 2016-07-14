@@ -1,52 +1,71 @@
 package br.edu.ifpi.eventos.util;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 public class Agenda {
-	private DataEHora começo;
-	private DataEHora fim;
+	private LocalDate diaComeço;
+	private LocalTime horaComeço;
+	private LocalDate diaFim;
+	private LocalTime horaFim;
 	
-	public Agenda(DataEHora começo, DataEHora fim) {
-		this.começo = começo;
-		this.fim = fim;
+	public final static Agenda hoje = new Agenda(LocalDate.now(), LocalTime.now());
+	
+	
+	public Agenda(LocalDate diaFim, LocalTime horaFim) {
+		this.diaFim = diaFim;
+		this.horaFim = horaFim;
 	}
-	
-	public Agenda(DataEHora dia){
-		this.fim = dia;
+
+	public Agenda(LocalDate diaComeço, LocalTime horaComeço, LocalDate diaFim, LocalTime horaFim) {
+		this.diaComeço = diaComeço;
+		this.horaComeço = horaComeço;
+		this.diaFim = diaFim;
+		this.horaFim = horaFim;
 	}
-	
+
 	public boolean compararHorario(Agenda ag){
-		boolean antes = antesDoComeço(ag.começo) && (antesDoComeço(ag.fim) || começo.equals(ag.fim));
-		boolean depois = (depoisDoFim(ag.começo) || fim.equals(ag.começo)) && depoisDoFim(ag.fim);
+		boolean antes = antesDoComeço(ag.diaComeço, ag.horaComeço) && (antesDoComeço(ag.diaFim, ag.horaFim));
+		boolean depois = (depoisDoFim(ag.diaComeço, ag.horaComeço) ) && depoisDoFim(ag.diaFim, ag.horaFim);
 		return antes || depois;
 	}
 	
-	public boolean noMeio(DataEHora parte){
-		return !antesDoComeço(parte) && !depoisDoFim(parte);
+	public boolean noMeio(LocalDate data, LocalTime hora){
+		return !antesDoComeço(data, hora) && !depoisDoFim(data, hora);
 	}
 	
-	public boolean depoisDoFim(DataEHora parte){
-		return (fim.getData().compareTo(parte.getData()) < 0) || (fim.getData().equals(parte.getData()) && fim.getHora().compareTo(parte.getHora())<0);
+	public boolean depoisDoFim(LocalDate data, LocalTime hora){
+		boolean diaAnterior = diaFim.compareTo(data) < 0;
+		boolean mesmoDia = diaFim.equals(data);
+		boolean horaAnterior = horaFim.compareTo(hora)<0;
+		return diaAnterior || (mesmoDia && horaAnterior);
 	}
 	
-	public boolean antesDoComeço(DataEHora parte){
-		return começo.getData().compareTo(parte.getData())>0 || (começo.getData().equals(parte.getData()) && começo.getHora().compareTo(parte.getHora())>0);
+	public boolean antesDoComeço(LocalDate data, LocalTime hora){
+		boolean diaPosterior = diaComeço.compareTo(data)>0;
+		boolean mesmoDia = diaComeço.equals(data);
+		boolean horaPosterior = horaComeço.compareTo(hora)>0;
+		return diaPosterior || (mesmoDia && horaPosterior);
 	}
 
-	
-	public String duração(){
-		int dias = começo.periodoEmDias(fim);
-		long minutos = começo.duraçãoEmMinutos(fim);
-		return dias + " - " + minutos;
+	public LocalDate getDiaComeço() {
+		return diaComeço;
 	}
 
-	public DataEHora getComeço() {
-		return começo;
+	public LocalTime getHoraComeço() {
+		return horaComeço;
 	}
 
-	public DataEHora getFim() {
-		return fim;
+	public LocalDate getDiaFim() {
+		return diaFim;
+	}
+
+	public LocalTime getHoraFim() {
+		return horaFim;
 	}
 	
 	
+
 	
 
 }
