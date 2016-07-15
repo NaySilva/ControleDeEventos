@@ -38,10 +38,8 @@ São classes de tipos de atividades herdadas pela classe Atividade. Há diferen�
 <b>Semana, Simposio e outros tipos de atividades</b></br>
 São classes do tipo de Eventos herdadas pela classe Evento. Planejado da mesma forma que as atividades acima.
 
+<h4>Diagrama de classes</h4>
+![](https://github.com/NaySilva/ControleDeEventos/blob/master/diagrama-de-classes.PNG?raw:true "diagrama de classes")
+
 <h4>Como Testar?
 Basta clonar o projeto inteiro e importar no eclipse.</h4>
-
-![Alt text](/diagrama-de-classes.png?raw=true "diagrama de classes")
-
-
-
