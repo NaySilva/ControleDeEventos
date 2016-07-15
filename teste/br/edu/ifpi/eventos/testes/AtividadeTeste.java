@@ -17,7 +17,7 @@ public class AtividadeTeste {
 	
 	@Test
 	public void Deve_Verificar_Vagas_Disponiveis(){
-		Agenda ag1 = new Agenda(LocalDate.of(2016, 7, 16),LocalTime.of(8, 00), LocalDate.of(2016, 7, 16), LocalTime.of(18,00));
+		Agenda ag1 = new Agenda(LocalDate.of(2016, 7, 30),LocalTime.of(8, 00), LocalDate.of(2016, 7, 30), LocalTime.of(18,00));
 		Evento sim = new Simposio("Simposio de Programaçao", ag1);
 		sim.setCapacidade(10);
 		Inscrição insc = new Inscrição(sim, new Perfil("Participante"));

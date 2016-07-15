@@ -24,11 +24,11 @@ public class EventoTeste {
 	
 	@Before
 	public void inicialização(){
-		ag1 = new Agenda(LocalDate.of(2016,7,18), LocalTime.of(8, 00), LocalDate.of(2016, 7, 22), LocalTime.of(12, 00));
-		ag2 = new Agenda(LocalDate.of(2016,7,18), LocalTime.of(8, 00), LocalDate.of(2016, 7, 18), LocalTime.of(12, 0));
-		ag3 = new Agenda(LocalDate.of(2016, 7, 11), LocalTime.of(0, 1), LocalDate.of(2016, 7, 15), LocalTime.of(23, 59));
+		ag1 = new Agenda(LocalDate.of(2016,7,29), LocalTime.of(8, 00), LocalDate.of(2016, 7, 30), LocalTime.of(12, 00));
+		ag2 = new Agenda(LocalDate.of(2016,7,29), LocalTime.of(8, 00), LocalDate.of(2016, 7, 29), LocalTime.of(12, 0));
+		ag3 = new Agenda(LocalDate.of(2016, 7, 11), LocalTime.of(0, 1), LocalDate.of(2016, 7, 28), LocalTime.of(23, 59));
 		ag4 = new Agenda(LocalDate.of(2016, 7, 11), LocalTime.of(0, 1), LocalDate.of(2016, 7, 13), LocalTime.of(23, 59));
-		ag5 = new Agenda(LocalDate.of(2016, 7, 15), LocalTime.of(0, 1), LocalDate.of(2016, 7, 15), LocalTime.of(23, 59));
+		ag5 = new Agenda(LocalDate.of(2016, 7, 28), LocalTime.of(0, 1), LocalDate.of(2016, 7, 28), LocalTime.of(23, 59));
 		sem = new Semana("Semana da Quimica", ag1);
 		sim = new Simposio("Simposio de programação", ag5);
 		mc = new Minicurso("Nanotecnologia",ag2);

@@ -16,7 +16,7 @@ public class CupomPromocionalTeste {
 
 	@Test
 	public void Deve_Ser_Ativo_Se_Estive_No_Periodo_Da_Validade() {
-		Agenda val = new Agenda(LocalDate.of(2016, 7, 16), LocalTime.of(23, 59));
+		Agenda val = new Agenda(LocalDate.of(2016, 7, 30), LocalTime.of(23, 59));
 		CupomPromocional l1 = new Lote_I(val, TipoDeCupom.Geral);
 		l1.verificarAValidade();
 		assertEquals(true, l1.getAtivo());		

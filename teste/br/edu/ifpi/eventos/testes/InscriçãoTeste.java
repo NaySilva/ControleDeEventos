@@ -27,9 +27,9 @@ public class InscriçãoTeste {
 	
 	@Before
 	public void Inicialização(){
-		ag1 = new Agenda(LocalDate.of(2016, 7, 16), LocalTime.of(8, 0), LocalDate.of(2016, 7, 16), LocalTime.of(12, 0));
-		ag2 = new Agenda(LocalDate.of(2016, 7, 16), LocalTime.of(14, 0), LocalDate.of(2016, 7, 16), LocalTime.of(18,00));
-		ag3 = new Agenda(LocalDate.of(2016, 7, 16), LocalTime.of(8, 0), LocalDate.of(2016, 7, 16), LocalTime.of(18,00));
+		ag1 = new Agenda(LocalDate.of(2016, 7, 30), LocalTime.of(8, 0), LocalDate.of(2016, 7, 30), LocalTime.of(12, 0));
+		ag2 = new Agenda(LocalDate.of(2016, 7, 30), LocalTime.of(14, 0), LocalDate.of(2016, 7, 30), LocalTime.of(18,00));
+		ag3 = new Agenda(LocalDate.of(2016, 7, 30), LocalTime.of(8, 0), LocalDate.of(2016, 7, 30), LocalTime.of(18,00));
 		sim = new Simposio("Simposio de Programação", ag3);
 		perfil = new Perfil("Participante");
 		ins = new Inscrição(sim, perfil);

@@ -34,11 +34,11 @@ public class CalcularContaTest {
 	
 	@Before
 	public void inicialização(){
-		ag1 = new Agenda(LocalDate.of(2016, 7, 11), LocalTime.of(8, 00), LocalDate.of(2016, 7, 15), LocalTime.of(18, 00));
+		ag1 = new Agenda(LocalDate.of(2016, 7, 11), LocalTime.of(8, 00), LocalDate.of(2016, 7, 29), LocalTime.of(18, 00));
 		ag2 = new Agenda(LocalDate.of(2016, 7, 11), LocalTime.of(8, 00), LocalDate.of(2016, 7, 11), LocalTime.of(12, 00));
 		ag3 = new Agenda(LocalDate.of(2016, 7, 13), LocalTime.of(14, 00), LocalDate.of(2016, 7, 13), LocalTime.of(16, 00));
 		ag4 = new Agenda(LocalDate.of(2016, 7, 13), LocalTime.of(14, 00), LocalDate.of(2016, 7, 13), LocalTime.of(18, 00));
-		val1 = new Agenda(LocalDate.of(2016, 7, 16), LocalTime.of(23, 59));
+		val1 = new Agenda(LocalDate.of(2016, 7, 30), LocalTime.of(23, 59));
 		val2 = new Agenda(LocalDate.of(2016, 7, 12), LocalTime.of(23, 59));
 		sem = new Semana("Semana de Quimica", ag1);
 		perfil = new Perfil("Participante");
