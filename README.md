@@ -42,4 +42,4 @@ São classes do tipo de Eventos herdadas pela classe Evento. Planejado da mesma 
 ![](https://github.com/NaySilva/ControleDeEventos/blob/master/diagrama-de-classes.PNG?raw:true "diagrama de classes")
 
 <h4>Como Testar?
-Basta clonar o projeto inteiro e importar no eclipse.</h4>
+Basta clonar ou baixar o projeto inteiro e importar no eclipse.</h4>
