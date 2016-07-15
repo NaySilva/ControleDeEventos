@@ -1,5 +1,7 @@
 # ControleDeEventos
 
+Controla a organização e execução de eventos acadêmicos e suas atividades desde sua inscrição evitando interferências nos horários de cada usuário cadastrado. Também tem a responsabilidade de calcular o valor da conta da inscrição em tal evento, contando com cada atividade nela adquirida.
+
 <h4>Principais Classes</h4>
 
 <b>Atividade</b></br>
