@@ -1,28 +1,36 @@
 package br.edu.ifpi.eventos.modelo;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import br.edu.ifpi.eventos.util.Agenda;
+import br.edu.ifpi.eventos.util.TipoDeAtividadeEnum;
 
 
-public abstract class Atividade {
+public class Atividade {
 	
 	private String nome;
 	private Agenda agenda;
 	private double preco;
-	private List<Inscrição> inscrições;
+	private TipoDeAtividadeEnum tipo;
+	private List<Inscricao> inscricoes;
 	private int capacidade;
 	
-	public Atividade(String nome, Agenda agenda) {
+	public Atividade(String nome, Agenda agenda, TipoDeAtividadeEnum tipo) {
 		this.nome = nome;
 		this.agenda = agenda;
+		this.tipo = tipo;
 		this.preco = 0.0;
-		this.inscrições = new ArrayList<>();
+		this.inscricoes = new ArrayList<>();
+	}
+	
+	public void adicionarInscricao(Inscricao inscricao){
+		inscricoes.add(inscricao);
 	}
 	
 	public int verificarVagas(){
-		return capacidade - inscrições.size();
+		return capacidade - inscricoes.size();
 	}
 	
 	public void setCapacidade(int capacidade) {
@@ -44,8 +52,12 @@ public abstract class Atividade {
 		return nome;
 	}
 
-	public List<Inscrição> getInscrições() {
-		return inscrições;
+	public List<Inscricao> getInscricoes() {
+		return Collections.unmodifiableList(inscricoes);
+	}
+
+	public TipoDeAtividadeEnum getTipo() {
+		return tipo;
 	}
 
 	

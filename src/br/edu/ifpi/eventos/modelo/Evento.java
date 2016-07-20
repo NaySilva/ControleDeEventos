@@ -1,50 +1,65 @@
 package br.edu.ifpi.eventos.modelo;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import br.edu.ifpi.eventos.util.Agenda;
 import br.edu.ifpi.eventos.util.StatusDoEventoEnum;
+import br.edu.ifpi.eventos.util.TipoDeEventoEnum;
 
-public abstract class Evento extends Atividade {
+public class Evento {
 	
+	private String nome;
+	private Agenda agenda;
+	private double preco;
+	private List<Inscricao> inscricoes;
+	private int capacidade;
+	private TipoDeEventoEnum tipo;
 	private Instituicao instituicao;
 	private List<Atividade> atividades;
-	private Agenda periodoDeInscrição;
+	private Agenda periodoDeInscricao;
 	
-	public Evento(String nome, Agenda agenda) {
-		super(nome, agenda);
+	public Evento(String nome, Agenda agenda, TipoDeEventoEnum tipo) {
+		this.nome = nome;
+		this.agenda = agenda;
+		this.tipo = tipo;
 		this.atividades = new ArrayList<Atividade>();
+		this.inscricoes = new ArrayList<Inscricao>();
 		verificarData(agenda);
 	}
 
 	public void verificarData(Agenda agenda) {
-		Agenda hoje = Agenda.hoje;
-		if (agenda.depoisDoFim(hoje.getDiaFim(), hoje.getHoraFim())){
+		Agenda noMomento = Agenda.noMomento;
+		if (agenda.depoisDoFim(noMomento.getDiaFim(), noMomento.getHoraFim())){
 			throw new IllegalArgumentException("Data Passada");
 		}
 	}
 	
 	public StatusDoEventoEnum verificarStatus(){
 		StatusDoEventoEnum status;
-		Agenda hoje = Agenda.hoje;
-		boolean entreOsDias = periodoDeInscrição.noMeio(hoje.getDiaFim(), hoje.getHoraFim());
+		Agenda hoje = Agenda.noMomento;
+		boolean entreOsDias = periodoDeInscricao.noMeio(hoje.getDiaFim(), hoje.getHoraFim());
 		if (entreOsDias){
-			status = StatusDoEventoEnum.InscriçõesAbertas;
-		}else if (super.getAgenda().depoisDoFim(hoje.getDiaFim(), hoje.getHoraFim())){
+			status = StatusDoEventoEnum.InscricoesAbertas;
+		}else if (agenda.depoisDoFim(hoje.getDiaFim(), hoje.getHoraFim())){
 			status = StatusDoEventoEnum.Finalizado;
 		}else{
 			status = StatusDoEventoEnum.EmAndamento;
 		}
 		return status;
 	}
-
-	public Agenda getPeriodoDeInscrição() {
-		return periodoDeInscrição;
+	
+	public void adicionarInscricao(Inscricao inscricao){
+		inscricoes.add(inscricao);
 	}
 
-	public void setPeriodoDeInscrição(Agenda periodoDeInscrição) {
-		this.periodoDeInscrição = periodoDeInscrição;
+	public Agenda getPeriodoDeInscricao() {
+		return periodoDeInscricao;
+	}
+
+	public void setPeriodoDeInscricao(Agenda periodoDeInscricao) {
+		this.periodoDeInscricao = periodoDeInscricao;
 	}
 	
 	public void adicionarAtividade(Atividade atividade){
@@ -52,12 +67,26 @@ public abstract class Evento extends Atividade {
 	}
 	
 	public List<Atividade> getAtividades() {
-		return atividades;
+		return Collections.unmodifiableList(atividades);
 	}
 	
-	public Instituicao getInstituição(){
+	public Instituicao getInstituicao(){
 		return instituicao;
 	}
+
+	public List<Inscricao> getInscricoes() {
+		return Collections.unmodifiableList(inscricoes);
+	}
+
+	public double getPreco() {
+		return preco;
+	}
+
+	public void setPreco(double valor) {
+		this.preco = valor;
+	}
+	
+	
 	
 	
 

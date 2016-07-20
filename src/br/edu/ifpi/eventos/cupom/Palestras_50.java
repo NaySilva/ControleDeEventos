@@ -2,23 +2,21 @@ package br.edu.ifpi.eventos.cupom;
 
 import br.edu.ifpi.eventos.modelo.Atividade;
 import br.edu.ifpi.eventos.modelo.CupomPromocional;
-import br.edu.ifpi.eventos.modelo.Inscrição;
-import br.edu.ifpi.eventos.modelo.Palestra;
+import br.edu.ifpi.eventos.modelo.Inscricao;
 import br.edu.ifpi.eventos.util.Agenda;
-import br.edu.ifpi.eventos.util.TipoDeCupom;
-
+import br.edu.ifpi.eventos.util.TipoDeAtividadeEnum;
 public class Palestras_50 extends CupomPromocional{
 
-	public Palestras_50(Agenda validade, TipoDeCupom tipo) {
-		super(validade, tipo);
+	public Palestras_50(Agenda validade) {
+		super(validade);
 	}
 
 
 	@Override
-	public double valorDoDesconto(Inscrição inscricao) {
+	public double valorDoDesconto(Inscricao inscricao) {
 		double resultado = 0.0;
 		for (Atividade at : inscricao.getAtividadesDesejadas()) {
-			if (at instanceof Palestra){
+			if (at.getTipo().equals(TipoDeAtividadeEnum.Palestra)){
 				resultado += at.getPreco() * 0.5;
 			}
 		}

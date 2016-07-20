@@ -1,24 +1,29 @@
 package br.edu.ifpi.eventos.modelo;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Perfil {
 	
-	private String descrição;
-	private List<Inscrição> inscrições;
+	private String descricao;
+	private List<Inscricao> inscricoes;
 
-	public Perfil(String descrição) {
-		this.descrição = descrição;
-		this.inscrições = new ArrayList<Inscrição>();
+	public Perfil(String descricao) {
+		this.descricao = descricao;
+		this.inscricoes = new ArrayList<Inscricao>();
+	}
+	
+	public void adicionarInscricao(Inscricao inscricao){
+		inscricoes.add(inscricao);
 	}
 
-	public String getDescrição() {
-		return descrição;
+	public String getDescricao() {
+		return descricao;
 	}
 
-	public List<Inscrição> getInscrições() {
-		return inscrições;
+	public List<Inscricao> getInscricoes() {
+		return Collections.unmodifiableList(inscricoes);
 	}
 	
 	
