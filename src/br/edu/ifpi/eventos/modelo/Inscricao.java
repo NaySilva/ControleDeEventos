@@ -4,17 +4,32 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
 import br.edu.ifpi.eventos.excecoes.AtividadeInexistenteNoEventoException;
 import br.edu.ifpi.eventos.excecoes.AtividadeRepetidaException;
 import br.edu.ifpi.eventos.excecoes.HorarioIndisponivelException;
 import br.edu.ifpi.eventos.excecoes.InscricaoPagaException;
-
+@Entity
 public class Inscricao {
-	
-	private Evento evento;
+	@Id
+	@GeneratedValue
+	private Long id;
+	@ManyToOne
 	private Perfil perfil;
+	@ManyToOne
+	private Evento evento;
+	@ManyToMany(mappedBy="inscricoes")
 	private List<Atividade> atividadesDesejadas = new ArrayList<Atividade>();
+	@OneToOne
 	private Pagamento pagamento;
+	@OneToMany
 	private List<CupomPromocional> cupons;
 	
 	public Inscricao(Evento evento, Perfil perfil){

@@ -4,20 +4,34 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
 import br.edu.ifpi.eventos.util.Agenda;
 import br.edu.ifpi.eventos.util.StatusDoEventoEnum;
 import br.edu.ifpi.eventos.util.TipoDeEventoEnum;
 
+@Entity
 public class Evento {
-	
+	@Id
+	@GeneratedValue
+	private Long id;
 	private String nome;
+	@OneToOne
 	private Agenda agenda;
 	private double preco;
+	@OneToMany(mappedBy="evento")
 	private List<Inscricao> inscricoes;
 	private int capacidade;
 	private TipoDeEventoEnum tipo;
-	private Instituicao instituicao;
+	@OneToMany
+	@JoinColumn(name="evento_id")
 	private List<Atividade> atividades;
+	@OneToOne
 	private Agenda periodoDeInscricao;
 	
 	public Evento(String nome, Agenda agenda, TipoDeEventoEnum tipo) {
@@ -70,10 +84,6 @@ public class Evento {
 		return Collections.unmodifiableList(atividades);
 	}
 	
-	public Instituicao getInstituicao(){
-		return instituicao;
-	}
-
 	public List<Inscricao> getInscricoes() {
 		return Collections.unmodifiableList(inscricoes);
 	}

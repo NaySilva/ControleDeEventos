@@ -3,7 +3,14 @@ package br.edu.ifpi.eventos.util;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+@Entity
 public class Agenda {
+	@Id
+	@GeneratedValue
+	private Long id;
 	private LocalDate diaComeco;
 	private LocalTime horaComeco;
 	private LocalDate diaFim;

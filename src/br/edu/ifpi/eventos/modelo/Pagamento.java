@@ -1,11 +1,21 @@
 package br.edu.ifpi.eventos.modelo;
 
 
-import br.edu.ifpi.eventos.util.Agenda;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
+import br.edu.ifpi.eventos.util.Agenda;
+@Entity
 public class Pagamento {
 	
-	Inscricao inscricao;
+	@Id
+	@GeneratedValue
+	private Long id;
+	@OneToOne
+	private Inscricao inscricao;
+	@OneToOne
 	private Agenda horarioPagamento;
 	private boolean pago;
 	

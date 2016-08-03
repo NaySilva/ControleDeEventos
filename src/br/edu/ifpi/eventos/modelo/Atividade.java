@@ -4,16 +4,26 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
+
 import br.edu.ifpi.eventos.util.Agenda;
 import br.edu.ifpi.eventos.util.TipoDeAtividadeEnum;
-
-
+@Entity
 public class Atividade {
 	
+	@Id
+	@GeneratedValue
+	private Long id;
 	private String nome;
+	@OneToOne
 	private Agenda agenda;
 	private double preco;
 	private TipoDeAtividadeEnum tipo;
+	@ManyToMany
 	private List<Inscricao> inscricoes;
 	private int capacidade;
 	

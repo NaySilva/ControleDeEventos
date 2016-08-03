@@ -3,10 +3,19 @@ package br.edu.ifpi.eventos.modelo;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
 import br.edu.ifpi.eventos.util.Agenda;
 
+@Entity
 public abstract class CupomPromocional {
-	
+	@Id
+	@GeneratedValue
+	private Long id;
+	@OneToOne
 	private Agenda validade;
 	private boolean ativo;
 	
