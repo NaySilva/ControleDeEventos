@@ -14,8 +14,11 @@ public class Usuario {
 	@Id
 	@GeneratedValue
 	private Long id;
+	@NotNull
 	private String nome;
+	@NotNull
 	private String login;
+	@NotNull @Size(min=3, message="O tamanho da  senha tem que ser no minimo 3")
 	private String senha;
 	@OneToMany(mappedBy="usuario")
 	private List<Perfil> perfis;
@@ -52,7 +55,12 @@ public class Usuario {
 
 	@Override
 	public String toString() {
-		return "Usuario [nome=" + nome + ", login=" + login + ", senha=" + senha + "]";
+		return "Usuario [id= " + id + "nome=" + nome + ", login=" + login + ", senha=" + senha + "]";
+	}
+
+	public Long getId() {
+		// TODO Auto-generated method stub
+		return id;
 	}
 	
 	

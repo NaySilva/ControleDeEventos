@@ -1,4 +1,4 @@
-package br.edu.ifpi.eventos.jpa;
+package br.edu.ifpi.eventos.dao;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;

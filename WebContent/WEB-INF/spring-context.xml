@@ -16,6 +16,9 @@
 	
   
   <mvc:default-servlet-handler/>
+  <mvc:interceptors>
+    <bean class="br.edu.ifpi.eventos.interceptor.AutorizadorInterceptor" />
+  </mvc:interceptors>
   <context:component-scan base-package="br.edu.ifpi.eventos" />
   <mvc:annotation-driven />
   <tx:annotation-driven/>

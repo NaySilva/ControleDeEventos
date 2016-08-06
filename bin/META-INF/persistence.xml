@@ -8,7 +8,7 @@
   
  <provider>org.hibernate.ejb.HibernatePersistence</provider>
 
- <class>br.com.caelum.tarefas.modelo.Tarefa</class>
+ <class>br.edu.ifpi.eventos.modelo.GenericJPADAO</class>
 
  <properties>
   <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />

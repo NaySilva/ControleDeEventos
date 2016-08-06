@@ -8,13 +8,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h3>Cadastrar Usuario</h3>
-	<form:errors path="usuario.senha"/>
-	<form action="adicionaUsuario" method="post">
-		Nome: <input type="text" name="nome" /><br />
-		Login: <input type="text" name="login" /><br />
-		Senha: <input type="password" name="senha" /><br />
-		<input type="submit" value="Cadastrar" />
+	<h3>Adicionar perfil</h3>
+	<form:errors path="perfil.descricao"/>
+	<form action="adicionaPerfil" method="post">
+		Descrição: <input type="text" name="descricao"><br />
+		<input type="submit" value="Adicionar">
 	</form>
+
 </body>
 </html>
