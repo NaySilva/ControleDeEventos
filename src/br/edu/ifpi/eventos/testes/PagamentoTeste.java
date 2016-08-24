@@ -36,9 +36,9 @@ public class PagamentoTeste {
 	
 	@Before
 	public void inicializacao(){
-		ag1 = new Agenda(LocalDate.of(2016, 7, 11), LocalTime.of(8, 00), LocalDate.of(2016, 7, 29), LocalTime.of(18, 00));
+		ag1 = new Agenda(LocalDate.of(2016, 9, 11), LocalTime.of(8, 00), LocalDate.of(2016, 9, 29), LocalTime.of(18, 00));
 		sem = new Evento("Semana de Quimica", ag1, TipoDeEventoEnum.Semana);
-		perfil = new Perfil("Participante");
+		perfil = new Perfil(Perfil.Participante);
 		insc = new Inscricao(sem, perfil);
 		pagamento = new Pagamento(insc);
 		sem.setPreco(60.00);

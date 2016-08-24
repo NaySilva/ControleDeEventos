@@ -6,9 +6,9 @@ public interface GenericDAO<T> {
 	
 	void adiciona(T entidade);
 	
-	void remove(int id);
+	void remove(Long id);
 	
-	T buscaPorId(int id);
+	T buscaPorId(Long id);
 	
 	List<T> lista();
 	

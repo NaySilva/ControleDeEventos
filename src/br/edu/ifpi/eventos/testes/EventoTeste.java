@@ -23,11 +23,11 @@ public class EventoTeste {
 	
 	@Before
 	public void inicializacao(){
-		ag1 = new Agenda(LocalDate.of(2016,7,29), LocalTime.of(8, 00), LocalDate.of(2016, 7, 30), LocalTime.of(12, 00));
-		ag2 = new Agenda(LocalDate.of(2016,7,29), LocalTime.of(8, 00), LocalDate.of(2016, 7, 29), LocalTime.of(12, 0));
-		ag3 = new Agenda(LocalDate.of(2016, 7, 11), LocalTime.of(0, 1), LocalDate.of(2016, 7, 28), LocalTime.of(23, 59));
-		ag4 = new Agenda(LocalDate.of(2016, 7, 11), LocalTime.of(0, 1), LocalDate.of(2016, 7, 13), LocalTime.of(23, 59));
-		ag5 = new Agenda(LocalDate.of(2016, 7, 28), LocalTime.of(0, 1), LocalDate.of(2016, 7, 28), LocalTime.of(23, 59));
+		ag1 = new Agenda(LocalDate.of(2016,9,29), LocalTime.of(8, 00), LocalDate.of(2016, 9, 30), LocalTime.of(12, 00));
+		ag2 = new Agenda(LocalDate.of(2016,9,29), LocalTime.of(8, 00), LocalDate.of(2016, 9, 29), LocalTime.of(12, 0));
+		ag3 = new Agenda(LocalDate.of(2016, 9, 11), LocalTime.of(0, 1), LocalDate.of(2016, 9, 28), LocalTime.of(23, 59));
+		ag4 = new Agenda(LocalDate.of(2016, 9, 11), LocalTime.of(0, 1), LocalDate.of(2016, 9, 13), LocalTime.of(23, 59));
+		ag5 = new Agenda(LocalDate.of(2016, 9, 28), LocalTime.of(0, 1), LocalDate.of(2016, 9, 28), LocalTime.of(23, 59));
 		sem = new Evento("Semana da Quimica", ag1, TipoDeEventoEnum.Semana);
 		sim = new Evento("Simposio de programação", ag5, TipoDeEventoEnum.Simposio);
 		mc = new Atividade("Nanotecnologia",ag2, TipoDeAtividadeEnum.Minicurso);
@@ -41,7 +41,7 @@ public class EventoTeste {
 	
 	@Test
 	public void Verificar_Status_De_Um_Evento_Com_Inscricoes_Abertas() {
-		sem.setPeriodoDeInscricao(ag3);
+		sem.setPeriodoDeInscricao(new Agenda(LocalDate.of(2016, 8, 18), LocalTime.of(0, 1), LocalDate.of(2016, 8, 30), LocalTime.of(23, 59)));
 		assertEquals(StatusDoEventoEnum.InscricoesAbertas, sem.verificarStatus());
 	}
 	
@@ -62,6 +62,16 @@ public class EventoTeste {
 	public void Evento_Recem_Criado_Deve_Ter_Zero_Atividades(){
 		Evento ev = new Evento("Evento", ag1, TipoDeEventoEnum.Simposio);
 		assertEquals(true, ev.getAtividades().isEmpty());
+	}
+	
+	@Test 
+	public void Eventos_Satelites_Incluido_A_Um_Evento_Principal(){
+		Evento ev2 = new Evento("evSatelite2", TipoDeEventoEnum.Simposio);
+		Evento ev1 = new Evento("evSatelite1", TipoDeEventoEnum.Simposio);
+		Evento ep = new Evento("MegaEvento", TipoDeEventoEnum.Congresso);
+		ep.adicionarEventosSatelites(ev1);
+		ep.adicionarEventosSatelites(ev2);
+		assertEquals(2, ep.getEventosSatelites().size());
 	}
 
 }

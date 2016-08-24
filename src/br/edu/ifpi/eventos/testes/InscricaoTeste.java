@@ -34,13 +34,13 @@ public class InscricaoTeste {
 	
 	@Before
 	public void Inicializacao() {
-		ag1 = new Agenda(LocalDate.of(2016, 7, 30), LocalTime.of(8, 0), LocalDate.of(2016, 7, 30), LocalTime.of(12, 0));
-		ag2 = new Agenda(LocalDate.of(2016, 7, 30), LocalTime.of(14, 0), LocalDate.of(2016, 7, 30), LocalTime.of(18,00));
-		ag3 = new Agenda(LocalDate.of(2016, 7, 30), LocalTime.of(8, 0), LocalDate.of(2016, 7, 30), LocalTime.of(18,00));
-		val1 = new Agenda(LocalDate.of(2016, 7, 30), LocalTime.of(23, 59));
-		val2 = new Agenda(LocalDate.of(2016, 7, 12), LocalTime.of(23, 59));
+		ag1 = new Agenda(LocalDate.of(2016, 8, 30), LocalTime.of(8, 0), LocalDate.of(2016, 8, 30), LocalTime.of(12, 0));
+		ag2 = new Agenda(LocalDate.of(2016, 8, 30), LocalTime.of(14, 0), LocalDate.of(2016, 8, 30), LocalTime.of(18,00));
+		ag3 = new Agenda(LocalDate.of(2016, 8, 30), LocalTime.of(8, 0), LocalDate.of(2016, 8, 30), LocalTime.of(18,00));
+		val1 = new Agenda(LocalDate.of(2016, 8, 30), LocalTime.of(23, 59));
+		val2 = new Agenda(LocalDate.of(2016, 8, 12), LocalTime.of(23, 59));
 		sim = new Evento("Simposio de Programação", ag3, TipoDeEventoEnum.Simposio);
-		perfil = new Perfil("Participante");
+		perfil = new Perfil(Perfil.Participante);
 		ins = new Inscricao(sim, perfil);
 		mc = new Atividade("Jogos", ag1, TipoDeAtividadeEnum.Minicurso);
 		p = new Atividade("Python", ag2, TipoDeAtividadeEnum.Palestra);

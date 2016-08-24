@@ -26,13 +26,15 @@ public class Evento {
 	private double preco;
 	@OneToMany(mappedBy="evento")
 	private List<Inscricao> inscricoes;
-	private int capacidade;
+	private Evento eventoPrincipal;
+	private List<Evento> eventosSatelites;
 	private TipoDeEventoEnum tipo;
 	@OneToMany
 	@JoinColumn(name="evento_id")
 	private List<Atividade> atividades;
 	@OneToOne
 	private Agenda periodoDeInscricao;
+	private List<Equipe> equipes;
 	
 	public Evento(String nome, Agenda agenda, TipoDeEventoEnum tipo) {
 		this.nome = nome;
@@ -40,7 +42,16 @@ public class Evento {
 		this.tipo = tipo;
 		this.atividades = new ArrayList<Atividade>();
 		this.inscricoes = new ArrayList<Inscricao>();
+		this.eventosSatelites = new ArrayList<Evento>();
 		verificarData(agenda);
+	}
+	
+	public Evento(String nome, TipoDeEventoEnum tipo) {
+		this.nome = nome;
+		this.tipo = tipo;
+		this.atividades = new ArrayList<Atividade>();
+		this.inscricoes = new ArrayList<Inscricao>();
+		this.eventosSatelites = new ArrayList<Evento>();
 	}
 
 	public void verificarData(Agenda agenda) {
@@ -68,6 +79,11 @@ public class Evento {
 		inscricoes.add(inscricao);
 	}
 
+	public void adicionarEventosSatelites(Evento evento){
+		this.eventosSatelites.add(evento);
+		evento.setEventoPrincipal(this);
+	}
+	
 	public Agenda getPeriodoDeInscricao() {
 		return periodoDeInscricao;
 	}
@@ -96,7 +112,13 @@ public class Evento {
 		this.preco = valor;
 	}
 	
+	public void setEventoPrincipal(Evento principal){
+		this.eventoPrincipal = principal;
+	}
 	
+	public List<Evento> getEventosSatelites(){
+		return Collections.unmodifiableList(eventosSatelites);
+	}
 	
 	
 

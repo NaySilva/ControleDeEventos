@@ -2,6 +2,7 @@ package br.edu.ifpi.eventos.modelo;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -25,10 +26,6 @@ public class Usuario {
 	
 	public Usuario(){}
 	
-	public Usuario(String nome) {
-		this.nome = nome;
-	}
-
 	public String getNome() {
 		return nome;
 	}
@@ -53,15 +50,21 @@ public class Usuario {
 		this.senha = senha;
 	}
 
-	@Override
-	public String toString() {
-		return "Usuario [id= " + id + "nome=" + nome + ", login=" + login + ", senha=" + senha + "]";
-	}
-
 	public Long getId() {
 		// TODO Auto-generated method stub
 		return id;
 	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	@Override
+	public String toString() {
+		return "Usuario [id=" + id + ", nome=" + nome + ", login=" + login + ", senha=" + senha + "]";
+	}
+	
+	
 	
 	
 	

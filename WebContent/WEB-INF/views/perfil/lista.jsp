@@ -13,9 +13,9 @@
 	<table>
 		<c:forEach items="${perfis}" var="perfil">
 			<tr>
-				<td>${perfil.descricao}</td>
-				<td><a href="removeTarefa?id=${tarefa.id}">Remover</a></td>
-				<td><a href="mostraTarefa?id=${tarefa.id}">Alterar</a></td>
+				<td><a href="menu?id=${perfil.id}">${perfil.descricao}</td>
+				<td><a href="removePerfil?id=${perfil.id}">Remover</a></td>
+				<td><a href="mostraPerfil?id=${perfil.id}">Alterar</a></td>
 			</tr>
 		</c:forEach>
 	</table>

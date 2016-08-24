@@ -4,26 +4,34 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
+
 
 @Entity
 public class Perfil {
+	
+	public final static String Participante = "Participante";
+	public final static String Organizador = "Organizador";
+	public final static String Criador = "Criador";
 	
 	@Id
 	@GeneratedValue
 	private Long id;
 	@NotNull
 	private String descricao;
-	@ManyToOne(optional=false)
+	@ManyToOne
 	private Usuario usuario;
 	@OneToMany(mappedBy="perfil")
 	private List<Inscricao> inscricoes;
+	private TipoDeUsuario tipo;
+	private List<Atividade> suasResponsabilidades;
 	
 	Perfil() {}
 
@@ -53,8 +61,15 @@ public class Perfil {
 	}
 
 	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-		
+		this.usuario = usuario;	
+	}
+	
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
+	public Usuario getUsuario() {
+		return usuario;
 	}
 
 	@Override

@@ -12,10 +12,10 @@ import br.edu.ifpi.eventos.util.Agenda;
 public class AgendaTest {
 
 	@Test
-	public void Verificar_Se_Hoje_Esta_Entre_Um_Perido() {
+	public void Verificar_Se_Hoje_Esta_Entre_Um_Periodo() {
 		Agenda hoje = new Agenda(LocalDate.now(), LocalTime.now());
-		Agenda julho = new Agenda(LocalDate.of(2016, 7, 1), LocalTime.of(0, 0), LocalDate.of(2016, 7, 30), LocalTime.of(23, 59));
-		assertEquals(true, julho.noMeio(hoje.getDiaFim(), hoje.getHoraFim()));		
+		Agenda agosto = new Agenda(LocalDate.of(2016, 8, 1), LocalTime.of(0, 0), LocalDate.of(2016, 8, 31), LocalTime.of(23, 59));
+		assertEquals(true, agosto.noMeio(hoje.getDiaFim(), hoje.getHoraFim()));		
 	}
 	
 	@Test

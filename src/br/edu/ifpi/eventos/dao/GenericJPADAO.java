@@ -22,13 +22,13 @@ public class GenericJPADAO<T> implements GenericDAO<T>{
 	}
 
 	@Override
-	public void remove(int id) {
+	public void remove(Long id) {
 		T entidade = manager.find(classe, id);
 		manager.remove(entidade);
 	}
 
 	@Override
-	public T buscaPorId(int id) {
+	public T buscaPorId(Long id) {
 		T entidade = manager.find(classe, id);
 		return entidade;
 	}
@@ -41,8 +41,8 @@ public class GenericJPADAO<T> implements GenericDAO<T>{
 
 	@Override
 	public void altera(T entidade) {
+		System.out.println(entidade);
 		manager.merge(entidade);
-		
 	}
 
 }

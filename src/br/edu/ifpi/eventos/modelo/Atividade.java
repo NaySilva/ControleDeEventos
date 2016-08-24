@@ -25,7 +25,9 @@ public class Atividade {
 	private TipoDeAtividadeEnum tipo;
 	@ManyToMany
 	private List<Inscricao> inscricoes;
-	private int capacidade;
+	private EspacoFisico local;
+	private List<Responsavel> responsaveis;
+	private boolean realizado;
 	
 	public Atividade(String nome, Agenda agenda, TipoDeAtividadeEnum tipo) {
 		this.nome = nome;
@@ -37,14 +39,6 @@ public class Atividade {
 	
 	public void adicionarInscricao(Inscricao inscricao){
 		inscricoes.add(inscricao);
-	}
-	
-	public int verificarVagas(){
-		return capacidade - inscricoes.size();
-	}
-	
-	public void setCapacidade(int capacidade) {
-		this.capacidade = capacidade;
 	}
 	
 	public double getPreco() {

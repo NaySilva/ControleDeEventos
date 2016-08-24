@@ -45,5 +45,26 @@ public class PerfilController {
 		return "perfil/lista";
 	}
 	
+	@RequestMapping("removePerfil")
+	public String remove(Long id){
+		dao.remove(id);
+		return "redirect:listaPerfis";
+	}
+	
+	@RequestMapping("mostraPerfil")
+	public String mostra(Long id, Model model){
+		model.addAttribute("perfil", dao.buscaPorId(id));
+		System.out.println("kk"+dao.buscaPorId(id));
+		return "perfil/mostra";
+	}
+	
+	@RequestMapping("alteraPerfil")
+	public String altera(Perfil perfil, Usuario usuario){
+		//System.out.println(perfil);
+		perfil.setUsuario(this.usuario);
+		dao.altera(perfil);
+		return "redirect:listaPerfis";
+	}
+	
 
 }
