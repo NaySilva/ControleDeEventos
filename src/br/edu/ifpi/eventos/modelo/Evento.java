@@ -23,7 +23,6 @@ public class Evento {
 	private String nome;
 	@OneToOne
 	private Agenda agenda;
-	private double preco;
 	@OneToMany(mappedBy="evento")
 	private List<Inscricao> inscricoes;
 	private Evento eventoPrincipal;
@@ -104,14 +103,6 @@ public class Evento {
 		return Collections.unmodifiableList(inscricoes);
 	}
 
-	public double getPreco() {
-		return preco;
-	}
-
-	public void setPreco(double valor) {
-		this.preco = valor;
-	}
-	
 	public void setEventoPrincipal(Evento principal){
 		this.eventoPrincipal = principal;
 	}

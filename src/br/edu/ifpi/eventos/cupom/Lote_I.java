@@ -13,7 +13,7 @@ public class Lote_I extends CupomPromocional{
 
 	public double valorDoDesconto(Inscricao inscricao) {
 		double poncentagem = 0.50;
-		double resultado = inscricao.getEvento().getPreco() * poncentagem ;
+		double resultado = inscricao.calcularTotalBruto() * poncentagem ;
 		return resultado;
 	}
 

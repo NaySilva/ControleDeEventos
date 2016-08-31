@@ -41,7 +41,6 @@ public class PagamentoTeste {
 		perfil = new Perfil(Perfil.Participante);
 		insc = new Inscricao(sem, perfil);
 		pagamento = new Pagamento(insc);
-		sem.setPreco(60.00);
 	}
 	
 	@Test

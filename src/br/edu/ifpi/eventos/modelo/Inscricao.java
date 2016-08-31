@@ -14,7 +14,6 @@ import javax.persistence.OneToOne;
 
 import br.edu.ifpi.eventos.excecoes.AtividadeInexistenteNoEventoException;
 import br.edu.ifpi.eventos.excecoes.AtividadeRepetidaException;
-import br.edu.ifpi.eventos.excecoes.HorarioIndisponivelException;
 import br.edu.ifpi.eventos.excecoes.InscricaoPagaException;
 @Entity
 public class Inscricao {
@@ -26,7 +25,7 @@ public class Inscricao {
 	@ManyToOne
 	private Evento evento;
 	@ManyToMany(mappedBy="inscricoes")
-	private List<Atividade> atividadesDesejadas = new ArrayList<Atividade>();
+	private List<Produto> carrinho;
 	@OneToOne
 	private Pagamento pagamento;
 	@OneToMany
@@ -36,31 +35,31 @@ public class Inscricao {
 		this.evento = evento;
 		this.perfil = perfil;
 		this.pagamento = new Pagamento(this);
+		this.carrinho = new ArrayList<Produto>();
 		this.cupons = new ArrayList<CupomPromocional>();
 		evento.adicionarInscricao(this);;
 		perfil.adicionarInscricao(this);
 	}
 
-	public void adicionarAtividadeDesejada(Atividade atividade) throws AtividadeRepetidaException, AtividadeInexistenteNoEventoException, HorarioIndisponivelException, InscricaoPagaException{
-		if (atividadesDesejadas.contains(atividade)) throw new AtividadeRepetidaException();
-		if (!evento.getAtividades().contains(atividade)) throw new AtividadeInexistenteNoEventoException();
-		if (!verificarDisponibilidade(atividade)) throw new HorarioIndisponivelException();
-		if (pagamento.isPago()) throw new InscricaoPagaException();
-		atividadesDesejadas.add(atividade);
-		atividade.adicionarInscricao(this);
+	public void adicionarProduto(Produto produto) {
+		produto.adicionarNoCarrinho(this);
 	}
-
-	public boolean verificarDisponibilidade(Atividade atividade) {
-		for (Atividade at : atividadesDesejadas) {
-			if (!atividade.getAgenda().compararHorario(at.getAgenda())) return false;
-		}
-		return true;
+	
+	
+	public void adicionarTodasAsAtividades(List<Atividade> atividades){
+		carrinho.addAll(atividades);
+	}
+	
+	public void retricoesDeAtividade(Atividade atividade) throws AtividadeRepetidaException, AtividadeInexistenteNoEventoException, InscricaoPagaException{
+		if (carrinho.contains(atividade)) throw new AtividadeRepetidaException();
+		if (!evento.getAtividades().contains(atividade)) throw new AtividadeInexistenteNoEventoException();
+		if (pagamento.isPago()) throw new InscricaoPagaException();
 	}
 	
 	public double calcularTotalBruto(){
-		double totalBruto = getEvento().getPreco();
-		for (Atividade at : getAtividadesDesejadas()) {
-			totalBruto += at.getPreco();
+		double totalBruto = 0;
+		for (Produto p : getCarrinho()) {
+			totalBruto += p.getPreco();
 		}
 		return totalBruto;
 	}
@@ -82,8 +81,8 @@ public class Inscricao {
 		return totalComDesconto;
 	}
 	
-	public List<Atividade> getAtividadesDesejadas() {
-		return Collections.unmodifiableList(atividadesDesejadas);
+	public List<Produto> getCarrinho() {
+		return Collections.unmodifiableList(carrinho);
 	}
 	
 	public Evento getEvento() {
