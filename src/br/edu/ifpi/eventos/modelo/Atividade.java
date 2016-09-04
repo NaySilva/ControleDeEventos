@@ -3,7 +3,6 @@ package br.edu.ifpi.eventos.modelo;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Observable;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,12 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
-import br.edu.ifpi.eventos.excecoes.AtividadeInexistenteNoEventoException;
-import br.edu.ifpi.eventos.excecoes.AtividadeRepetidaException;
-import br.edu.ifpi.eventos.excecoes.HorarioIndisponivelException;
-import br.edu.ifpi.eventos.excecoes.InscricaoPagaException;
 import br.edu.ifpi.eventos.util.Agenda;
-import br.edu.ifpi.eventos.util.Observer;
 import br.edu.ifpi.eventos.util.Subject;
 import br.edu.ifpi.eventos.util.TipoDeAtividadeEnum;
 @Entity
@@ -93,14 +87,14 @@ public class Atividade extends Subject implements Produto {
 		notificacao += mensagem;
 	}
 
+	public void setLocal(EspacoFisico local) {
+		this.local = local;
+	}
+	
 	@Override
 	public String toString() {
 		return nome + " - " + tipo;
 	}
-	
-
-	
-	
 	
 	
 	

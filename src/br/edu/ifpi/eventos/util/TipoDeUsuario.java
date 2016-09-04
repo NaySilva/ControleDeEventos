@@ -1,4 +1,4 @@
-package br.edu.ifpi.eventos.modelo;
+package br.edu.ifpi.eventos.util;
 
 public enum TipoDeUsuario {
 	

@@ -14,6 +14,7 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 import br.edu.ifpi.eventos.util.Observer;
+import br.edu.ifpi.eventos.util.TipoDeUsuario;
 import sun.security.provider.certpath.OCSP.RevocationStatus;
 
 
