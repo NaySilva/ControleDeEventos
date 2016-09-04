@@ -1,4 +1,4 @@
-package br.edu.ifpi.eventos.factore;
+package br.edu.ifpi.eventos.factory;
 
 import br.edu.ifpi.eventos.modelo.Evento;
 import br.edu.ifpi.eventos.modelo.Inscricao;

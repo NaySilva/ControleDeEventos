@@ -85,7 +85,6 @@ public class Evento extends Subject{
 
 	public void adicionarEventosSatelites(Evento evento){
 		this.eventosSatelites.add(evento);
-		evento.setEventoPrincipal(this);
 	}
 	
 	public Agenda getPeriodoDeInscricao() {
@@ -111,9 +110,11 @@ public class Evento extends Subject{
 	public List<Inscricao> getInscricoes() {
 		return Collections.unmodifiableList(inscricoes);
 	}
-
-	public void setEventoPrincipal(Evento principal){
+	
+	public Evento comEventoPrincipal(Evento principal){
 		this.eventoPrincipal = principal;
+		principal.adicionarEventosSatelites(this);
+		return this;
 	}
 	
 	public List<Evento> getEventosSatelites(){
