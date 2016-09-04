@@ -3,6 +3,7 @@ package br.edu.ifpi.eventos.modelo;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Observable;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,11 +13,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import br.edu.ifpi.eventos.util.Agenda;
+import br.edu.ifpi.eventos.util.Observer;
 import br.edu.ifpi.eventos.util.StatusDoEventoEnum;
+import br.edu.ifpi.eventos.util.Subject;
 import br.edu.ifpi.eventos.util.TipoDeEventoEnum;
 
 @Entity
-public class Evento {
+public class Evento extends Subject{
 	@Id
 	@GeneratedValue
 	private Long id;
@@ -76,6 +79,7 @@ public class Evento {
 	
 	public void adicionarInscricao(Inscricao inscricao){
 		inscricoes.add(inscricao);
+		addObserver(inscricao.getPerfil());
 	}
 
 	public void adicionarEventosSatelites(Evento evento){
@@ -89,10 +93,14 @@ public class Evento {
 
 	public void setPeriodoDeInscricao(Agenda periodoDeInscricao) {
 		this.periodoDeInscricao = periodoDeInscricao;
+		setNotificacao("O periodo de inscrição mudou: " + this.periodoDeInscricao);
+		notifyObservers();
 	}
 	
 	public void adicionarAtividade(Atividade atividade){
 		atividades.add(atividade);
+		setNotificacao("Nova atividade adicionada: " + atividade);
+		notifyObservers();
 	}
 	
 	public List<Atividade> getAtividades() {
@@ -111,6 +119,18 @@ public class Evento {
 		return Collections.unmodifiableList(eventosSatelites);
 	}
 	
-	
+	public String getNome() {
+		return nome;
+	}
 
+	public void setNotificacao(String notificacao) {
+		notificacao = "Nova notificação do evento " + this.nome + ":\n";
+		notificacao += notificacao;
+	}
+	
+	public String getNotificacao() {
+		return notificacao;
+	}
+	
+	
 }

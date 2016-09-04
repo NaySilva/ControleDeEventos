@@ -2,7 +2,9 @@ package br.edu.ifpi.eventos.modelo;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Observable;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,8 +17,9 @@ import javax.persistence.OneToOne;
 import br.edu.ifpi.eventos.excecoes.AtividadeInexistenteNoEventoException;
 import br.edu.ifpi.eventos.excecoes.AtividadeRepetidaException;
 import br.edu.ifpi.eventos.excecoes.InscricaoPagaException;
+import br.edu.ifpi.eventos.util.Subject;
 @Entity
-public class Inscricao {
+public class Inscricao extends Subject{
 	@Id
 	@GeneratedValue
 	private Long id;
@@ -37,14 +40,24 @@ public class Inscricao {
 		this.pagamento = new Pagamento(this);
 		this.carrinho = new ArrayList<Produto>();
 		this.cupons = new ArrayList<CupomPromocional>();
+		addObserver(perfil);
 		evento.adicionarInscricao(this);;
 		perfil.adicionarInscricao(this);
 	}
 
 	public void adicionarProduto(Produto produto) {
-		produto.adicionarNoCarrinho(this);
+		try{
+			produto.adicionarNoCarrinho(this);
+			setNotificacao("Novo Produto foi adicionado");
+			notifyObservers();
+		} catch (Exception e) {
+			System.out.println("erro: " + e);
+		}
 	}
 	
+	public void adicionarUmaAtividade(Atividade atividade){
+		carrinho.add(atividade);
+	}
 	
 	public void adicionarTodasAsAtividades(List<Atividade> atividades){
 		carrinho.addAll(atividades);
@@ -97,7 +110,17 @@ public class Inscricao {
 		return Collections.unmodifiableList(cupons);
 	}
 
+	public Perfil getPerfil() {
+		return perfil;
+	}
 	
+
+	@Override
+	public void setNotificacao(String mensagem) {
+		notificacao = "Nova notificação da sua inscricao:\n";
+		notificacao += mensagem;
+		
+	}
 	
 	
 	

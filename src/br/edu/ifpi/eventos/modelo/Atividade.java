@@ -3,6 +3,7 @@ package br.edu.ifpi.eventos.modelo;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Observable;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,9 +16,11 @@ import br.edu.ifpi.eventos.excecoes.AtividadeRepetidaException;
 import br.edu.ifpi.eventos.excecoes.HorarioIndisponivelException;
 import br.edu.ifpi.eventos.excecoes.InscricaoPagaException;
 import br.edu.ifpi.eventos.util.Agenda;
+import br.edu.ifpi.eventos.util.Observer;
+import br.edu.ifpi.eventos.util.Subject;
 import br.edu.ifpi.eventos.util.TipoDeAtividadeEnum;
 @Entity
-public class Atividade implements Produto{
+public class Atividade extends Subject implements Produto {
 	
 	@Id
 	@GeneratedValue
@@ -42,10 +45,17 @@ public class Atividade implements Produto{
 	
 	public void adicionarInscricao(Inscricao inscricao){
 		inscricoes.add(inscricao);
+		addObserver(inscricao.getPerfil());
 	}
 
 	public Agenda getAgenda() {
 		return agenda;
+	}
+	
+	public void setAgenda(Agenda agenda) {
+		this.agenda = agenda;
+		setNotificacao("A agenda foi modificada: " + this.agenda);
+		notifyObservers();
 	}
 	
 	public String getNome() {
@@ -61,14 +71,10 @@ public class Atividade implements Produto{
 	}
 
 	@Override
-	public void adicionarNoCarrinho(Inscricao inscricao) {
-		try {
-			inscricao.retricoesDeAtividade(this);
-			inscricao.getCarrinho().add(this);
-			this.inscricoes.add(inscricao);
-		} catch (Exception e) {
-			System.out.println("erro: " + e);
-		}
+	public void adicionarNoCarrinho(Inscricao inscricao) throws Exception {
+		inscricao.retricoesDeAtividade(this);
+		inscricao.adicionarUmaAtividade(this);
+		adicionarInscricao(inscricao);
 	}
 
 	public double getPreco() {
@@ -77,7 +83,21 @@ public class Atividade implements Produto{
 
 	public void setPreco(double preco) {
 		this.preco = preco;
+		setNotificacao("Novo preço: " + preco);
+		notifyObservers();
 	}
+	
+	@Override
+	public void setNotificacao(String mensagem) {
+		notificacao = "Nova notificação da atividade " + this.nome + ":\n";
+		notificacao += mensagem;
+	}
+	
+	public String getNotificacao(){
+		return notificacao;
+	}
+
+	
 
 	
 	

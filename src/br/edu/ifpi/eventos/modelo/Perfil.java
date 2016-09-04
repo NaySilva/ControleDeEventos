@@ -13,9 +13,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
+import br.edu.ifpi.eventos.util.Observer;
+import sun.security.provider.certpath.OCSP.RevocationStatus;
+
 
 @Entity
-public class Perfil {
+public class Perfil implements Observer {
 	
 	public final static String Participante = "Participante";
 	public final static String Organizador = "Organizador";
@@ -72,10 +75,18 @@ public class Perfil {
 		return usuario;
 	}
 
+
 	@Override
 	public String toString() {
 		return "Perfil [id=" + id + ", descricao=" + descricao + ", usuario=" + usuario + "]";
 	}
+
+	@Override
+	public String update(Object arg1) {
+		System.out.println((String)arg1);
+		return (String)arg1;
+	}
+	
 	
 	
 	
