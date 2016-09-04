@@ -92,11 +92,11 @@ public class Atividade extends Subject implements Produto {
 		notificacao = "Nova notificação da atividade " + this.nome + ":\n";
 		notificacao += mensagem;
 	}
-	
-	public String getNotificacao(){
-		return notificacao;
-	}
 
+	@Override
+	public String toString() {
+		return nome + " - " + tipo;
+	}
 	
 
 	

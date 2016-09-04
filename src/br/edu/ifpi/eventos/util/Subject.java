@@ -24,5 +24,13 @@ public abstract class Subject {
 	}
 	
 	public abstract void setNotificacao(String string);
+	
+	public String getNotificacao() {
+		return notificacao;
+	}
+	
+	public void limparNotificacao(){
+		notificacao = "";
+	}
 
 }

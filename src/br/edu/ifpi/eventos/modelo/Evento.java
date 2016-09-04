@@ -80,6 +80,7 @@ public class Evento extends Subject{
 	public void adicionarInscricao(Inscricao inscricao){
 		inscricoes.add(inscricao);
 		addObserver(inscricao.getPerfil());
+		limparNotificacao();
 	}
 
 	public void adicionarEventosSatelites(Evento evento){
@@ -123,14 +124,11 @@ public class Evento extends Subject{
 		return nome;
 	}
 
-	public void setNotificacao(String notificacao) {
+	public void setNotificacao(String mensagem) {
 		notificacao = "Nova notificação do evento " + this.nome + ":\n";
-		notificacao += notificacao;
+		notificacao += mensagem;
 	}
 	
-	public String getNotificacao() {
-		return notificacao;
-	}
 	
 	
 }
