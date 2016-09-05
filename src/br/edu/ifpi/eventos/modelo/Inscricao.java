@@ -45,14 +45,10 @@ public class Inscricao extends Subject{
 		perfil.adicionarInscricao(this);
 	}
 
-	public void adicionarProduto(Produto produto) {
-		try{
+	public void adicionarProduto(Produto produto) throws Exception {
 			produto.adicionarNoCarrinho(this);
 			setNotificacao("Novo Produto foi adicionado");
 			notifyObservers();
-		} catch (Exception e) {
-			System.out.println("erro: " + e);
-		}
 	}
 	
 	public void adicionarUmaAtividade(Atividade atividade){

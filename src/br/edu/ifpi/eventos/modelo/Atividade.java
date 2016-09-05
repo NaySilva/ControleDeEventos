@@ -62,7 +62,7 @@ public class Atividade extends Subject implements Produto {
 			setNotificacao("A agenda foi modificada: " + this.agenda);
 			notifyObservers();
 		}else{
-			new HorarioIndisponivelException().printStackTrace();
+			new HorarioIndisponivelException();
 		}
 	}
 	
