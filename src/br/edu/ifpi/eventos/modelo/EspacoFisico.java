@@ -36,10 +36,6 @@ public class EspacoFisico {
 		this.locaisInternos.add(local);
 	}
 	
-	public boolean verificarCapacidade() {
-		return !(atividade.getInscricoes().size() == capacidade);
-	}
-
 	public void adicionarHorarios(Agenda agenda){
 		this.horarios.add(agenda);
 	}
@@ -63,7 +59,7 @@ public class EspacoFisico {
 	
 	public boolean disponivelNoHorario(Agenda agenda){
 		for (Agenda ag : horarios) {
-			return ag.dentroDoHorario(agenda);
+			if (ag.dentroDoHorario(agenda)) return true;
 		}
 		return false;
 	}

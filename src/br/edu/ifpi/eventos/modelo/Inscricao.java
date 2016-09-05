@@ -51,15 +51,15 @@ public class Inscricao extends Subject{
 			notifyObservers();
 	}
 	
-	public void adicionarUmaAtividade(Atividade atividade){
+	public void adicionarUmaAtividade(AtividadePaga atividade){
 		carrinho.add(atividade);
 	}
 	
-	public void adicionarTodasAsAtividades(List<Atividade> atividades){
+	public void adicionarTodasAsAtividades(List<AtividadePaga> atividades){
 		carrinho.addAll(atividades);
 	}
 	
-	public void retricoesDeAtividade(Atividade atividade) throws AtividadeRepetidaException, AtividadeInexistenteNoEventoException, InscricaoPagaException{
+	public void retricoesDeAtividade(AtividadePaga atividade) throws AtividadeRepetidaException, AtividadeInexistenteNoEventoException, InscricaoPagaException{
 		if (carrinho.contains(atividade)) throw new AtividadeRepetidaException();
 		if (!evento.getAtividades().contains(atividade)) throw new AtividadeInexistenteNoEventoException();
 		if (pagamento.isPago()) throw new InscricaoPagaException();

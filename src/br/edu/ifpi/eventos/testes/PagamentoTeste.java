@@ -45,18 +45,18 @@ public class PagamentoTeste {
 	
 	@Test
 	public void Deve_Marcar_A_Inscricao_Como_Paga_Ao_Receber_Pagamento(){
-		pagamento.pagarInscricao(60);
+		pagamento.pagarInscricao(0);
 		assertEquals(true, pagamento.isPago());
 	}
 	@Test
-	public void O_Pagamento_Deve_Esta_Como_Nao_Pago_Ao_Receber_Pagamento_Inferior_Do_Total(){
+	public void O_Pagamento_Deve_Esta_Como_Nao_Pago_Ao_Receber_Pagamento_Diferente_Do_Total(){
 		pagamento.pagarInscricao(40);
 		assertEquals(false, pagamento.isPago());
 	}
 	
 	@Test
 	public void Dia_Do_Pagamento_É_Hoje(){
-		pagamento.pagarInscricao(60);
+		pagamento.pagarInscricao(0);
 		LocalDate dia = pagamento.getHorarioPagamento().getDiaFim();
 		assertEquals(LocalDate.now(), dia);
 	}

@@ -25,14 +25,6 @@ public class EspacoFisicoTeste {
 	}
 	
 	@Test
-	public void verificarACapcidadeDoLocal(){
-		EspacoFisico ef = new EspacoFisico("Sala 1", TipoEspacoFisico.Sala);
-		ef.setCapacidade(2);
-		ef.setAtividade(new Atividade("atividade1",TipoDeAtividadeEnum.Palestra));
-		assertEquals(true, ef.verificarCapacidade());
-	}
-	
-	@Test
 	public void horarioDisponivelParaOLocal(){
 		EspacoFisico ef = new EspacoFisico("Sala 1", TipoEspacoFisico.Sala);
 		Agenda agDoLocal = new Agenda(LocalDate.of(2016, 9, 4),LocalTime.of(0, 0),LocalDate.of(2016, 9, 4),LocalTime.of(23, 59));

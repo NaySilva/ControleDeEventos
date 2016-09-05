@@ -8,14 +8,14 @@ import br.edu.ifpi.eventos.util.TipoDeAtividadeEnum;
 
 public class Combo implements Produto{
 
-	private List<Atividade> atividades;
+	private List<AtividadePaga> atividades;
 	public double preco;
 	
 	public Combo() {
 		this.atividades = new ArrayList<>();
 	}
 	
-	public void adicionarAtividade(Atividade at){
+	public void adicionarAtividade(AtividadePaga at){
 		at.setPreco(0);
 		atividades.add(at);
 	}

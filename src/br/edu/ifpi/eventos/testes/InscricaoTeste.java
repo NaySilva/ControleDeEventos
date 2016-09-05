@@ -15,6 +15,7 @@ import br.edu.ifpi.eventos.excecoes.AtividadeRepetidaException;
 import br.edu.ifpi.eventos.excecoes.HorarioIndisponivelException;
 import br.edu.ifpi.eventos.excecoes.InscricaoPagaException;
 import br.edu.ifpi.eventos.modelo.Atividade;
+import br.edu.ifpi.eventos.modelo.AtividadePaga;
 import br.edu.ifpi.eventos.modelo.CupomPromocional;
 import br.edu.ifpi.eventos.modelo.EspacoFisico;
 import br.edu.ifpi.eventos.modelo.Evento;
@@ -31,11 +32,11 @@ public class InscricaoTeste {
 	Inscricao ins;
 	Evento sim;
 	Perfil perfil;
-	Atividade mc, p, p2;
+	AtividadePaga mc, p, p2;
 	CupomPromocional p50, l1, l2;
 	
 	@Before
-	public void Inicializacao() {
+	public void Inicializacao() throws HorarioIndisponivelException {
 		ag1 = new Agenda(LocalDate.of(2016, 9, 30), LocalTime.of(8, 0), LocalDate.of(2016, 9, 30), LocalTime.of(12, 0));
 		ag2 = new Agenda(LocalDate.of(2016, 9, 30), LocalTime.of(14, 0), LocalDate.of(2016, 9, 30), LocalTime.of(18,00));
 		ag3 = new Agenda(LocalDate.of(2016, 9, 30), LocalTime.of(8, 0), LocalDate.of(2016, 9, 30), LocalTime.of(18,00));
@@ -47,9 +48,9 @@ public class InscricaoTeste {
 		EspacoFisico local = new EspacoFisico("sala A", TipoEspacoFisico.Sala);
 		local.adicionarHorarios(ag1);
 		local.adicionarHorarios(ag2);
-		mc = new Atividade("Jogos", TipoDeAtividadeEnum.Minicurso).emLocal(local).noHorario(ag1);
-		p = new Atividade("Python", TipoDeAtividadeEnum.Palestra).emLocal(local).noHorario(ag2);
-		p2 = new Atividade("Refatorando",TipoDeAtividadeEnum.Palestra).emLocal(local).noHorario(ag2);
+		mc = new AtividadePaga("Jogos", TipoDeAtividadeEnum.Minicurso).emLocal(local).noHorario(ag1);
+		p = new AtividadePaga("Python", TipoDeAtividadeEnum.Palestra).emLocal(local).noHorario(ag2);
+		p2 = new AtividadePaga("Refatorando",TipoDeAtividadeEnum.Palestra).emLocal(local).noHorario(ag2);
 		p50 = new Palestras_50(val1);
 		l1 = new Lote_I(val1);
 		l2 = new Lote_I(val2);

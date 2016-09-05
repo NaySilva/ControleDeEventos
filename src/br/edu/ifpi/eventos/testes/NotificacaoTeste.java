@@ -7,6 +7,7 @@ import java.time.LocalTime;
 
 import org.junit.Test;
 
+import br.edu.ifpi.eventos.excecoes.HorarioIndisponivelException;
 import br.edu.ifpi.eventos.modelo.Atividade;
 import br.edu.ifpi.eventos.modelo.EspacoFisico;
 import br.edu.ifpi.eventos.modelo.Evento;
@@ -20,7 +21,7 @@ import br.edu.ifpi.eventos.util.TipoEspacoFisico;
 public class NotificacaoTeste {
 
 	@Test
-	public void mostrarNotificacaoAoAdicionarAtividadeNoEventoDepoisDeJaTaInscrito() {
+	public void mostrarNotificacaoAoAdicionarAtividadeNoEventoDepoisDeJaTaInscrito() throws HorarioIndisponivelException {
 		Agenda ag1 = new Agenda(LocalDate.of(2016, 9, 1), LocalTime.of(8,0), LocalDate.of(2016,9,1), LocalTime.of(11, 0));
 		Agenda ag2 = new Agenda(LocalDate.of(2016, 9, 1), LocalTime.of(10,0), LocalDate.of(2016,9,1), LocalTime.of(11, 0));
 		EspacoFisico local = new EspacoFisico("sala A", TipoEspacoFisico.Sala);
@@ -37,7 +38,7 @@ public class NotificacaoTeste {
 	}
 	
 	@Test
-	public void naoMostrarNotificacaoAoAdicionarAtividadeNoEventoDepoisDeJaTaInscrito() {
+	public void naoMostrarNotificacaoAoAdicionarAtividadeNoEventoDepoisDeJaTaInscrito() throws HorarioIndisponivelException {
 		Agenda ag1 = new Agenda(LocalDate.of(2016, 9, 1), LocalTime.of(8,0), LocalDate.of(2016,9,1), LocalTime.of(11, 0));
 		Agenda ag2 = new Agenda(LocalDate.of(2016, 9, 1), LocalTime.of(10,0), LocalDate.of(2016,9,1), LocalTime.of(11, 0));
 		EspacoFisico local = new EspacoFisico("sala A", TipoEspacoFisico.Sala);

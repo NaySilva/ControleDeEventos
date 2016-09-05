@@ -19,9 +19,11 @@ public class Agenda {
 	public final static Agenda noMomento = new Agenda(LocalDate.now(), LocalTime.now());
 	
 	
-	public Agenda(LocalDate diaFim, LocalTime horaFim) {
-		this.diaFim = diaFim;
-		this.horaFim = horaFim;
+	public Agenda(LocalDate dia, LocalTime hora) {
+		this.diaComeco = dia;
+		this.horaComeco = hora;
+		this.diaFim = dia;
+		this.horaFim = hora;
 	}
 
 	public Agenda(LocalDate diaComeco, LocalTime horaComeco, LocalDate diaFim, LocalTime horaFim) {
