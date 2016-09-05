@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
+import br.edu.ifpi.eventos.excecoes.HorarioIndisponivelException;
 import br.edu.ifpi.eventos.util.Agenda;
 import br.edu.ifpi.eventos.util.Subject;
 import br.edu.ifpi.eventos.util.TipoDeAtividadeEnum;
@@ -30,11 +31,20 @@ public class Atividade extends Subject implements Produto {
 	private List<Responsavel> responsaveis;
 	private boolean realizado;
 	
-	public Atividade(String nome, Agenda agenda, TipoDeAtividadeEnum tipo) {
+	public Atividade(String nome, TipoDeAtividadeEnum tipo) {
 		this.nome = nome;
-		this.agenda = agenda;
 		this.tipo = tipo;
 		this.inscricoes = new ArrayList<>();
+	}
+	
+	public Atividade emLocal(EspacoFisico local){
+		setLocal(local);
+		return this;
+	}
+	
+	public Atividade noHorario(Agenda agenda){
+		setAgenda(agenda);
+		return this;
 	}
 	
 	public void adicionarInscricao(Inscricao inscricao){
@@ -47,9 +57,13 @@ public class Atividade extends Subject implements Produto {
 	}
 	
 	public void setAgenda(Agenda agenda) {
-		this.agenda = agenda;
-		setNotificacao("A agenda foi modificada: " + this.agenda);
-		notifyObservers();
+		if (local.disponivelNoHorario(agenda)){
+			this.agenda = agenda;
+			setNotificacao("A agenda foi modificada: " + this.agenda);
+			notifyObservers();
+		}else{
+			new HorarioIndisponivelException().printStackTrace();
+		}
 	}
 	
 	public String getNome() {
@@ -96,7 +110,9 @@ public class Atividade extends Subject implements Produto {
 		return nome + " - " + tipo;
 	}
 	
-	
+	public EspacoFisico getLocal() {
+		return local;
+	}
 	
 	
 

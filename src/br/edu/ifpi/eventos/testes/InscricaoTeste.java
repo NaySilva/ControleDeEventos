@@ -42,9 +42,9 @@ public class InscricaoTeste {
 		sim = new Evento("Simposio de Programação", ag3, TipoDeEventoEnum.Simposio);
 		perfil = new Perfil(Perfil.Participante);
 		ins = new Inscricao(sim, perfil);
-		mc = new Atividade("Jogos", ag1, TipoDeAtividadeEnum.Minicurso);
-		p = new Atividade("Python", ag2, TipoDeAtividadeEnum.Palestra);
-		p2 = new Atividade("Refatorando", ag1, TipoDeAtividadeEnum.Palestra);
+		mc = new Atividade("Jogos",TipoDeAtividadeEnum.Minicurso);
+		p = new Atividade("Python", TipoDeAtividadeEnum.Palestra);
+		p2 = new Atividade("Refatorando", TipoDeAtividadeEnum.Palestra);
 		p50 = new Palestras_50(val1);
 		l1 = new Lote_I(val1);
 		l2 = new Lote_I(val2);

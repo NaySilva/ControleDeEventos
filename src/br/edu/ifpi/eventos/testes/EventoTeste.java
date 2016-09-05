@@ -30,7 +30,7 @@ public class EventoTeste {
 		ag5 = new Agenda(LocalDate.of(2016, 9, 28), LocalTime.of(0, 1), LocalDate.of(2016, 9, 28), LocalTime.of(23, 59));
 		sem = new Evento("Semana da Quimica", ag1, TipoDeEventoEnum.Semana);
 		sim = new Evento("Simposio de programação", ag5, TipoDeEventoEnum.Simposio);
-		mc = new Atividade("Nanotecnologia",ag2, TipoDeAtividadeEnum.Minicurso);
+		mc = new Atividade("Nanotecnologia", TipoDeAtividadeEnum.Minicurso);
 	}
 
 	@Test

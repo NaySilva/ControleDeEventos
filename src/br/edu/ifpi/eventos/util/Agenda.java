@@ -32,9 +32,13 @@ public class Agenda {
 	}
 
 	public boolean compararHorario(Agenda ag){
-		boolean antes = antesDoComeco(ag.diaComeco, ag.horaComeco) && (antesDoComeco(ag.diaFim, ag.horaFim));
-		boolean depois = (depoisDoFim(ag.diaComeco, ag.horaComeco) ) && depoisDoFim(ag.diaFim, ag.horaFim);
-		return antes || depois;
+		boolean antes = antesDoComeco(ag.diaComeco, ag.horaComeco) && antesDoComeco(ag.diaFim, ag.horaFim);
+		boolean depois = depoisDoFim(ag.diaComeco, ag.horaComeco) && depoisDoFim(ag.diaFim, ag.horaFim);
+		return antes || depois;	
+	}
+	
+	public boolean dentroDoHorario(Agenda ag){
+		return noMeio(ag.diaComeco, ag.horaComeco) && noMeio(ag.diaFim, ag.horaFim);
 	}
 	
 	public boolean noMeio(LocalDate data, LocalTime hora){

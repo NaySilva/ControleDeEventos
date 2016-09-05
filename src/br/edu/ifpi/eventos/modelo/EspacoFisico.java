@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import br.edu.ifpi.eventos.excecoes.EspacoLotadoException;
 import br.edu.ifpi.eventos.util.Agenda;
 import br.edu.ifpi.eventos.util.TipoEspacoFisico;
 
@@ -60,6 +59,13 @@ public class EspacoFisico {
 	
 	public void setAtividade(Atividade atividade) {
 		this.atividade = atividade;
+	}
+	
+	public boolean disponivelNoHorario(Agenda agenda){
+		for (Agenda ag : horarios) {
+			return ag.dentroDoHorario(agenda);
+		}
+		return false;
 	}
 	
 
