@@ -134,5 +134,6 @@ public class InscricaoTeste {
 		ins.adicionarCupom(l2);
 		assertEquals(false, ins.getCupons().contains(l2));
 	}
+	
 
 }
