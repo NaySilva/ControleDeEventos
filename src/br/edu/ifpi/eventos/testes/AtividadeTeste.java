@@ -14,7 +14,7 @@ import br.edu.ifpi.eventos.util.Agenda;
 import br.edu.ifpi.eventos.util.TipoDeAtividadeEnum;
 import br.edu.ifpi.eventos.util.TipoEspacoFisico;
 
-public class AtividdadeTeste {
+public class AtividadeTeste {
 
 	@Test
 	public void mudarHorarioPassandoPelasRestricoes() throws HorarioIndisponivelException {

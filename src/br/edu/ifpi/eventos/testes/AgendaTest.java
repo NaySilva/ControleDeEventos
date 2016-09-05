@@ -25,5 +25,12 @@ public class AgendaTest {
 		assertEquals(false, junho.noMeio(hoje.getDiaFim(), hoje.getHoraFim()));		
 	}
 	
+	@Test
+	public void Ordenar_Duas_Agendas(){
+		Agenda ag1 = new Agenda(LocalDate.of(2016,9,29), LocalTime.of(14, 00), LocalDate.of(2016, 9, 30), LocalTime.of(18, 00));
+		Agenda ag2 = new Agenda(LocalDate.of(2016,9,29), LocalTime.of(8, 00), LocalDate.of(2016, 9, 29), LocalTime.of(12, 0));
+		assertEquals(true, ag1.compareAgendaTo(ag2)>0);
+	}
+	
 
 }

@@ -130,6 +130,33 @@ public class Evento extends Subject{
 		notificacao += mensagem;
 	}
 	
+	public List<Atividade> mostrarAtividadesOrdenadasPorAgenda(){
+		List<Agenda> agendas = new ArrayList<Agenda>();
+		List<Atividade> atividadesOrdernadas = new ArrayList<Atividade>();
+		for (Atividade at : atividades) {
+			agendas.add(at.getAgenda());
+		}
+		while(!agendas.isEmpty()){
+			int proxima = posicaoDaProximaAtividade(agendas);
+			atividadesOrdernadas.add(atividades.get(proxima));
+			agendas.remove(proxima);
+		}
+		return atividadesOrdernadas;
+	}
+
+	public int posicaoDaProximaAtividade(List<Agenda> agendas) {
+		int pos = 0;
+		for (int i = 0; i < agendas.size(); i++) {
+			pos = i;
+			for (Agenda agenda : agendas) {
+				if (agendas.get(i).compareAgendaTo(agenda)>0){
+					pos=0;
+					break;
+				}
+			}
+		}
+		return pos;
+	}
 	
 	
 	

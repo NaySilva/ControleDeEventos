@@ -54,6 +54,11 @@ public class Agenda {
 		return diaAnterior || (mesmoDia && horaAnterior);
 	}
 	
+	public int compareAgendaTo(Agenda agenda){
+		if (diaComeco.equals(agenda.diaComeco)) return horaComeco.compareTo(agenda.horaComeco);
+		return (diaComeco.compareTo(agenda.diaComeco));
+	}
+	
 	public boolean antesDoComeco(LocalDate data, LocalTime hora){
 		boolean diaPosterior = diaComeco.compareTo(data)>0;
 		boolean mesmoDia = diaComeco.equals(data);
