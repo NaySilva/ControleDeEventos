@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import br.edu.ifpi.eventos.util.TipoDeAtividadeEnum;
+import br.edu.ifpi.eventos.util.Produto;
+import br.edu.ifpi.eventos.util.TipoDeAtividade;
 
 public class Combo implements Produto{
 
@@ -41,7 +42,7 @@ public class Combo implements Produto{
 	}
 
 	@Override
-	public TipoDeAtividadeEnum getTipo() {
+	public TipoDeAtividade getTipo() {
 		return null;
 	}
 	

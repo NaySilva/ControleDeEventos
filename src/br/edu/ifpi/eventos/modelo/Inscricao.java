@@ -17,14 +17,16 @@ import javax.persistence.OneToOne;
 import br.edu.ifpi.eventos.excecoes.AtividadeInexistenteNoEventoException;
 import br.edu.ifpi.eventos.excecoes.AtividadeRepetidaException;
 import br.edu.ifpi.eventos.excecoes.InscricaoPagaException;
+import br.edu.ifpi.eventos.util.Produto;
 import br.edu.ifpi.eventos.util.Subject;
+import br.edu.ifpi.eventos.util.TipoDeParticipacao;
 @Entity
 public class Inscricao extends Subject{
 	@Id
 	@GeneratedValue
 	private Long id;
 	@ManyToOne
-	private Perfil perfil;
+	private PerfilParticipante perfil;
 	@ManyToOne
 	private Evento evento;
 	@ManyToMany(mappedBy="inscricoes")
@@ -34,7 +36,7 @@ public class Inscricao extends Subject{
 	@OneToMany
 	private List<CupomPromocional> cupons;
 	
-	public Inscricao(Evento evento, Perfil perfil){
+	public Inscricao(Evento evento, PerfilParticipante perfil){
 		this.evento = evento;
 		this.perfil = perfil;
 		this.pagamento = new Pagamento(this);
@@ -42,7 +44,7 @@ public class Inscricao extends Subject{
 		this.cupons = new ArrayList<CupomPromocional>();
 		addObserver(perfil);
 		evento.adicionarInscricao(this);;
-		perfil.adicionarInscricao(this);
+		perfil.adicionarInscricao(this, TipoDeParticipacao.Estudante);
 	}
 
 	public void adicionarProduto(Produto produto) throws Exception {
@@ -106,7 +108,7 @@ public class Inscricao extends Subject{
 		return Collections.unmodifiableList(cupons);
 	}
 
-	public Perfil getPerfil() {
+	public PerfilParticipante getPerfil() {
 		return perfil;
 	}
 	

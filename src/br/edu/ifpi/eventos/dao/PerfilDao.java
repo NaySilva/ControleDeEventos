@@ -8,21 +8,21 @@ import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
 
-import br.edu.ifpi.eventos.modelo.Perfil;
+import br.edu.ifpi.eventos.modelo.PerfilParticipante;
 import br.edu.ifpi.eventos.modelo.Usuario;
 
 @Repository
-public class PerfilDao extends GenericJPADAO<Perfil>{
+public class PerfilDao extends GenericJPADAO<PerfilParticipante>{
 	
 	public PerfilDao() {
-		super(Perfil.class);
+		super(PerfilParticipante.class);
 	}
 
 	@PersistenceContext
 	EntityManager manager;
 
-	public List<Perfil> lista(Usuario usuario) {
-		TypedQuery<Perfil> query = manager.createQuery("from Perfil p where usuario_id = :paramUsuario", Perfil.class);
+	public List<PerfilParticipante> lista(Usuario usuario) {
+		TypedQuery<PerfilParticipante> query = manager.createQuery("from Perfil p where usuario_id = :paramUsuario", PerfilParticipante.class);
 		query.setParameter("paramUsuario", usuario.getId());
 		return query.getResultList();
 	}

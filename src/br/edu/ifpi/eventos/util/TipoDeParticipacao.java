@@ -1,6 +1,6 @@
 package br.edu.ifpi.eventos.util;
 
-public enum TipoDeUsuario {
+public enum TipoDeParticipacao {
 	
 	Estudante,Profissional,Vip;
 

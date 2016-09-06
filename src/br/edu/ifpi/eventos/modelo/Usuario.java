@@ -22,7 +22,7 @@ public class Usuario {
 	@NotNull @Size(min=3, message="O tamanho da  senha tem que ser no minimo 3")
 	private String senha;
 	@OneToMany(mappedBy="usuario")
-	private List<Perfil> perfis;
+	private List<PerfilParticipante> perfis;
 	
 	public Usuario(){}
 	

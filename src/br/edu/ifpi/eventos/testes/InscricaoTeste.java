@@ -20,10 +20,11 @@ import br.edu.ifpi.eventos.modelo.CupomPromocional;
 import br.edu.ifpi.eventos.modelo.EspacoFisico;
 import br.edu.ifpi.eventos.modelo.Evento;
 import br.edu.ifpi.eventos.modelo.Inscricao;
-import br.edu.ifpi.eventos.modelo.Perfil;
+import br.edu.ifpi.eventos.modelo.PerfilParticipante;
+import br.edu.ifpi.eventos.modelo.Usuario;
 import br.edu.ifpi.eventos.util.Agenda;
-import br.edu.ifpi.eventos.util.TipoDeAtividadeEnum;
-import br.edu.ifpi.eventos.util.TipoDeEventoEnum;
+import br.edu.ifpi.eventos.util.TipoDeAtividade;
+import br.edu.ifpi.eventos.util.TipoDeEvento;
 import br.edu.ifpi.eventos.util.TipoEspacoFisico;
 
 public class InscricaoTeste {
@@ -31,7 +32,7 @@ public class InscricaoTeste {
 	Agenda ag1, ag2, ag3, val1, val2;
 	Inscricao ins;
 	Evento sim;
-	Perfil perfil;
+	PerfilParticipante perfil;
 	AtividadePaga mc, p, p2;
 	CupomPromocional p50, l1, l2;
 	
@@ -42,15 +43,15 @@ public class InscricaoTeste {
 		ag3 = new Agenda(LocalDate.of(2016, 9, 30), LocalTime.of(8, 0), LocalDate.of(2016, 9, 30), LocalTime.of(18,00));
 		val1 = new Agenda(LocalDate.of(2016, 9, 30), LocalTime.of(23, 59));
 		val2 = new Agenda(LocalDate.of(2016, 8, 24), LocalTime.of(23, 59));
-		sim = new Evento("Simposio de Programação", ag3, TipoDeEventoEnum.Simposio);
-		perfil = new Perfil(Perfil.Participante);
+		sim = new Evento("Simposio de Programação", ag3, TipoDeEvento.Simposio);
+		perfil = new PerfilParticipante(new Usuario());
 		ins = new Inscricao(sim, perfil);
 		EspacoFisico local = new EspacoFisico("sala A", TipoEspacoFisico.Sala);
 		local.adicionarHorarios(ag1);
 		local.adicionarHorarios(ag2);
-		mc = new AtividadePaga("Jogos", TipoDeAtividadeEnum.Minicurso).emLocal(local).noHorario(ag1);
-		p = new AtividadePaga("Python", TipoDeAtividadeEnum.Palestra).emLocal(local).noHorario(ag2);
-		p2 = new AtividadePaga("Refatorando",TipoDeAtividadeEnum.Palestra).emLocal(local).noHorario(ag2);
+		mc = new AtividadePaga("Jogos", TipoDeAtividade.Minicurso).emLocal(local).noHorario(ag1);
+		p = new AtividadePaga("Python", TipoDeAtividade.Palestra).emLocal(local).noHorario(ag2);
+		p2 = new AtividadePaga("Refatorando",TipoDeAtividade.Palestra).emLocal(local).noHorario(ag2);
 		p50 = new Palestras_50(val1);
 		l1 = new Lote_I(val1);
 		l2 = new Lote_I(val2);

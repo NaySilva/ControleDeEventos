@@ -12,10 +12,11 @@ import br.edu.ifpi.eventos.modelo.Atividade;
 import br.edu.ifpi.eventos.modelo.EspacoFisico;
 import br.edu.ifpi.eventos.modelo.Evento;
 import br.edu.ifpi.eventos.modelo.Inscricao;
-import br.edu.ifpi.eventos.modelo.Perfil;
+import br.edu.ifpi.eventos.modelo.PerfilParticipante;
+import br.edu.ifpi.eventos.modelo.Usuario;
 import br.edu.ifpi.eventos.util.Agenda;
-import br.edu.ifpi.eventos.util.TipoDeAtividadeEnum;
-import br.edu.ifpi.eventos.util.TipoDeEventoEnum;
+import br.edu.ifpi.eventos.util.TipoDeAtividade;
+import br.edu.ifpi.eventos.util.TipoDeEvento;
 import br.edu.ifpi.eventos.util.TipoEspacoFisico;
 
 public class NotificacaoTeste {
@@ -27,10 +28,10 @@ public class NotificacaoTeste {
 		EspacoFisico local = new EspacoFisico("sala A", TipoEspacoFisico.Sala);
 		local.adicionarHorarios(ag1);
 		local.adicionarHorarios(ag2);
-		Atividade atividade = new Atividade("Palestra",TipoDeAtividadeEnum.Palestra).emLocal(local).noHorario(ag1);
-		Atividade atividade2 = new Atividade("minicurso", TipoDeAtividadeEnum.Minicurso).emLocal(local).noHorario(ag2);
-		Evento evento = new Evento("Ev", TipoDeEventoEnum.Simposio);
-		Perfil perfil = new Perfil(Perfil.Participante);
+		Atividade atividade = new Atividade("Palestra",TipoDeAtividade.Palestra).emLocal(local).noHorario(ag1);
+		Atividade atividade2 = new Atividade("minicurso", TipoDeAtividade.Minicurso).emLocal(local).noHorario(ag2);
+		Evento evento = new Evento("Ev", TipoDeEvento.Simposio);
+		PerfilParticipante perfil = new PerfilParticipante(new Usuario());
 		Inscricao inscricao = new Inscricao(evento, perfil);
 		evento.adicionarAtividade(atividade);
 		String mensagem = "Nova notificação do evento Ev:\nNova atividade adicionada: Palestra - Palestra";
@@ -44,10 +45,10 @@ public class NotificacaoTeste {
 		EspacoFisico local = new EspacoFisico("sala A", TipoEspacoFisico.Sala);
 		local.adicionarHorarios(ag1);
 		local.adicionarHorarios(ag2);
-		Atividade atividade = new Atividade("Palestra",TipoDeAtividadeEnum.Palestra).emLocal(local).noHorario(ag1);
-		Atividade atividade2 = new Atividade("minicurso", TipoDeAtividadeEnum.Minicurso).emLocal(local).noHorario(ag2);
-		Evento evento = new Evento("Ev", TipoDeEventoEnum.Simposio);
-		Perfil perfil = new Perfil(Perfil.Participante);
+		Atividade atividade = new Atividade("Palestra",TipoDeAtividade.Palestra).emLocal(local).noHorario(ag1);
+		Atividade atividade2 = new Atividade("minicurso", TipoDeAtividade.Minicurso).emLocal(local).noHorario(ag2);
+		Evento evento = new Evento("Ev", TipoDeEvento.Simposio);
+		PerfilParticipante perfil = new PerfilParticipante(new Usuario());
 		evento.adicionarAtividade(atividade);
 		Inscricao inscricao = new Inscricao(evento, perfil);
 		assertEquals("", evento.getNotificacao());

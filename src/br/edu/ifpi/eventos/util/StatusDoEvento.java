@@ -1,6 +1,6 @@
 package br.edu.ifpi.eventos.util;
 
-public enum StatusDoEventoEnum {
+public enum StatusDoEvento {
 	
 	EmAndamento, InscricoesAbertas, Finalizado;
 

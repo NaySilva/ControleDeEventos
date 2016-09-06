@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import br.edu.ifpi.eventos.dao.PerfilDao;
-import br.edu.ifpi.eventos.modelo.Perfil;
+import br.edu.ifpi.eventos.modelo.PerfilParticipante;
 import br.edu.ifpi.eventos.modelo.Usuario;
 
 @Transactional
@@ -29,7 +29,7 @@ public class PerfilController {
 	}
 	
 	@RequestMapping("adicionaPerfil")
-	public String adiciona(@Valid Perfil perfil, BindingResult result){
+	public String adiciona(@Valid PerfilParticipante perfil, BindingResult result){
 		if(result.hasErrors()) {
 		    return "perfil/cadastro";
 		}
@@ -59,7 +59,7 @@ public class PerfilController {
 	}
 	
 	@RequestMapping("alteraPerfil")
-	public String altera(Perfil perfil, Usuario usuario){
+	public String altera(PerfilParticipante perfil, Usuario usuario){
 		//System.out.println(perfil);
 		perfil.setUsuario(this.usuario);
 		dao.altera(perfil);

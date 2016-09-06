@@ -16,10 +16,11 @@ import br.edu.ifpi.eventos.modelo.AtividadePaga;
 import br.edu.ifpi.eventos.modelo.EspacoFisico;
 import br.edu.ifpi.eventos.modelo.Evento;
 import br.edu.ifpi.eventos.modelo.Inscricao;
-import br.edu.ifpi.eventos.modelo.Perfil;
+import br.edu.ifpi.eventos.modelo.PerfilParticipante;
+import br.edu.ifpi.eventos.modelo.Usuario;
 import br.edu.ifpi.eventos.util.Agenda;
-import br.edu.ifpi.eventos.util.TipoDeAtividadeEnum;
-import br.edu.ifpi.eventos.util.TipoDeEventoEnum;
+import br.edu.ifpi.eventos.util.TipoDeAtividade;
+import br.edu.ifpi.eventos.util.TipoDeEvento;
 import br.edu.ifpi.eventos.util.TipoEspacoFisico;
 
 public class AtividadeTeste {
@@ -37,23 +38,23 @@ public class AtividadeTeste {
 
 	@Test
 	public void mudarHorarioPassandoPelasRestricoes() throws HorarioIndisponivelException {
-		Atividade atividade = new Atividade("At1", TipoDeAtividadeEnum.MesaRedonda).emLocal(local).noHorario(agenda);
+		Atividade atividade = new Atividade("At1", TipoDeAtividade.MesaRedonda).emLocal(local).noHorario(agenda);
 		assertEquals(agenda, atividade.getAgenda());
 	}
 	
 	@Test(expected=HorarioIndisponivelException.class)
 	public void erroAoPassarUmHorarioNaoDisponivelNoLocal() throws HorarioIndisponivelException{
-		Atividade atividade = new Atividade("At1", TipoDeAtividadeEnum.MesaRedonda).emLocal(local).noHorario(agenda2);		
+		Atividade atividade = new Atividade("At1", TipoDeAtividade.MesaRedonda).emLocal(local).noHorario(agenda2);		
 	}
 	
 	@Test
 	public void listarInscritosPorAtividade() throws Exception{
-		AtividadePaga atividade = new AtividadePaga("At1", TipoDeAtividadeEnum.MesaRedonda).emLocal(local).noHorario(agenda);		
-		Evento ev = new Evento("ev", TipoDeEventoEnum.Congresso);
+		AtividadePaga atividade = new AtividadePaga("At1", TipoDeAtividade.MesaRedonda).emLocal(local).noHorario(agenda);		
+		Evento ev = new Evento("ev", TipoDeEvento.Congresso);
 		ev.adicionarAtividade(atividade);
-		Inscricao ins = new Inscricao(ev, new Perfil(Perfil.Participante));
+		Inscricao ins = new Inscricao(ev, new PerfilParticipante(new Usuario()));
 		ins.adicionarProduto(atividade);
-		Inscricao ins2 = new Inscricao(ev, new Perfil(Perfil.Participante));
+		Inscricao ins2 = new Inscricao(ev, new PerfilParticipante(new Usuario()));
 		ins2.adicionarProduto(atividade);
 		List<Inscricao> lista = new ArrayList<>();
 		lista.add(ins);

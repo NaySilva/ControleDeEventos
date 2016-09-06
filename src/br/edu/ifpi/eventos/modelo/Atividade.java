@@ -13,7 +13,7 @@ import javax.persistence.OneToOne;
 import br.edu.ifpi.eventos.excecoes.HorarioIndisponivelException;
 import br.edu.ifpi.eventos.util.Agenda;
 import br.edu.ifpi.eventos.util.Subject;
-import br.edu.ifpi.eventos.util.TipoDeAtividadeEnum;
+import br.edu.ifpi.eventos.util.TipoDeAtividade;
 @Entity
 public class Atividade extends Subject {
 	
@@ -23,15 +23,16 @@ public class Atividade extends Subject {
 	private String nome;
 	@OneToOne
 	private Agenda agenda;
-	private TipoDeAtividadeEnum tipo;
+	private TipoDeAtividade tipo;
 	@ManyToMany
 	private EspacoFisico local;
 	private List<Responsavel> responsaveis;
 	private boolean realizado;
 	
-	public Atividade(String nome, TipoDeAtividadeEnum tipo) {
+	public Atividade(String nome, TipoDeAtividade tipo) {
 		this.nome = nome;
 		this.tipo = tipo;
+		this.responsaveis = new ArrayList<Responsavel>();
 	}
 	
 	public Atividade emLocal(EspacoFisico local){
@@ -62,7 +63,7 @@ public class Atividade extends Subject {
 		return nome;
 	}
 
-	public TipoDeAtividadeEnum getTipo() {
+	public TipoDeAtividade getTipo() {
 		return tipo;
 	}
 	
@@ -85,6 +86,13 @@ public class Atividade extends Subject {
 		return local;
 	}
 	
+	public void adicionarResponsavel(Responsavel resposavel){
+		this.responsaveis.add(resposavel);
+	}
+	
+	public List<Responsavel> getResponsaveis() {
+		return Collections.unmodifiableList(responsaveis);
+	}
 	
 
 

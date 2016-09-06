@@ -21,24 +21,25 @@ import br.edu.ifpi.eventos.modelo.Pagamento;
 import br.edu.ifpi.eventos.modelo.CupomPromocional;
 import br.edu.ifpi.eventos.modelo.Evento;
 import br.edu.ifpi.eventos.modelo.Inscricao;
-import br.edu.ifpi.eventos.modelo.Perfil;
+import br.edu.ifpi.eventos.modelo.PerfilParticipante;
+import br.edu.ifpi.eventos.modelo.Usuario;
 import br.edu.ifpi.eventos.util.Agenda;
-import br.edu.ifpi.eventos.util.TipoDeAtividadeEnum;
-import br.edu.ifpi.eventos.util.TipoDeEventoEnum;
+import br.edu.ifpi.eventos.util.TipoDeAtividade;
+import br.edu.ifpi.eventos.util.TipoDeEvento;
 
 public class PagamentoTeste {
 	
 	Agenda ag1;
 	Evento sem;
-	Perfil perfil;
+	PerfilParticipante perfil;
 	Inscricao insc;
 	Pagamento pagamento;
 	
 	@Before
 	public void inicializacao(){
 		ag1 = new Agenda(LocalDate.of(2016, 9, 11), LocalTime.of(8, 00), LocalDate.of(2016, 9, 29), LocalTime.of(18, 00));
-		sem = new Evento("Semana de Quimica", ag1, TipoDeEventoEnum.Semana);
-		perfil = new Perfil(Perfil.Participante);
+		sem = new Evento("Semana de Quimica", ag1, TipoDeEvento.Semana);
+		perfil = new PerfilParticipante(new Usuario());
 		insc = new Inscricao(sem, perfil);
 		pagamento = new Pagamento(insc);
 	}

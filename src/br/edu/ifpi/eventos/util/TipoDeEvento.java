@@ -1,6 +1,6 @@
 package br.edu.ifpi.eventos.util;
 
-public enum TipoDeEventoEnum {
+public enum TipoDeEvento {
 	
 	Semana, Simposio, Congresso;
 

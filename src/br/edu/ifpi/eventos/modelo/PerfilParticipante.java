@@ -14,42 +14,33 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 import br.edu.ifpi.eventos.util.Observer;
-import br.edu.ifpi.eventos.util.TipoDeUsuario;
+import br.edu.ifpi.eventos.util.Perfil;
+import br.edu.ifpi.eventos.util.TipoDeParticipacao;
 import sun.security.provider.certpath.OCSP.RevocationStatus;
 
 
 @Entity
-public class Perfil implements Observer {
-	
-	public final static String Participante = "Participante";
-	public final static String Organizador = "Organizador";
-	public final static String Criador = "Criador";
+public final class PerfilParticipante implements Observer, Perfil {
 	
 	@Id
 	@GeneratedValue
 	private Long id;
-	@NotNull
-	private String descricao;
 	@ManyToOne
 	private Usuario usuario;
 	@OneToMany(mappedBy="perfil")
 	private List<Inscricao> inscricoes;
-	private TipoDeUsuario tipo;
-	private List<Atividade> suasResponsabilidades;
+	private TipoDeParticipacao tipo;
 	
-	Perfil() {}
+	PerfilParticipante() {}
 
-	public Perfil(String descricao) {
-		this.descricao = descricao;
+	public PerfilParticipante(Usuario usuario) {
+		this.usuario = usuario;
 		this.inscricoes = new ArrayList<Inscricao>();
 	}
 	
-	public void adicionarInscricao(Inscricao inscricao){
-		inscricoes.add(inscricao);
-	}
-
-	public String getDescricao() {
-		return descricao;
+	public void adicionarInscricao(Inscricao inscricao, TipoDeParticipacao tipo){
+		this.inscricoes.add(inscricao);
+		this.tipo = tipo;
 	}
 
 	public List<Inscricao> getInscricoes() {
@@ -60,9 +51,6 @@ public class Perfil implements Observer {
 		return id;
 	}
 	
-	public void setDescricao(String descricao){
-		this.descricao = descricao;
-	}
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;	
@@ -79,7 +67,7 @@ public class Perfil implements Observer {
 
 	@Override
 	public String toString() {
-		return "Perfil [id=" + id + ", descricao=" + descricao + ", usuario=" + usuario + "]";
+		return "Perfil [id=" + id + ", usuario=" + usuario + "]";
 	}
 
 	@Override

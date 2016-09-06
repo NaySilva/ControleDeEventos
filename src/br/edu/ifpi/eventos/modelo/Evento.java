@@ -14,9 +14,9 @@ import javax.persistence.OneToOne;
 
 import br.edu.ifpi.eventos.util.Agenda;
 import br.edu.ifpi.eventos.util.Observer;
-import br.edu.ifpi.eventos.util.StatusDoEventoEnum;
+import br.edu.ifpi.eventos.util.StatusDoEvento;
 import br.edu.ifpi.eventos.util.Subject;
-import br.edu.ifpi.eventos.util.TipoDeEventoEnum;
+import br.edu.ifpi.eventos.util.TipoDeEvento;
 
 @Entity
 public class Evento extends Subject{
@@ -30,7 +30,7 @@ public class Evento extends Subject{
 	private List<Inscricao> inscricoes;
 	private Evento eventoPrincipal;
 	private List<Evento> eventosSatelites;
-	private TipoDeEventoEnum tipo;
+	private TipoDeEvento tipo;
 	@OneToMany
 	@JoinColumn(name="evento_id")
 	private List<Atividade> atividades;
@@ -38,7 +38,7 @@ public class Evento extends Subject{
 	private Agenda periodoDeInscricao;
 	private List<Equipe> equipes;
 	
-	public Evento(String nome, Agenda agenda, TipoDeEventoEnum tipo) {
+	public Evento(String nome, Agenda agenda, TipoDeEvento tipo) {
 		this.nome = nome;
 		this.agenda = agenda;
 		this.tipo = tipo;
@@ -48,7 +48,7 @@ public class Evento extends Subject{
 		verificarData(agenda);
 	}
 	
-	public Evento(String nome, TipoDeEventoEnum tipo) {
+	public Evento(String nome, TipoDeEvento tipo) {
 		this.nome = nome;
 		this.tipo = tipo;
 		this.atividades = new ArrayList<Atividade>();
@@ -63,16 +63,16 @@ public class Evento extends Subject{
 		}
 	}
 	
-	public StatusDoEventoEnum verificarStatus(){
-		StatusDoEventoEnum status;
+	public StatusDoEvento verificarStatus(){
+		StatusDoEvento status;
 		Agenda hoje = Agenda.noMomento;
 		boolean entreOsDias = periodoDeInscricao.noMeio(hoje.getDiaFim(), hoje.getHoraFim());
 		if (entreOsDias){
-			status = StatusDoEventoEnum.InscricoesAbertas;
+			status = StatusDoEvento.InscricoesAbertas;
 		}else if (agenda.depoisDoFim(hoje.getDiaFim(), hoje.getHoraFim())){
-			status = StatusDoEventoEnum.Finalizado;
+			status = StatusDoEvento.Finalizado;
 		}else{
-			status = StatusDoEventoEnum.EmAndamento;
+			status = StatusDoEvento.EmAndamento;
 		}
 		return status;
 	}

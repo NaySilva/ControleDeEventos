@@ -6,14 +6,15 @@ import java.util.List;
 
 import br.edu.ifpi.eventos.excecoes.HorarioIndisponivelException;
 import br.edu.ifpi.eventos.util.Agenda;
-import br.edu.ifpi.eventos.util.TipoDeAtividadeEnum;
+import br.edu.ifpi.eventos.util.Produto;
+import br.edu.ifpi.eventos.util.TipoDeAtividade;
 
 public class AtividadePaga extends Atividade implements Produto{
 
 	private double preco;
 	private List<Inscricao> inscricoes;
 
-	public AtividadePaga(String nome, TipoDeAtividadeEnum tipo) {
+	public AtividadePaga(String nome, TipoDeAtividade tipo) {
 		super(nome, tipo);
 		this.inscricoes = new ArrayList<>();
 	}
