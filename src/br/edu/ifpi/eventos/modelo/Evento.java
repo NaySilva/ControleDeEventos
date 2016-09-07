@@ -24,29 +24,18 @@ public class Evento extends Subject{
 	@GeneratedValue
 	private Long id;
 	private String nome;
-	@OneToOne
-	private Agenda agenda;
 	@OneToMany(mappedBy="evento")
 	private List<Inscricao> inscricoes;
 	private Evento eventoPrincipal;
 	private List<Evento> eventosSatelites;
 	private TipoDeEvento tipo;
+	private StatusDoEvento status;
 	@OneToMany
 	@JoinColumn(name="evento_id")
 	private List<Atividade> atividades;
 	@OneToOne
 	private Agenda periodoDeInscricao;
 	private List<Equipe> equipes;
-	
-	public Evento(String nome, Agenda agenda, TipoDeEvento tipo) {
-		this.nome = nome;
-		this.agenda = agenda;
-		this.tipo = tipo;
-		this.atividades = new ArrayList<Atividade>();
-		this.inscricoes = new ArrayList<Inscricao>();
-		this.eventosSatelites = new ArrayList<Evento>();
-		verificarData(agenda);
-	}
 	
 	public Evento(String nome, TipoDeEvento tipo) {
 		this.nome = nome;
@@ -61,20 +50,6 @@ public class Evento extends Subject{
 		if (agenda.depoisDoFim(noMomento.getDiaFim(), noMomento.getHoraFim())){
 			throw new IllegalArgumentException("Data Passada");
 		}
-	}
-	
-	public StatusDoEvento verificarStatus(){
-		StatusDoEvento status;
-		Agenda hoje = Agenda.noMomento;
-		boolean entreOsDias = periodoDeInscricao.noMeio(hoje.getDiaFim(), hoje.getHoraFim());
-		if (entreOsDias){
-			status = StatusDoEvento.InscricoesAbertas;
-		}else if (agenda.depoisDoFim(hoje.getDiaFim(), hoje.getHoraFim())){
-			status = StatusDoEvento.Finalizado;
-		}else{
-			status = StatusDoEvento.EmAndamento;
-		}
-		return status;
 	}
 	
 	public void adicionarInscricao(Inscricao inscricao){
@@ -158,6 +133,11 @@ public class Evento extends Subject{
 		return pos;
 	}
 	
+	public void setStatus(StatusDoEvento status) {
+		this.status = status;
+		setNotificacao("Novo status do evento: " + status.toString());
+		notifyObservers();
+	}
 	
 	
 }

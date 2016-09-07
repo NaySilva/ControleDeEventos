@@ -43,7 +43,7 @@ public class InscricaoTeste {
 		ag3 = new Agenda(LocalDate.of(2016, 9, 30), LocalTime.of(8, 0), LocalDate.of(2016, 9, 30), LocalTime.of(18,00));
 		val1 = new Agenda(LocalDate.of(2016, 9, 30), LocalTime.of(23, 59));
 		val2 = new Agenda(LocalDate.of(2016, 8, 24), LocalTime.of(23, 59));
-		sim = new Evento("Simposio de Programação", ag3, TipoDeEvento.Simposio);
+		sim = new Evento("Simposio de Programação", TipoDeEvento.Simposio);
 		perfil = new PerfilParticipante(new Usuario());
 		ins = new Inscricao(sim, perfil);
 		EspacoFisico local = new EspacoFisico("sala A", TipoEspacoFisico.Sala);
@@ -136,5 +136,6 @@ public class InscricaoTeste {
 		assertEquals(false, ins.getCupons().contains(l2));
 	}
 	
+		
 
 }

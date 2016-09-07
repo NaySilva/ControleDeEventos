@@ -33,8 +33,8 @@ public class EventoTeste {
 		ag3 = new Agenda(LocalDate.of(2016, 9, 11), LocalTime.of(0, 1), LocalDate.of(2016, 9, 28), LocalTime.of(23, 59));
 		ag4 = new Agenda(LocalDate.of(2016, 11, 11), LocalTime.of(0, 1), LocalDate.of(2016, 11, 15), LocalTime.of(23, 59));
 		ag5 = new Agenda(LocalDate.of(2016, 9, 28), LocalTime.of(0, 1), LocalDate.of(2016, 9, 28), LocalTime.of(23, 59));
-		sem = new Evento("Semana da Quimica", ag1, TipoDeEvento.Semana);
-		sim = new Evento("Simposio de programação", ag5, TipoDeEvento.Simposio);
+		sem = new Evento("Semana da Quimica", TipoDeEvento.Semana);
+		sim = new Evento("Simposio de programação", TipoDeEvento.Simposio);
 		mc = new Atividade("Nanotecnologia", TipoDeAtividade.Minicurso);
 	}
 
@@ -43,31 +43,7 @@ public class EventoTeste {
 		sem.adicionarAtividade(mc);
 		assertEquals(mc, sem.getAtividades().get(0));
 	}
-	
-	@Test
-	public void Verificar_Status_De_Um_Evento_Com_Inscricoes_Abertas() {
-		sem.setPeriodoDeInscricao(new Agenda(LocalDate.of(2016, 9, 04), LocalTime.of(0, 1), LocalDate.of(2016, 9, 30), LocalTime.of(23, 59)));
-		assertEquals(StatusDoEvento.InscricoesAbertas, sem.verificarStatus());
-	}
-	
-	@Test
-	public void Verificar_Status_De_Um_Evento_Antes_Das_Incricoes_Abrirem(){
-		sem.setPeriodoDeInscricao(ag4);
-		assertEquals(StatusDoEvento.EmAndamento, sem.verificarStatus());
-	}
-	
-	@Test(expected=IllegalArgumentException.class)
-	public void Nao_Deve_Aceitar_Eventos_Com_Data_Passada(){
-		Agenda passada = new Agenda(LocalDate.of(2016, 7, 12), LocalTime.of(8, 0), LocalDate.of(2016, 7, 12), LocalTime.of(18, 0));
-		Evento ev = new Evento("Evento", passada, TipoDeEvento.Simposio);
-	}
-	
 
-	@Test
-	public void Evento_Recem_Criado_Deve_Ter_Zero_Atividades(){
-		Evento ev = new Evento("Evento", ag1, TipoDeEvento.Simposio);
-		assertEquals(true, ev.getAtividades().isEmpty());
-	}
 
 	@Test
 	public void criarUmEventoCompostoComDoisEventosSatelites(){
