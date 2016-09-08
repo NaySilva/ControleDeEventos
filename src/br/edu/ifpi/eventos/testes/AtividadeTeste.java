@@ -12,10 +12,11 @@ import org.junit.Test;
 
 import br.edu.ifpi.eventos.excecoes.HorarioIndisponivelException;
 import br.edu.ifpi.eventos.modelo.Atividade;
-import br.edu.ifpi.eventos.modelo.AtividadePaga;
 import br.edu.ifpi.eventos.modelo.EspacoFisico;
 import br.edu.ifpi.eventos.modelo.Evento;
 import br.edu.ifpi.eventos.modelo.Inscricao;
+import br.edu.ifpi.eventos.modelo.Item;
+import br.edu.ifpi.eventos.modelo.ItemUnico;
 import br.edu.ifpi.eventos.modelo.PerfilParticipante;
 import br.edu.ifpi.eventos.modelo.Usuario;
 import br.edu.ifpi.eventos.util.Agenda;
@@ -49,17 +50,18 @@ public class AtividadeTeste {
 	
 	@Test
 	public void listarInscritosPorAtividade() throws Exception{
-		AtividadePaga atividade = new AtividadePaga("At1", TipoDeAtividade.MesaRedonda).emLocal(local).noHorario(agenda);		
+		Atividade atividade = new Atividade("At1", TipoDeAtividade.MesaRedonda).emLocal(local).noHorario(agenda);		
 		Evento ev = new Evento("ev", TipoDeEvento.Congresso);
 		ev.adicionarAtividade(atividade);
 		Inscricao ins = new Inscricao(ev, new PerfilParticipante(new Usuario()));
-		ins.adicionarProduto(atividade);
+		Item item = new ItemUnico("Palesta A", 30, atividade);
+		ins.adicionarItem(item);
 		Inscricao ins2 = new Inscricao(ev, new PerfilParticipante(new Usuario()));
-		ins2.adicionarProduto(atividade);
+		ins2.adicionarItem(item);
 		List<Inscricao> lista = new ArrayList<>();
 		lista.add(ins);
 		lista.add(ins2);
-		assertEquals(true, atividade.getInscricoes().contains(ins) & atividade.getInscricoes().contains(ins2));
+		assertEquals(true, item.getInscricoes().contains(ins) & item.getInscricoes().contains(ins2));
 	}
 
 }

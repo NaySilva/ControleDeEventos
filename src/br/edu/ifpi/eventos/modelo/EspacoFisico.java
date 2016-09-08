@@ -4,19 +4,32 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
 import br.edu.ifpi.eventos.util.Agenda;
 import br.edu.ifpi.eventos.util.TipoEspacoFisico;
 
+@Entity
 public class EspacoFisico {
 	
+	@Id
+	@GeneratedValue
+	private Long id;
 	private String descricao;
 	private TipoEspacoFisico tipo;
 	private int capacidade;
 	private String endereco;
-	
+	@OneToOne
 	private EspacoFisico localExterno;
+	@OneToMany(mappedBy="espacoFisico")
 	private List<EspacoFisico> locaisInternos;
+	@OneToMany(mappedBy="espacoFisico")
 	private List<Agenda> horarios;
+	@OneToOne
 	private Atividade atividade;
 	
 	public EspacoFisico(String descricao, TipoEspacoFisico tipo) {

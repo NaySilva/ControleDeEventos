@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -26,7 +27,9 @@ public class Evento extends Subject{
 	private String nome;
 	@OneToMany(mappedBy="evento")
 	private List<Inscricao> inscricoes;
+	@OneToOne
 	private Evento eventoPrincipal;
+	@ManyToMany
 	private List<Evento> eventosSatelites;
 	private TipoDeEvento tipo;
 	private StatusDoEvento status;
@@ -35,6 +38,7 @@ public class Evento extends Subject{
 	private List<Atividade> atividades;
 	@OneToOne
 	private Agenda periodoDeInscricao;
+	@OneToMany(mappedBy="evento")
 	private List<Equipe> equipes;
 	
 	public Evento(String nome, TipoDeEvento tipo) {

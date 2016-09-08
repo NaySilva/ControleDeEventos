@@ -1,13 +1,13 @@
 package br.edu.ifpi.eventos.modelo;
 
-public class Responsavel {
+public class Responsabilidade {
 	
 	private Atividade atividade;
 	private Usuario responsavel;
 	private String miniCurriculo;
 	private boolean responsavelPrincipal;
 	
-	public Responsavel(Atividade atividade, Usuario responsavel) {
+	public Responsabilidade(Atividade atividade, Usuario responsavel) {
 		this.atividade = atividade;
 		this.responsavel = responsavel;
 	}

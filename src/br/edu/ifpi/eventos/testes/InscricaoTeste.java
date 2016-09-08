@@ -15,11 +15,12 @@ import br.edu.ifpi.eventos.excecoes.AtividadeRepetidaException;
 import br.edu.ifpi.eventos.excecoes.HorarioIndisponivelException;
 import br.edu.ifpi.eventos.excecoes.InscricaoPagaException;
 import br.edu.ifpi.eventos.modelo.Atividade;
-import br.edu.ifpi.eventos.modelo.AtividadePaga;
 import br.edu.ifpi.eventos.modelo.CupomPromocional;
 import br.edu.ifpi.eventos.modelo.EspacoFisico;
 import br.edu.ifpi.eventos.modelo.Evento;
 import br.edu.ifpi.eventos.modelo.Inscricao;
+import br.edu.ifpi.eventos.modelo.Item;
+import br.edu.ifpi.eventos.modelo.ItemUnico;
 import br.edu.ifpi.eventos.modelo.PerfilParticipante;
 import br.edu.ifpi.eventos.modelo.Usuario;
 import br.edu.ifpi.eventos.util.Agenda;
@@ -33,8 +34,9 @@ public class InscricaoTeste {
 	Inscricao ins;
 	Evento sim;
 	PerfilParticipante perfil;
-	AtividadePaga mc, p, p2;
+	Atividade mc, p, p2;
 	CupomPromocional p50, l1, l2;
+	Item item1, item2, item3;
 	
 	@Before
 	public void Inicializacao() throws HorarioIndisponivelException {
@@ -49,28 +51,28 @@ public class InscricaoTeste {
 		EspacoFisico local = new EspacoFisico("sala A", TipoEspacoFisico.Sala);
 		local.adicionarHorarios(ag1);
 		local.adicionarHorarios(ag2);
-		mc = new AtividadePaga("Jogos", TipoDeAtividade.Minicurso).emLocal(local).noHorario(ag1);
-		p = new AtividadePaga("Python", TipoDeAtividade.Palestra).emLocal(local).noHorario(ag2);
-		p2 = new AtividadePaga("Refatorando",TipoDeAtividade.Palestra).emLocal(local).noHorario(ag2);
+		mc = new Atividade("Jogos", TipoDeAtividade.Minicurso).emLocal(local).noHorario(ag1);
+		p = new Atividade("Python", TipoDeAtividade.Palestra).emLocal(local).noHorario(ag2);
+		p2 = new Atividade("Refatorando",TipoDeAtividade.Palestra).emLocal(local).noHorario(ag2);
 		p50 = new Palestras_50(val1);
 		l1 = new Lote_I(val1);
 		l2 = new Lote_I(val2);
-		mc.setPreco(50.00);
-		p.setPreco(80);
-		p2.setPreco(40);
+		item1 = new ItemUnico("minicurso", 50, mc);
+		item2 = new ItemUnico("palestra1", 80, p);
+		item3 = new ItemUnico("palestra2", 40, p2);
 	}
 
 	@Test
-	public void Deve_Retornar_A_Primeira_Atividade_Adicionada() throws Exception {
+	public void Deve_Retornar_O_Primeiro_Item_Adicionada() throws Exception {
 		sim.adicionarAtividade(mc);
-		ins.adicionarProduto(mc);
-		assertEquals(mc, ins.getCarrinho().get(0));
+		ins.adicionarItem(item1);
+		assertEquals(item1, ins.getCarrinho().get(0));
 	}
 	
 	@Test
 	public void Deve_Verificar_A_Quantidade_De_Atividades() throws Exception{
 		sim.adicionarAtividade(mc);
-		ins.adicionarProduto(mc);
+		ins.adicionarItem(item1);
 		assertEquals(1, ins.getCarrinho().size());
 	}
 	
@@ -78,8 +80,8 @@ public class InscricaoTeste {
 	@Test(expected=AtividadeRepetidaException.class)
 	public void Nao_Deve_Incluir_Atividades_Repetidas() throws Exception{
 		sim.adicionarAtividade(mc);
-		ins.adicionarProduto(mc);
-		ins.adicionarProduto(mc);
+		ins.adicionarItem(item1);
+		ins.adicionarItem(item1);
 	}
 	
 	@Test
@@ -91,21 +93,21 @@ public class InscricaoTeste {
 	@Test(expected=InscricaoPagaException.class)
 	public void Inscricao_Paga_Nao_Deve_Aceitar_Novos_Itens() throws Exception{
 		sim.adicionarAtividade(mc);
-		ins.adicionarProduto(mc);
+		ins.adicionarItem(item1);
 		ins.getPagamento().pagarInscricao(50);
 		sim.adicionarAtividade(p);
-		ins.adicionarProduto(p);
+		ins.adicionarItem(item2);
 	}
 	
 	@Test(expected=AtividadeInexistenteNoEventoException.class)
 	public void Nao_Deve_Incluir_Atividade_Nao_Cadastrada_No_Evento() throws Exception{
-		ins.adicionarProduto(p);
+		ins.adicionarItem(item2);
 	}
 	
 	@Test
 	public void Adicionar_Cupom_Palestras_50_E_Verificar_Desconto() throws Exception{
 		sim.adicionarAtividade(p);
-		ins.adicionarProduto(p);
+		ins.adicionarItem(item2);
 		ins.adicionarCupom(p50);
 		assertEquals(40.0,p50.valorDoDesconto(ins), 0.00001);
 	}
@@ -113,7 +115,7 @@ public class InscricaoTeste {
 	@Test
 	public void Verificar_Total_Desconto_Depois_De_Adicionar_Cupons() throws Exception{
 		sim.adicionarAtividade(p);
-		ins.adicionarProduto(p);
+		ins.adicionarItem(item2);
 		ins.adicionarCupom(p50);
 		ins.adicionarCupom(l1);
 		assertEquals(80, ins.totalDeDesconto(), 0.00001);
@@ -122,9 +124,9 @@ public class InscricaoTeste {
 	@Test
 	public void Verificar_Valor_Total_Com_Desconto_De_Uma_Inscricao_Completa_E_Com_Cupons() throws Exception{
 		sim.adicionarAtividade(mc);
-		ins.adicionarProduto(mc);
+		ins.adicionarItem(item1);
 		sim.adicionarAtividade(p);
-		ins.adicionarProduto(p);
+		ins.adicionarItem(item2);
 		ins.adicionarCupom(p50);
 		ins.adicionarCupom(l1);
 		assertEquals(25, ins.calcularTotalComDesconto(), 0.00001);

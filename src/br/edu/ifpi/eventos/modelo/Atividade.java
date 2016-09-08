@@ -7,7 +7,10 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import br.edu.ifpi.eventos.excecoes.HorarioIndisponivelException;
@@ -15,6 +18,7 @@ import br.edu.ifpi.eventos.util.Agenda;
 import br.edu.ifpi.eventos.util.Subject;
 import br.edu.ifpi.eventos.util.TipoDeAtividade;
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Atividade extends Subject {
 	
 	@Id
@@ -24,15 +28,16 @@ public class Atividade extends Subject {
 	@OneToOne
 	private Agenda agenda;
 	private TipoDeAtividade tipo;
-	@ManyToMany
+	@OneToOne
 	private EspacoFisico local;
-	private List<Responsavel> responsaveis;
+	@OneToMany(mappedBy="atividade")
+	private List<Responsabilidade> responsaveis;
 	private boolean realizado;
 	
 	public Atividade(String nome, TipoDeAtividade tipo) {
 		this.nome = nome;
 		this.tipo = tipo;
-		this.responsaveis = new ArrayList<Responsavel>();
+		this.responsaveis = new ArrayList<Responsabilidade>();
 	}
 	
 	public Atividade emLocal(EspacoFisico local){
@@ -86,11 +91,11 @@ public class Atividade extends Subject {
 		return local;
 	}
 	
-	public void adicionarResponsavel(Responsavel resposavel){
+	public void adicionarResponsavel(Responsabilidade resposavel){
 		this.responsaveis.add(resposavel);
 	}
 	
-	public List<Responsavel> getResponsaveis() {
+	public List<Responsabilidade> getResponsaveis() {
 		return Collections.unmodifiableList(responsaveis);
 	}
 	

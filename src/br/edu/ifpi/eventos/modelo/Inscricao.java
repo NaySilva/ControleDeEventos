@@ -29,47 +29,43 @@ public class Inscricao extends Subject{
 	private PerfilParticipante perfil;
 	@ManyToOne
 	private Evento evento;
-	@ManyToMany(mappedBy="inscricoes")
-	private List<Produto> carrinho;
+	@ManyToMany(mappedBy="inscricao")
+	private List<Item> carrinho;
 	@OneToOne
 	private Pagamento pagamento;
-	@OneToMany
+	@OneToMany(mappedBy="inscricao")
 	private List<CupomPromocional> cupons;
 	
 	public Inscricao(Evento evento, PerfilParticipante perfil){
 		this.evento = evento;
 		this.perfil = perfil;
 		this.pagamento = new Pagamento(this);
-		this.carrinho = new ArrayList<Produto>();
+		this.carrinho = new ArrayList<Item>();
 		this.cupons = new ArrayList<CupomPromocional>();
 		addObserver(perfil);
 		evento.adicionarInscricao(this);;
 		perfil.adicionarInscricao(this, TipoDeParticipacao.Estudante);
 	}
 
-	public void adicionarProduto(Produto produto) throws Exception {
-			produto.adicionarNoCarrinho(this);
+	public void adicionarItem(Item item) throws Exception {
+			item.adicionarNoCarrinho(this);
 			setNotificacao("Novo Produto foi adicionado");
 			notifyObservers();
 	}
 	
-	public void adicionarUmaAtividade(AtividadePaga atividade){
-		carrinho.add(atividade);
+	public void adicionarUmItem(Item item){
+		carrinho.add(item);
 	}
 	
-	public void adicionarTodasAsAtividades(List<AtividadePaga> atividades){
-		carrinho.addAll(atividades);
-	}
-	
-	public void retricoesDeAtividade(AtividadePaga atividade) throws AtividadeRepetidaException, AtividadeInexistenteNoEventoException, InscricaoPagaException{
-		if (carrinho.contains(atividade)) throw new AtividadeRepetidaException();
-		if (!evento.getAtividades().contains(atividade)) throw new AtividadeInexistenteNoEventoException();
+	public void retricoesDeAtividade(ItemUnico item) throws AtividadeRepetidaException, AtividadeInexistenteNoEventoException, InscricaoPagaException{
+		if (carrinho.contains(item)) throw new AtividadeRepetidaException();
+		if (!evento.getAtividades().contains(item.getAtividade())) throw new AtividadeInexistenteNoEventoException();
 		if (pagamento.isPago()) throw new InscricaoPagaException();
 	}
 	
 	public double calcularTotalBruto(){
 		double totalBruto = 0;
-		for (Produto p : getCarrinho()) {
+		for (Item p : getCarrinho()) {
 			totalBruto += p.getPreco();
 		}
 		return totalBruto;
@@ -92,7 +88,7 @@ public class Inscricao extends Subject{
 		return totalComDesconto;
 	}
 	
-	public List<Produto> getCarrinho() {
+	public List<Item> getCarrinho() {
 		return Collections.unmodifiableList(carrinho);
 	}
 	
@@ -119,6 +115,7 @@ public class Inscricao extends Subject{
 		notificacao += mensagem;
 		
 	}
+
 	
 	
 	

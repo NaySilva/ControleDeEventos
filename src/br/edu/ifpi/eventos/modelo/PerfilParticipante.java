@@ -20,21 +20,14 @@ import sun.security.provider.certpath.OCSP.RevocationStatus;
 
 
 @Entity
-public final class PerfilParticipante implements Observer, Perfil {
+public final class PerfilParticipante extends Perfil {
 	
-	@Id
-	@GeneratedValue
-	private Long id;
-	@ManyToOne
-	private Usuario usuario;
 	@OneToMany(mappedBy="perfil")
 	private List<Inscricao> inscricoes;
 	private TipoDeParticipacao tipo;
 	
-	PerfilParticipante() {}
-
 	public PerfilParticipante(Usuario usuario) {
-		this.usuario = usuario;
+		super(usuario);
 		this.inscricoes = new ArrayList<Inscricao>();
 	}
 	
@@ -47,40 +40,6 @@ public final class PerfilParticipante implements Observer, Perfil {
 		return Collections.unmodifiableList(inscricoes);
 	}
 
-	public Long getId() {
-		return id;
-	}
-	
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;	
-	}
-	
-	public void setId(Long id) {
-		this.id = id;
-	}
-	
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-
-	@Override
-	public String toString() {
-		return "Perfil [id=" + id + ", usuario=" + usuario + "]";
-	}
-
-	@Override
-	public String update(Object arg1) {
-		System.out.println((String)arg1);
-		return (String)arg1;
-	}
-	
-	
-	
-	
-	
-	
-	
 
 }
