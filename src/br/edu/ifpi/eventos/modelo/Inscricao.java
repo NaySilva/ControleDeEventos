@@ -34,14 +34,13 @@ public class Inscricao extends Subject{
 	@OneToOne
 	private Pagamento pagamento;
 	@OneToMany(mappedBy="inscricao")
-	private List<CupomPromocional> cupons;
+	private CupomPromocional cupom;
 	
 	public Inscricao(Evento evento, PerfilParticipante perfil){
 		this.evento = evento;
 		this.perfil = perfil;
 		this.pagamento = new Pagamento(this);
 		this.carrinho = new ArrayList<Item>();
-		this.cupons = new ArrayList<CupomPromocional>();
 		addObserver(perfil);
 		evento.adicionarInscricao(this);;
 		perfil.adicionarInscricao(this, TipoDeParticipacao.Estudante);
@@ -70,21 +69,9 @@ public class Inscricao extends Subject{
 		}
 		return totalBruto;
 	}
-
-	public void adicionarCupom(CupomPromocional cupom){
-		if (cupom.getAtivo()) cupons.add(cupom);
-	}
-
-	public double totalDeDesconto(){
-		double desconto = 0.0;
-		for (CupomPromocional cupomPromocional : getCupons()) {
-			desconto += cupomPromocional.valorDoDesconto(this);
-		}
-		return desconto;
-	}
 	
 	public double calcularTotalComDesconto(){
-		double totalComDesconto = calcularTotalBruto() - totalDeDesconto();
+		double totalComDesconto = cupom!=null ? calcularTotalBruto() - cupom.valorDoDesconto(this) : calcularTotalBruto();
 		return totalComDesconto;
 	}
 	
@@ -100,8 +87,14 @@ public class Inscricao extends Subject{
 		return pagamento;
 	}
 
-	public List<CupomPromocional> getCupons() {
-		return Collections.unmodifiableList(cupons);
+	public CupomPromocional getCupom() {
+		return cupom;
+	}
+	
+	public void setCupom(CupomPromocional cupom) {
+		if (cupom.getAtivo()){
+			this.cupom = cupom;
+		}
 	}
 
 	public PerfilParticipante getPerfil() {

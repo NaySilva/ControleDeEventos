@@ -34,7 +34,6 @@ public class Equipe {
 
 	public void adicionarPerfil(PerfilOrganizador perfil){
 		this.organizadores.add(perfil);
-		perfil.adicionarEvento(evento);
 		perfil.adicionarEquipe(this);
 	}
 	

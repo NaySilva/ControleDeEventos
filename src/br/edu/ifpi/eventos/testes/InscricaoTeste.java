@@ -108,17 +108,8 @@ public class InscricaoTeste {
 	public void Adicionar_Cupom_Palestras_50_E_Verificar_Desconto() throws Exception{
 		sim.adicionarAtividade(p);
 		ins.adicionarItem(item2);
-		ins.adicionarCupom(p50);
+		ins.setCupom(p50);
 		assertEquals(40.0,p50.valorDoDesconto(ins), 0.00001);
-	}
-	
-	@Test
-	public void Verificar_Total_Desconto_Depois_De_Adicionar_Cupons() throws Exception{
-		sim.adicionarAtividade(p);
-		ins.adicionarItem(item2);
-		ins.adicionarCupom(p50);
-		ins.adicionarCupom(l1);
-		assertEquals(80, ins.totalDeDesconto(), 0.00001);
 	}
 	
 	@Test
@@ -127,15 +118,14 @@ public class InscricaoTeste {
 		ins.adicionarItem(item1);
 		sim.adicionarAtividade(p);
 		ins.adicionarItem(item2);
-		ins.adicionarCupom(p50);
-		ins.adicionarCupom(l1);
-		assertEquals(25, ins.calcularTotalComDesconto(), 0.00001);
+		ins.setCupom(l1);
+		assertEquals(65, ins.calcularTotalComDesconto(), 0.00001);
 	}
 
 	@Test
 	public void Nao_Deve_Aceitar_Desconto_De_Cupons_Nao_Ativos(){
-		ins.adicionarCupom(l2);
-		assertEquals(false, ins.getCupons().contains(l2));
+		ins.setCupom(l2);
+		assertEquals(false, ins.getCupom()==l2);
 	}
 	
 		

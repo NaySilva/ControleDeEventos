@@ -29,7 +29,7 @@ public abstract class CupomPromocional {
 		ativo = validade.depoisDoFim(hoje.getDiaFim(), hoje.getHoraFim()) ? false : true;
 	}
 	
-	public abstract double valorDoDesconto(Inscricao insc);
+	public abstract double valorDoDesconto(Inscricao inscricao);
 	
 	public boolean getAtivo() {
 		return ativo;

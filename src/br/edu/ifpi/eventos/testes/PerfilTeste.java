@@ -19,7 +19,6 @@ public class PerfilTeste {
 		Usuario usu1 = new Usuario();
 		Usuario usu2 = new Usuario();
 		Evento ev = new Evento("ev", TipoDeEvento.Simposio);
-		perfil.adicionarEvento(ev);
 		Equipe eq1 = new Equipe("limpeza", perfil, ev);
 		eq1.adicionarPerfil(new PerfilOrganizador(usu1));
 		eq1.adicionarPerfil(new PerfilOrganizador(usu2));
