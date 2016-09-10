@@ -11,14 +11,14 @@ import org.junit.Before;
 import org.junit.Test;
 
 import br.edu.ifpi.eventos.excecoes.HorarioIndisponivelException;
-import br.edu.ifpi.eventos.modelo.Agenda;
-import br.edu.ifpi.eventos.modelo.Atividade;
-import br.edu.ifpi.eventos.modelo.EspacoFisico;
-import br.edu.ifpi.eventos.modelo.Evento;
-import br.edu.ifpi.eventos.util.StatusDoEvento;
-import br.edu.ifpi.eventos.util.TipoDeAtividade;
-import br.edu.ifpi.eventos.util.TipoDeEvento;
-import br.edu.ifpi.eventos.util.TipoEspacoFisico;
+import br.edu.ifpi.eventos.modelo.agenda.Agenda;
+import br.edu.ifpi.eventos.modelo.atividade.Atividade;
+import br.edu.ifpi.eventos.modelo.atividade.TipoDeAtividade;
+import br.edu.ifpi.eventos.modelo.espacofisico.EspacoFisico;
+import br.edu.ifpi.eventos.modelo.espacofisico.TipoEspacoFisico;
+import br.edu.ifpi.eventos.modelo.evento.Evento;
+import br.edu.ifpi.eventos.modelo.evento.StatusDoEvento;
+import br.edu.ifpi.eventos.modelo.evento.TipoDeEvento;
 
 public class EventoTeste {
 	

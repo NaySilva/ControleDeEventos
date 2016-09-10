@@ -11,8 +11,8 @@ import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import br.edu.ifpi.eventos.modelo.PerfilParticipante;
-import br.edu.ifpi.eventos.modelo.Responsabilidade;
+import br.edu.ifpi.eventos.modelo.perfil.PerfilParticipante;
+import br.edu.ifpi.eventos.modelo.responsabilidade.Responsabilidade;
 @Entity
 public class Usuario {
 	

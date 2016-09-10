@@ -4,11 +4,11 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import br.edu.ifpi.eventos.modelo.Equipe;
-import br.edu.ifpi.eventos.modelo.Evento;
-import br.edu.ifpi.eventos.modelo.PerfilOrganizador;
+import br.edu.ifpi.eventos.modelo.equipe.Equipe;
+import br.edu.ifpi.eventos.modelo.evento.Evento;
+import br.edu.ifpi.eventos.modelo.evento.TipoDeEvento;
+import br.edu.ifpi.eventos.modelo.perfil.PerfilOrganizador;
 import br.edu.ifpi.eventos.modelo.usuario.Usuario;
-import br.edu.ifpi.eventos.util.TipoDeEvento;
 
 public class PerfilTeste {
 

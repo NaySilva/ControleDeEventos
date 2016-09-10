@@ -7,11 +7,11 @@ import java.time.LocalTime;
 
 import org.junit.Test;
 
-import br.edu.ifpi.eventos.modelo.Agenda;
-import br.edu.ifpi.eventos.modelo.Atividade;
-import br.edu.ifpi.eventos.modelo.EspacoFisico;
-import br.edu.ifpi.eventos.util.TipoDeAtividade;
-import br.edu.ifpi.eventos.util.TipoEspacoFisico;
+import br.edu.ifpi.eventos.modelo.agenda.Agenda;
+import br.edu.ifpi.eventos.modelo.atividade.Atividade;
+import br.edu.ifpi.eventos.modelo.atividade.TipoDeAtividade;
+import br.edu.ifpi.eventos.modelo.espacofisico.EspacoFisico;
+import br.edu.ifpi.eventos.modelo.espacofisico.TipoEspacoFisico;
 
 public class EspacoFisicoTeste {
 

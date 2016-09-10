@@ -8,25 +8,25 @@ import java.time.LocalTime;
 import org.junit.Before;
 import org.junit.Test;
 
-import br.edu.ifpi.eventos.cupom.Lote_I;
-import br.edu.ifpi.eventos.cupom.Palestras_50;
 import br.edu.ifpi.eventos.excecoes.AtividadeInexistenteNoEventoException;
 import br.edu.ifpi.eventos.excecoes.AtividadeRepetidaException;
 import br.edu.ifpi.eventos.excecoes.HorarioIndisponivelException;
 import br.edu.ifpi.eventos.excecoes.InscricaoPagaException;
-import br.edu.ifpi.eventos.modelo.Agenda;
-import br.edu.ifpi.eventos.modelo.Atividade;
-import br.edu.ifpi.eventos.modelo.CupomPromocional;
-import br.edu.ifpi.eventos.modelo.EspacoFisico;
-import br.edu.ifpi.eventos.modelo.Evento;
-import br.edu.ifpi.eventos.modelo.Inscricao;
-import br.edu.ifpi.eventos.modelo.Item;
-import br.edu.ifpi.eventos.modelo.ItemUnico;
-import br.edu.ifpi.eventos.modelo.PerfilParticipante;
+import br.edu.ifpi.eventos.modelo.agenda.Agenda;
+import br.edu.ifpi.eventos.modelo.atividade.Atividade;
+import br.edu.ifpi.eventos.modelo.atividade.TipoDeAtividade;
+import br.edu.ifpi.eventos.modelo.cupompromocional.CupomPromocional;
+import br.edu.ifpi.eventos.modelo.cupompromocional.Lote_I;
+import br.edu.ifpi.eventos.modelo.cupompromocional.Palestras_50;
+import br.edu.ifpi.eventos.modelo.espacofisico.EspacoFisico;
+import br.edu.ifpi.eventos.modelo.espacofisico.TipoEspacoFisico;
+import br.edu.ifpi.eventos.modelo.evento.Evento;
+import br.edu.ifpi.eventos.modelo.evento.TipoDeEvento;
+import br.edu.ifpi.eventos.modelo.inscricao.Inscricao;
+import br.edu.ifpi.eventos.modelo.item.Item;
+import br.edu.ifpi.eventos.modelo.item.ItemUnico;
+import br.edu.ifpi.eventos.modelo.perfil.PerfilParticipante;
 import br.edu.ifpi.eventos.modelo.usuario.Usuario;
-import br.edu.ifpi.eventos.util.TipoDeAtividade;
-import br.edu.ifpi.eventos.util.TipoDeEvento;
-import br.edu.ifpi.eventos.util.TipoEspacoFisico;
 
 public class InscricaoTeste {
 

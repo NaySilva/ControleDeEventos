@@ -11,8 +11,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
-import br.edu.ifpi.eventos.dal.PerfilDao;
-import br.edu.ifpi.eventos.modelo.PerfilParticipante;
+import br.edu.ifpi.eventos.modelo.perfil.PerfilDao;
+import br.edu.ifpi.eventos.modelo.perfil.PerfilParticipante;
 import br.edu.ifpi.eventos.modelo.usuario.Usuario;
 
 @Transactional

@@ -7,9 +7,9 @@ import java.time.LocalTime;
 
 import org.junit.Test;
 
-import br.edu.ifpi.eventos.cupom.Lote_I;
-import br.edu.ifpi.eventos.modelo.Agenda;
-import br.edu.ifpi.eventos.modelo.CupomPromocional;
+import br.edu.ifpi.eventos.modelo.agenda.Agenda;
+import br.edu.ifpi.eventos.modelo.cupompromocional.CupomPromocional;
+import br.edu.ifpi.eventos.modelo.cupompromocional.Lote_I;
 
 public class CupomPromocionalTeste {
 
