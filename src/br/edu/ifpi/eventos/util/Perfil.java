@@ -12,7 +12,7 @@ import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 
-import br.edu.ifpi.eventos.modelo.Usuario;
+import br.edu.ifpi.eventos.modelo.usuario.Usuario;
 
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)

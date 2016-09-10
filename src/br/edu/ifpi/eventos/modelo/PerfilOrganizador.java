@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
+import br.edu.ifpi.eventos.modelo.usuario.Usuario;
 import br.edu.ifpi.eventos.util.Perfil;
 @Entity
 @DiscriminatorValue("perfil-organizador")

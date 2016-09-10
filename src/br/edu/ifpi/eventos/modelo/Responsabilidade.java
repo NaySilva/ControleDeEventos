@@ -5,6 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import br.edu.ifpi.eventos.modelo.usuario.Usuario;
+
 @Entity
 public class Responsabilidade {
 	@Id

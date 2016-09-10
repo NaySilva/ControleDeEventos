@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
+import br.edu.ifpi.eventos.modelo.usuario.Usuario;
 import br.edu.ifpi.eventos.util.Observer;
 import br.edu.ifpi.eventos.util.Perfil;
 import br.edu.ifpi.eventos.util.TipoDeParticipacao;

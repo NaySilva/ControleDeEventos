@@ -1,4 +1,4 @@
-package br.edu.ifpi.eventos.dao;
+package br.edu.ifpi.eventos.modelo.usuario;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -6,7 +6,7 @@ import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
 
-import br.edu.ifpi.eventos.modelo.Usuario;
+import br.edu.ifpi.eventos.dal.GenericJPADAO;
 
 @Repository
 public class UsuarioDao extends GenericJPADAO<Usuario>{

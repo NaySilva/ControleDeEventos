@@ -23,7 +23,7 @@ import br.edu.ifpi.eventos.modelo.CupomPromocional;
 import br.edu.ifpi.eventos.modelo.Evento;
 import br.edu.ifpi.eventos.modelo.Inscricao;
 import br.edu.ifpi.eventos.modelo.PerfilParticipante;
-import br.edu.ifpi.eventos.modelo.Usuario;
+import br.edu.ifpi.eventos.modelo.usuario.Usuario;
 import br.edu.ifpi.eventos.util.TipoDeAtividade;
 import br.edu.ifpi.eventos.util.TipoDeEvento;
 

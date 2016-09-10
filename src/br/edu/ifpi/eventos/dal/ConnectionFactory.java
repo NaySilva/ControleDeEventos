@@ -1,4 +1,4 @@
-package br.edu.ifpi.eventos.dao;
+package br.edu.ifpi.eventos.dal;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

@@ -9,8 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import br.edu.ifpi.eventos.dao.UsuarioDao;
-import br.edu.ifpi.eventos.modelo.Usuario;
+import br.edu.ifpi.eventos.modelo.usuario.Usuario;
+import br.edu.ifpi.eventos.modelo.usuario.UsuarioDao;
 
 @Transactional
 @Controller

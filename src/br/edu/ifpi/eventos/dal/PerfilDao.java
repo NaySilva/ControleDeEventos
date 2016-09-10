@@ -1,4 +1,4 @@
-package br.edu.ifpi.eventos.dao;
+package br.edu.ifpi.eventos.dal;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import javax.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
 
 import br.edu.ifpi.eventos.modelo.PerfilParticipante;
-import br.edu.ifpi.eventos.modelo.Usuario;
+import br.edu.ifpi.eventos.modelo.usuario.Usuario;
 
 @Repository
 public class PerfilDao extends GenericJPADAO<PerfilParticipante>{

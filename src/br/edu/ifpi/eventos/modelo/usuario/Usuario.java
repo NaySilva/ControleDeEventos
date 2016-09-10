@@ -1,4 +1,4 @@
-package br.edu.ifpi.eventos.modelo;
+package br.edu.ifpi.eventos.modelo.usuario;
 
 import java.util.List;
 
@@ -10,6 +10,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import br.edu.ifpi.eventos.modelo.PerfilParticipante;
+import br.edu.ifpi.eventos.modelo.Responsabilidade;
 @Entity
 public class Usuario {
 	
