@@ -2,18 +2,27 @@ package br.edu.ifpi.eventos.util;
 
 import java.util.List;
 
+import javax.annotation.Generated;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
 
 import br.edu.ifpi.eventos.modelo.Usuario;
 
+@Entity
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "perfil_class_mae")
 public abstract class Perfil implements Observer{
 	
 
 	@Id
 	@GeneratedValue
-	private Long id;
+	protected Long id;
 	@ManyToOne
 	protected Usuario usuario;
 	

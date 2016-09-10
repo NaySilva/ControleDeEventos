@@ -11,6 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import br.edu.ifpi.eventos.excecoes.HorarioIndisponivelException;
+import br.edu.ifpi.eventos.modelo.Agenda;
 import br.edu.ifpi.eventos.modelo.Atividade;
 import br.edu.ifpi.eventos.modelo.EspacoFisico;
 import br.edu.ifpi.eventos.modelo.Evento;
@@ -19,7 +20,6 @@ import br.edu.ifpi.eventos.modelo.Item;
 import br.edu.ifpi.eventos.modelo.ItemUnico;
 import br.edu.ifpi.eventos.modelo.PerfilParticipante;
 import br.edu.ifpi.eventos.modelo.Usuario;
-import br.edu.ifpi.eventos.util.Agenda;
 import br.edu.ifpi.eventos.util.TipoDeAtividade;
 import br.edu.ifpi.eventos.util.TipoDeEvento;
 import br.edu.ifpi.eventos.util.TipoEspacoFisico;

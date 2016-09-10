@@ -1,10 +1,10 @@
 package br.edu.ifpi.eventos.cupom;
 
+import br.edu.ifpi.eventos.modelo.Agenda;
 import br.edu.ifpi.eventos.modelo.CupomPromocional;
 import br.edu.ifpi.eventos.modelo.Inscricao;
 import br.edu.ifpi.eventos.modelo.Item;
 import br.edu.ifpi.eventos.modelo.ItemUnico;
-import br.edu.ifpi.eventos.util.Agenda;
 import br.edu.ifpi.eventos.util.TipoDeAtividade;
 public class Palestras_50 extends CupomPromocional{
 

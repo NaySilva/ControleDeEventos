@@ -10,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
-import br.edu.ifpi.eventos.util.Agenda;
 import br.edu.ifpi.eventos.util.TipoEspacoFisico;
 
 @Entity
@@ -25,11 +24,11 @@ public class EspacoFisico {
 	private String endereco;
 	@OneToOne
 	private EspacoFisico localExterno;
-	@OneToMany(mappedBy="espacoFisico")
+	@OneToMany
 	private List<EspacoFisico> locaisInternos;
-	@OneToMany(mappedBy="espacoFisico")
+	@OneToMany
 	private List<Agenda> horarios;
-	@OneToOne
+	@OneToOne(mappedBy="local")
 	private Atividade atividade;
 	
 	public EspacoFisico(String descricao, TipoEspacoFisico tipo) {
@@ -47,10 +46,15 @@ public class EspacoFisico {
 	
 	public void adicionarLocalInterno(EspacoFisico local){
 		this.locaisInternos.add(local);
+		local.setLocalExterno(this);
 	}
 	
 	public void adicionarHorarios(Agenda agenda){
 		this.horarios.add(agenda);
+	}
+	
+	public void setLocalExterno(EspacoFisico localExterno) {
+		this.localExterno = localExterno;
 	}
 	
 	public List<Agenda> getHorarios() {

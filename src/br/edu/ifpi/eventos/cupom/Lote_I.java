@@ -1,8 +1,8 @@
 package br.edu.ifpi.eventos.cupom;
 
+import br.edu.ifpi.eventos.modelo.Agenda;
 import br.edu.ifpi.eventos.modelo.CupomPromocional;
 import br.edu.ifpi.eventos.modelo.Inscricao;
-import br.edu.ifpi.eventos.util.Agenda;
 
 public class Lote_I extends CupomPromocional{
 

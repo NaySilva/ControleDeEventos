@@ -1,8 +1,18 @@
 package br.edu.ifpi.eventos.modelo;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class Responsabilidade {
-	
+	@Id
+	@GeneratedValue
+	private long id;
+	@ManyToOne
 	private Atividade atividade;
+	@ManyToOne
 	private Usuario responsavel;
 	private String miniCurriculo;
 	private boolean responsavelPrincipal;

@@ -4,11 +4,17 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 import br.edu.ifpi.eventos.util.Perfil;
-
+@Entity
+@DiscriminatorValue("perfil-organizador")
 public class PerfilOrganizador extends Perfil {
 	
+	@ManyToMany
 	private List<Equipe> equipes;
 	
 

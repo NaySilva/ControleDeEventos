@@ -7,7 +7,7 @@ import java.time.LocalTime;
 
 import org.junit.Test;
 
-import br.edu.ifpi.eventos.util.Agenda;
+import br.edu.ifpi.eventos.modelo.Agenda;
 
 public class AgendaTest {
 

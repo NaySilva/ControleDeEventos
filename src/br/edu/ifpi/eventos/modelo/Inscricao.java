@@ -13,11 +13,11 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 
 import br.edu.ifpi.eventos.excecoes.AtividadeInexistenteNoEventoException;
 import br.edu.ifpi.eventos.excecoes.AtividadeRepetidaException;
 import br.edu.ifpi.eventos.excecoes.InscricaoPagaException;
-import br.edu.ifpi.eventos.util.Produto;
 import br.edu.ifpi.eventos.util.Subject;
 import br.edu.ifpi.eventos.util.TipoDeParticipacao;
 @Entity
@@ -29,11 +29,11 @@ public class Inscricao extends Subject{
 	private PerfilParticipante perfil;
 	@ManyToOne
 	private Evento evento;
-	@ManyToMany(mappedBy="inscricao")
+	@ManyToMany(mappedBy="inscricoes")
 	private List<Item> carrinho;
 	@OneToOne
 	private Pagamento pagamento;
-	@OneToMany(mappedBy="inscricao")
+	@OneToOne
 	private CupomPromocional cupom;
 	
 	public Inscricao(Evento evento, PerfilParticipante perfil){

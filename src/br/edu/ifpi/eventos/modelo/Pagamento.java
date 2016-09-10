@@ -5,15 +5,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-
-import br.edu.ifpi.eventos.util.Agenda;
 @Entity
 public class Pagamento {
 	
 	@Id
 	@GeneratedValue
 	private Long id;
-	@OneToOne
+	@OneToOne(mappedBy="pagamento")
 	private Inscricao inscricao;
 	@OneToOne
 	private Agenda horarioPagamento;

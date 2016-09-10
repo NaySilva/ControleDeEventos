@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 @Entity
@@ -21,8 +22,10 @@ public class Usuario {
 	private String login;
 	@NotNull @Size(min=3, message="O tamanho da  senha tem que ser no minimo 3")
 	private String senha;
-	@OneToMany(mappedBy="usuario")
+	@Transient
 	private List<PerfilParticipante> perfis;
+	@Transient
+	private List<Responsabilidade> resposabilidades;
 	
 	public Usuario(){}
 	

@@ -1,8 +1,15 @@
 package br.edu.ifpi.eventos.modelo;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
+
+@Entity
+@DiscriminatorValue("item_unico")
 public class ItemUnico extends Item{
 	
-	Atividade atividade;
+	@OneToOne
+	private Atividade atividade;
 
 	
 	public ItemUnico(String descricao, double preco, Atividade atividade) {

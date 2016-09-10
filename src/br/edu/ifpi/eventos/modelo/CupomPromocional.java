@@ -8,8 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
-import br.edu.ifpi.eventos.util.Agenda;
-
 @Entity
 public abstract class CupomPromocional {
 	@Id

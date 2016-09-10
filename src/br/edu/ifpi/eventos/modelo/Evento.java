@@ -13,7 +13,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
-import br.edu.ifpi.eventos.util.Agenda;
 import br.edu.ifpi.eventos.util.Observer;
 import br.edu.ifpi.eventos.util.StatusDoEvento;
 import br.edu.ifpi.eventos.util.Subject;

@@ -16,6 +16,7 @@ import br.edu.ifpi.eventos.excecoes.AtividadeInexistenteNoEventoException;
 import br.edu.ifpi.eventos.excecoes.AtividadeRepetidaException;
 import br.edu.ifpi.eventos.excecoes.HorarioIndisponivelException;
 import br.edu.ifpi.eventos.excecoes.InscricaoPagaException;
+import br.edu.ifpi.eventos.modelo.Agenda;
 import br.edu.ifpi.eventos.modelo.Atividade;
 import br.edu.ifpi.eventos.modelo.Pagamento;
 import br.edu.ifpi.eventos.modelo.CupomPromocional;
@@ -23,7 +24,6 @@ import br.edu.ifpi.eventos.modelo.Evento;
 import br.edu.ifpi.eventos.modelo.Inscricao;
 import br.edu.ifpi.eventos.modelo.PerfilParticipante;
 import br.edu.ifpi.eventos.modelo.Usuario;
-import br.edu.ifpi.eventos.util.Agenda;
 import br.edu.ifpi.eventos.util.TipoDeAtividade;
 import br.edu.ifpi.eventos.util.TipoDeEvento;
 

@@ -1,4 +1,4 @@
-package br.edu.ifpi.eventos.util;
+package br.edu.ifpi.eventos.modelo;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

@@ -7,9 +7,12 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 @Entity
 public class Equipe {
 	
@@ -17,11 +20,11 @@ public class Equipe {
 	@GeneratedValue
 	private Long id;
 	private String descricao;
-	@ManyToOne
+	@OneToOne
 	private PerfilOrganizador dono;
 	@ManyToOne
 	private Evento evento;
-	@OneToMany(mappedBy="equipe")
+	@ManyToMany(mappedBy="equipes")
 	private List<PerfilOrganizador> organizadores;
 	
 	public Equipe(String descricao, PerfilOrganizador dono, Evento evento) {

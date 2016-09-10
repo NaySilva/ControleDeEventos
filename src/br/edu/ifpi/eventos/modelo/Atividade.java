@@ -14,7 +14,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import br.edu.ifpi.eventos.excecoes.HorarioIndisponivelException;
-import br.edu.ifpi.eventos.util.Agenda;
 import br.edu.ifpi.eventos.util.Subject;
 import br.edu.ifpi.eventos.util.TipoDeAtividade;
 @Entity

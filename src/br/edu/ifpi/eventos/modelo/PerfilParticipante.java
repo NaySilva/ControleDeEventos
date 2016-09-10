@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -17,9 +18,8 @@ import br.edu.ifpi.eventos.util.Observer;
 import br.edu.ifpi.eventos.util.Perfil;
 import br.edu.ifpi.eventos.util.TipoDeParticipacao;
 import sun.security.provider.certpath.OCSP.RevocationStatus;
-
-
 @Entity
+@DiscriminatorValue("perfil-participante")
 public final class PerfilParticipante extends Perfil {
 	
 	@OneToMany(mappedBy="perfil")
