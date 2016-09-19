@@ -27,6 +27,8 @@ public abstract class Perfil implements Observer{
 	@ManyToOne
 	protected Usuario usuario;
 	
+	Perfil() {}
+	
 	public Perfil(Usuario usuario) {
 		this.usuario = usuario;
 	}

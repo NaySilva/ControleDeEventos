@@ -16,6 +16,7 @@ import javax.persistence.OneToOne;
 import br.edu.ifpi.eventos.modelo.agenda.Agenda;
 import br.edu.ifpi.eventos.modelo.atividade.Atividade;
 import br.edu.ifpi.eventos.modelo.equipe.Equipe;
+import br.edu.ifpi.eventos.modelo.espacofisico.EspacoFisico;
 import br.edu.ifpi.eventos.modelo.inscricao.Inscricao;
 import br.edu.ifpi.eventos.util.Observer;
 import br.edu.ifpi.eventos.util.Subject;
@@ -41,13 +42,29 @@ public class Evento extends Subject{
 	private Agenda periodoDeInscricao;
 	@OneToMany(mappedBy="evento")
 	private List<Equipe> equipes;
+	@OneToOne
+	private EspacoFisico local;
+	
+	public Evento(){}
 	
 	public Evento(String nome, TipoDeEvento tipo) {
 		this.nome = nome;
 		this.tipo = tipo;
+		this.status = StatusDoEvento.EmAndamento;
 		this.atividades = new ArrayList<Atividade>();
 		this.inscricoes = new ArrayList<Inscricao>();
 		this.eventosSatelites = new ArrayList<Evento>();
+	}
+	
+	public Evento comEventoPrincipal(Evento principal){
+		this.eventoPrincipal = principal;
+		principal.adicionarEventosSatelites(this);
+		return this;
+	}
+	
+	public Evento comInscricoesPara(Agenda agenda){
+		this.periodoDeInscricao = agenda;
+		return this;
 	}
 
 	public void verificarData(Agenda agenda) {
@@ -56,6 +73,14 @@ public class Evento extends Subject{
 			throw new IllegalArgumentException("Data Passada");
 		}
 	}
+	
+	public void verificarPeriodoDeInscricao(){
+		Agenda hoje = Agenda.noMomento;
+		if (periodoDeInscricao.dentroDoHorario(hoje)){
+			status = StatusDoEvento.InscricoesAbertas;
+		}
+	}
+	
 	
 	public void adicionarInscricao(Inscricao inscricao){
 		inscricoes.add(inscricao);
@@ -83,18 +108,16 @@ public class Evento extends Subject{
 		notifyObservers();
 	}
 	
-	public List<Atividade> getAtividades() {
+	public List<Atividade> getAtividadesC() {
 		return Collections.unmodifiableList(atividades);
+	}
+	
+	protected List<Atividade> getAtividades(){
+		return atividades;
 	}
 	
 	public List<Inscricao> getInscricoes() {
 		return Collections.unmodifiableList(inscricoes);
-	}
-	
-	public Evento comEventoPrincipal(Evento principal){
-		this.eventoPrincipal = principal;
-		principal.adicionarEventosSatelites(this);
-		return this;
 	}
 	
 	public List<Evento> getEventosSatelites(){
@@ -144,5 +167,28 @@ public class Evento extends Subject{
 		notifyObservers();
 	}
 	
+	public TipoDeEvento getTipo() {
+		return tipo;
+	}
+	
+	public StatusDoEvento getStatus() {
+		return status;
+	}
+	
+	public Long getId() {
+		return id;
+	}
+	
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	
+	public void setTipo(String tipo) {
+		this.tipo = TipoDeEvento.porValor(tipo);
+	}
+	
+	public void setId(Long id) {
+		this.id = id;
+	}
 	
 }

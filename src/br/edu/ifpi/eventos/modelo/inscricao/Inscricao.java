@@ -49,7 +49,7 @@ public class Inscricao extends Subject{
 		this.carrinho = new ArrayList<Item>();
 		addObserver(perfil);
 		evento.adicionarInscricao(this);;
-		perfil.adicionarInscricao(this, TipoDeParticipacao.Estudante);
+		perfil.adicionarInscricao(this);
 	}
 
 	public void adicionarItem(Item item) throws Exception {
@@ -64,7 +64,7 @@ public class Inscricao extends Subject{
 	
 	public void retricoesDeAtividade(ItemUnico item) throws AtividadeRepetidaException, AtividadeInexistenteNoEventoException, InscricaoPagaException{
 		if (carrinho.contains(item)) throw new AtividadeRepetidaException();
-		if (!evento.getAtividades().contains(item.getAtividade())) throw new AtividadeInexistenteNoEventoException();
+		if (!evento.getAtividadesC().contains(item.getAtividade())) throw new AtividadeInexistenteNoEventoException();
 		if (pagamento.isPago()) throw new InscricaoPagaException();
 	}
 	

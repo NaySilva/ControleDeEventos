@@ -4,6 +4,7 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
+import br.edu.ifpi.eventos.excecoes.AtividadeNaoAptaParaItemException;
 import br.edu.ifpi.eventos.modelo.atividade.Atividade;
 import br.edu.ifpi.eventos.modelo.inscricao.Inscricao;
 
@@ -15,9 +16,13 @@ public class ItemUnico extends Item{
 	private Atividade atividade;
 
 	
-	public ItemUnico(String descricao, double preco, Atividade atividade) {
-		super(descricao, preco);
-		this.atividade = atividade;
+	public ItemUnico(double preco, Atividade atividade) throws AtividadeNaoAptaParaItemException {
+		super(preco);
+		if(atividade.isPagavel()){
+			this.atividade = atividade;
+		}else{
+			throw new AtividadeNaoAptaParaItemException();
+		}
 	}
 
 	public void adicionarNoCarrinho(Inscricao inscricao) throws Exception {

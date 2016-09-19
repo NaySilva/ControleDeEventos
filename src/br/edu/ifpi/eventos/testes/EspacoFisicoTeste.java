@@ -16,7 +16,7 @@ import br.edu.ifpi.eventos.modelo.espacofisico.TipoEspacoFisico;
 public class EspacoFisicoTeste {
 
 	@Test
-	public void localFiscoComLocaisInternosDentroDeLocaisInternos() {
+	public void local_Fisico_Com_Locais_Internos_Dentro_DeLocais_Internos() {
 		EspacoFisico ef = new EspacoFisico("Campus X", TipoEspacoFisico.Campus);
 		EspacoFisico ef1 =  new EspacoFisico("Predio A", TipoEspacoFisico.Predio).comLocalExterno(ef);
 		EspacoFisico ef11 = new EspacoFisico("Auditorio C", TipoEspacoFisico.Auditorio).comLocalExterno(ef1);

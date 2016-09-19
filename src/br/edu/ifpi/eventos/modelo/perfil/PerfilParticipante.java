@@ -26,20 +26,33 @@ public final class PerfilParticipante extends Perfil {
 	private List<Inscricao> inscricoes;
 	private TipoDeParticipacao tipo;
 	
+	PerfilParticipante() {}
+	
 	public PerfilParticipante(Usuario usuario) {
 		super(usuario);
 		this.inscricoes = new ArrayList<Inscricao>();
 	}
 	
-	public void adicionarInscricao(Inscricao inscricao, TipoDeParticipacao tipo){
+	public PerfilParticipante comTipoDeParticipacao(TipoDeParticipacao participacao){
+		this.tipo = participacao;
+		return this;
+	}
+	
+	public void adicionarInscricao(Inscricao inscricao){
 		this.inscricoes.add(inscricao);
-		this.tipo = tipo;
 	}
 
 	public List<Inscricao> getInscricoes() {
 		return Collections.unmodifiableList(inscricoes);
 	}
 
+	public void setTipo(TipoDeParticipacao tipo) {
+		this.tipo = tipo;
+	}
+	
+	public TipoDeParticipacao getTipo() {
+		return tipo;
+	}
 
 
 }

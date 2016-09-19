@@ -22,6 +22,7 @@ import br.edu.ifpi.eventos.modelo.inscricao.Inscricao;
 import br.edu.ifpi.eventos.modelo.item.Item;
 import br.edu.ifpi.eventos.modelo.item.ItemUnico;
 import br.edu.ifpi.eventos.modelo.perfil.PerfilParticipante;
+import br.edu.ifpi.eventos.modelo.responsabilidade.Responsabilidade;
 import br.edu.ifpi.eventos.modelo.usuario.Usuario;
 
 public class AtividadeTeste {
@@ -53,8 +54,9 @@ public class AtividadeTeste {
 		Atividade atividade = new Atividade("At1", TipoDeAtividade.MesaRedonda).emLocal(local).noHorario(agenda);		
 		Evento ev = new Evento("ev", TipoDeEvento.Congresso);
 		ev.adicionarAtividade(atividade);
+		atividade.setPagavel(true);
 		Inscricao ins = new Inscricao(ev, new PerfilParticipante(new Usuario()));
-		Item item = new ItemUnico("Palesta A", 30, atividade);
+		Item item = new ItemUnico(30, atividade);
 		ins.adicionarItem(item);
 		Inscricao ins2 = new Inscricao(ev, new PerfilParticipante(new Usuario()));
 		ins2.adicionarItem(item);
@@ -63,5 +65,19 @@ public class AtividadeTeste {
 		lista.add(ins2);
 		assertEquals(true, item.getInscricoes().contains(ins) & item.getInscricoes().contains(ins2));
 	}
-
+	
+	@Test
+	public void permitir_Incluir_Responsaveis_Para_Uma_Atividade(){
+		Atividade at = new Atividade("Palestra", TipoDeAtividade.Palestra);
+		Responsabilidade res = new Responsabilidade(at, new Usuario());
+		assertEquals(true, at.getResponsaveis().contains(res));
+	}
+	
+	@Test
+	public void Marcar_Atividade_Como_Realizada(){
+		Atividade at = new Atividade("Palestra", TipoDeAtividade.Palestra);
+		at.setRealizado(true);
+		assertEquals(true, at.isRealizado());
+	}
+	
 }

@@ -16,8 +16,8 @@ public class ItemKit extends Item{
 	@ManyToMany
 	private List<ItemUnico> itens;
 	
-	public ItemKit(String descricao, double preco) {
-		super(descricao, preco);
+	public ItemKit(double preco) {
+		super(preco);
 		this.itens = new ArrayList<ItemUnico>();
 	}
 	

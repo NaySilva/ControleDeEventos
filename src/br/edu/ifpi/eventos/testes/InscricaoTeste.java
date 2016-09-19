@@ -9,6 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import br.edu.ifpi.eventos.excecoes.AtividadeInexistenteNoEventoException;
+import br.edu.ifpi.eventos.excecoes.AtividadeNaoAptaParaItemException;
 import br.edu.ifpi.eventos.excecoes.AtividadeRepetidaException;
 import br.edu.ifpi.eventos.excecoes.HorarioIndisponivelException;
 import br.edu.ifpi.eventos.excecoes.InscricaoPagaException;
@@ -30,7 +31,7 @@ import br.edu.ifpi.eventos.modelo.usuario.Usuario;
 
 public class InscricaoTeste {
 
-	Agenda ag1, ag2, ag3, val1, val2;
+	Agenda ag1, ag2, val1, val2;
 	Inscricao ins;
 	Evento sim;
 	PerfilParticipante perfil;
@@ -39,10 +40,9 @@ public class InscricaoTeste {
 	Item item1, item2, item3;
 	
 	@Before
-	public void Inicializacao() throws HorarioIndisponivelException {
+	public void Inicializacao() throws HorarioIndisponivelException, AtividadeNaoAptaParaItemException {
 		ag1 = new Agenda(LocalDate.of(2016, 9, 30), LocalTime.of(8, 0), LocalDate.of(2016, 9, 30), LocalTime.of(12, 0));
 		ag2 = new Agenda(LocalDate.of(2016, 9, 30), LocalTime.of(14, 0), LocalDate.of(2016, 9, 30), LocalTime.of(18,00));
-		ag3 = new Agenda(LocalDate.of(2016, 9, 30), LocalTime.of(8, 0), LocalDate.of(2016, 9, 30), LocalTime.of(18,00));
 		val1 = new Agenda(LocalDate.of(2016, 9, 30), LocalTime.of(23, 59));
 		val2 = new Agenda(LocalDate.of(2016, 8, 24), LocalTime.of(23, 59));
 		sim = new Evento("Simposio de Programação", TipoDeEvento.Simposio);
@@ -57,9 +57,9 @@ public class InscricaoTeste {
 		p50 = new Palestras_50(val1);
 		l1 = new Lote_I(val1);
 		l2 = new Lote_I(val2);
-		item1 = new ItemUnico("minicurso", 50, mc);
-		item2 = new ItemUnico("palestra1", 80, p);
-		item3 = new ItemUnico("palestra2", 40, p2);
+		item1 = new ItemUnico(50, mc);
+		item2 = new ItemUnico(80, p);
+		item3 = new ItemUnico(40, p2);
 	}
 
 	@Test

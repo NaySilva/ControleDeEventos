@@ -12,14 +12,15 @@ import javax.persistence.InheritanceType;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 
 import br.edu.ifpi.eventos.excecoes.HorarioIndisponivelException;
 import br.edu.ifpi.eventos.modelo.agenda.Agenda;
 import br.edu.ifpi.eventos.modelo.espacofisico.EspacoFisico;
+import br.edu.ifpi.eventos.modelo.evento.Evento;
 import br.edu.ifpi.eventos.modelo.responsabilidade.Responsabilidade;
 import br.edu.ifpi.eventos.util.Subject;
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
 public class Atividade extends Subject {
 	
 	@Id
@@ -28,16 +29,22 @@ public class Atividade extends Subject {
 	private String nome;
 	@OneToOne
 	private Agenda agenda;
+	@Transient
+	private Evento evento;
 	private TipoDeAtividade tipo;
 	@OneToOne
 	private EspacoFisico local;
 	@OneToMany(mappedBy="atividade")
 	private List<Responsabilidade> responsaveis;
+	private boolean pagavel;
 	private boolean realizado;
+	
+	Atividade(){}
 	
 	public Atividade(String nome, TipoDeAtividade tipo) {
 		this.nome = nome;
 		this.tipo = tipo;
+		this.pagavel=true;
 		this.responsaveis = new ArrayList<Responsabilidade>();
 	}
 	
@@ -100,7 +107,39 @@ public class Atividade extends Subject {
 		return Collections.unmodifiableList(responsaveis);
 	}
 	
-
-
-
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	
+	public void setTipo(String tipo) {
+		this.tipo = TipoDeAtividade.porValor(tipo);
+	}
+	
+	public Evento getEvento() {
+		return evento;
+	}
+	
+	public void setEvento(Evento evento) {
+		this.evento = evento;
+	}
+	
+	public boolean isPagavel() {
+		return pagavel;
+	}
+	
+	public void setPagavel(boolean pagavel) {
+		this.pagavel = pagavel;
+	}
+	
+	public void setRealizado(boolean realizado) {
+		this.realizado = realizado;
+	}
+	
+	public boolean isRealizado() {
+		return realizado;
+	}
+	
+	public void setId(Long id) {
+		this.id = id;
+	}
 }

@@ -24,13 +24,11 @@ public abstract class Item extends Subject{
 	@Id
 	@GeneratedValue
 	protected long id;
-	protected String descricao;
 	protected double preco;
 	@ManyToMany
 	private List<Inscricao> inscricoes;
 	
-	public Item(String descricao, double preco) {
-		this.descricao = descricao;
+	public Item(double preco) {
 		this.preco = preco;
 		this.inscricoes = new ArrayList<Inscricao>();
 	}
@@ -55,13 +53,14 @@ public abstract class Item extends Subject{
 
 	@Override
 	public void setNotificacao(String mensagem) {
-		notificacao = "Nova notificação do item " + descricao + "/n";
+		notificacao = "Nova notificação do item " + "/n";
 		notificacao += mensagem;
 	}
 	
 	public List<Inscricao> getInscricoes() {
 		return Collections.unmodifiableList(inscricoes);
 	}
+	
 	
 
 }

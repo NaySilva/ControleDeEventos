@@ -22,6 +22,7 @@ public class Responsabilidade {
 	
 	public Responsabilidade(Atividade atividade, Usuario responsavel) {
 		this.atividade = atividade;
+		atividade.adicionarResponsavel(this);
 		this.responsavel = responsavel;
 	}
 

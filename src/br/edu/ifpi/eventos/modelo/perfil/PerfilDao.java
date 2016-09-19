@@ -14,6 +14,7 @@ import br.edu.ifpi.eventos.modelo.usuario.Usuario;
 @Repository
 public class PerfilDao extends GenericJPADAO<Perfil>{
 	
+	
 	public PerfilDao() {
 		super(Perfil.class);
 	}
@@ -21,8 +22,8 @@ public class PerfilDao extends GenericJPADAO<Perfil>{
 	@PersistenceContext
 	EntityManager manager;
 
-	public List<PerfilParticipante> lista(Usuario usuario) {
-		TypedQuery<PerfilParticipante> query = manager.createQuery("from Perfil p where usuario_id = :paramUsuario", PerfilParticipante.class);
+	public List<Perfil> lista(Usuario usuario) {
+		TypedQuery<Perfil> query = manager.createQuery("from Perfil p where usuario_id = :paramUsuario", Perfil.class);
 		query.setParameter("paramUsuario", usuario.getId());
 		return query.getResultList();
 	}
