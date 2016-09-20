@@ -1,5 +1,7 @@
 package br.edu.ifpi.eventos.modelo.cupompromocional;
 
+import java.math.BigDecimal;
+
 import br.edu.ifpi.eventos.modelo.agenda.Agenda;
 import br.edu.ifpi.eventos.modelo.atividade.TipoDeAtividade;
 import br.edu.ifpi.eventos.modelo.inscricao.Inscricao;
@@ -13,12 +15,12 @@ public class Palestras_50 extends CupomPromocional{
 
 
 	@Override
-	public double valorDoDesconto(Inscricao inscricao) {
-		double resultado = 0.0;
+	public BigDecimal valorDoDesconto(Inscricao inscricao) {
+		BigDecimal resultado = new BigDecimal("0");
 		for (Item item : inscricao.getCarrinho()) {
 			if(item instanceof ItemUnico){
 				if (((ItemUnico) item).getAtividade().getTipo().equals(TipoDeAtividade.Palestra)){
-					resultado += item.getPreco() * 0.5;
+					resultado = resultado.add(item.getPreco().multiply(new BigDecimal("0.5")));
 				}
 			}
 		}

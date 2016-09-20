@@ -1,5 +1,7 @@
 package br.edu.ifpi.eventos.modelo.item;
 
+import java.math.BigDecimal;
+
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
@@ -16,7 +18,7 @@ public class ItemUnico extends Item{
 	private Atividade atividade;
 
 	
-	public ItemUnico(double preco, Atividade atividade) throws AtividadeNaoAptaParaItemException {
+	public ItemUnico(BigDecimal preco, Atividade atividade) throws AtividadeNaoAptaParaItemException {
 		super(preco);
 		if(atividade.isPagavel()){
 			this.atividade = atividade;
@@ -32,7 +34,7 @@ public class ItemUnico extends Item{
 	}
 
 	@Override
-	public void setPreco(double valor) {
+	public void setPreco(BigDecimal valor) {
 		super.preco = valor;
 	}
 	

@@ -1,5 +1,6 @@
 package br.edu.ifpi.eventos.modelo.cupompromocional;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -30,7 +31,7 @@ public abstract class CupomPromocional {
 		ativo = validade.depoisDoFim(hoje.getDiaFim(), hoje.getHoraFim()) ? false : true;
 	}
 	
-	public abstract double valorDoDesconto(Inscricao inscricao);
+	public abstract BigDecimal valorDoDesconto(Inscricao inscricao);
 	
 	public boolean getAtivo() {
 		return ativo;

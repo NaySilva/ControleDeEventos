@@ -2,24 +2,15 @@ package br.edu.ifpi.eventos.testes;
 
 import static org.junit.Assert.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-import javax.lang.model.element.PackageElement;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import br.edu.ifpi.eventos.excecoes.AtividadeInexistenteNoEventoException;
-import br.edu.ifpi.eventos.excecoes.AtividadeRepetidaException;
-import br.edu.ifpi.eventos.excecoes.HorarioIndisponivelException;
-import br.edu.ifpi.eventos.excecoes.InscricaoPagaException;
 import br.edu.ifpi.eventos.modelo.agenda.Agenda;
-import br.edu.ifpi.eventos.modelo.atividade.Atividade;
-import br.edu.ifpi.eventos.modelo.atividade.TipoDeAtividade;
-import br.edu.ifpi.eventos.modelo.cupompromocional.CupomPromocional;
-import br.edu.ifpi.eventos.modelo.cupompromocional.Lote_I;
-import br.edu.ifpi.eventos.modelo.cupompromocional.Palestras_50;
 import br.edu.ifpi.eventos.modelo.evento.Evento;
 import br.edu.ifpi.eventos.modelo.evento.TipoDeEvento;
 import br.edu.ifpi.eventos.modelo.inscricao.Inscricao;
@@ -46,18 +37,18 @@ public class PagamentoTeste {
 	
 	@Test
 	public void Deve_Marcar_A_Inscricao_Como_Paga_Ao_Receber_Pagamento(){
-		pagamento.pagarInscricao(0);
+		pagamento.pagarInscricao(new BigDecimal(0));
 		assertEquals(true, pagamento.isPago());
 	}
 	@Test
 	public void O_Pagamento_Deve_Esta_Como_Nao_Pago_Ao_Receber_Pagamento_Diferente_Do_Total(){
-		pagamento.pagarInscricao(40);
+		pagamento.pagarInscricao(new BigDecimal(40));
 		assertEquals(false, pagamento.isPago());
 	}
 	
 	@Test
 	public void Dia_Do_Pagamento_É_Hoje(){
-		pagamento.pagarInscricao(0);
+		pagamento.pagarInscricao(new BigDecimal(0));
 		LocalDate dia = pagamento.getHorarioPagamento().getDiaFim();
 		assertEquals(LocalDate.now(), dia);
 	}

@@ -1,5 +1,6 @@
 package br.edu.ifpi.eventos.modelo.item;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -16,7 +17,7 @@ public class ItemKit extends Item{
 	@ManyToMany
 	private List<ItemUnico> itens;
 	
-	public ItemKit(double preco) {
+	public ItemKit(BigDecimal preco) {
 		super(preco);
 		this.itens = new ArrayList<ItemUnico>();
 	}

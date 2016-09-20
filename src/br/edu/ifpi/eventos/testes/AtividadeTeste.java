@@ -2,6 +2,7 @@ package br.edu.ifpi.eventos.testes;
 
 import static org.junit.Assert.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -56,7 +57,7 @@ public class AtividadeTeste {
 		ev.adicionarAtividade(atividade);
 		atividade.setPagavel(true);
 		Inscricao ins = new Inscricao(ev, new PerfilParticipante(new Usuario()));
-		Item item = new ItemUnico(30, atividade);
+		Item item = new ItemUnico(new BigDecimal("30"), atividade);
 		ins.adicionarItem(item);
 		Inscricao ins2 = new Inscricao(ev, new PerfilParticipante(new Usuario()));
 		ins2.adicionarItem(item);

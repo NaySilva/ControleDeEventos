@@ -1,5 +1,6 @@
 package br.edu.ifpi.eventos.modelo.inscricao;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
@@ -68,16 +69,17 @@ public class Inscricao extends Subject{
 		if (pagamento.isPago()) throw new InscricaoPagaException();
 	}
 	
-	public double calcularTotalBruto(){
-		double totalBruto = 0;
+	public BigDecimal calcularTotalBruto(){
+		BigDecimal totalBruto = new BigDecimal(0);
 		for (Item p : getCarrinho()) {
-			totalBruto += p.getPreco();
+			totalBruto = totalBruto.add(p.getPreco());
+			System.out.println("ENTROU\n"+ totalBruto.toString());
 		}
 		return totalBruto;
 	}
 	
-	public double calcularTotalComDesconto(){
-		double totalComDesconto = cupom!=null ? calcularTotalBruto() - cupom.valorDoDesconto(this) : calcularTotalBruto();
+	public BigDecimal calcularTotalComDesconto(){
+		BigDecimal totalComDesconto = cupom!=null ? calcularTotalBruto().subtract(cupom.valorDoDesconto(this)) : calcularTotalBruto();
 		return totalComDesconto;
 	}
 	

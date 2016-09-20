@@ -2,6 +2,7 @@ package br.edu.ifpi.eventos.testes;
 
 import static org.junit.Assert.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -57,9 +58,9 @@ public class InscricaoTeste {
 		p50 = new Palestras_50(val1);
 		l1 = new Lote_I(val1);
 		l2 = new Lote_I(val2);
-		item1 = new ItemUnico(50, mc);
-		item2 = new ItemUnico(80, p);
-		item3 = new ItemUnico(40, p2);
+		item1 = new ItemUnico(new BigDecimal(50), mc);
+		item2 = new ItemUnico(new BigDecimal(80), p);
+		item3 = new ItemUnico(new BigDecimal(40), p2);
 	}
 
 	@Test
@@ -94,7 +95,7 @@ public class InscricaoTeste {
 	public void Inscricao_Paga_Nao_Deve_Aceitar_Novos_Itens() throws Exception{
 		sim.adicionarAtividade(mc);
 		ins.adicionarItem(item1);
-		ins.getPagamento().pagarInscricao(50);
+		ins.getPagamento().pagarInscricao(new BigDecimal(50));
 		sim.adicionarAtividade(p);
 		ins.adicionarItem(item2);
 	}
@@ -109,7 +110,7 @@ public class InscricaoTeste {
 		sim.adicionarAtividade(p);
 		ins.adicionarItem(item2);
 		ins.setCupom(p50);
-		assertEquals(40.0,p50.valorDoDesconto(ins), 0.00001);
+		assertEquals(new BigDecimal(40.0).doubleValue(),p50.valorDoDesconto(ins).doubleValue(),0.000001);
 	}
 	
 	@Test
@@ -119,7 +120,7 @@ public class InscricaoTeste {
 		sim.adicionarAtividade(p);
 		ins.adicionarItem(item2);
 		ins.setCupom(l1);
-		assertEquals(65, ins.calcularTotalComDesconto(), 0.00001);
+		assertEquals(65, ins.calcularTotalComDesconto().doubleValue(), 0.00001);
 	}
 
 	@Test

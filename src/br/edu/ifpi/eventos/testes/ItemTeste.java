@@ -2,6 +2,8 @@ package br.edu.ifpi.eventos.testes;
 
 import static org.junit.Assert.*;
 
+import java.math.BigDecimal;
+
 import org.junit.Test;
 
 import br.edu.ifpi.eventos.excecoes.AtividadeNaoAptaParaItemException;
@@ -16,7 +18,7 @@ public class ItemTeste {
 	public void So_Criar_Item_Se_Atividade_For_Pagavel() throws AtividadeNaoAptaParaItemException {
 		Atividade at = new Atividade("Palestra", TipoDeAtividade.Palestra);
 		at.setPagavel(false);
-		Item item = new ItemUnico(0, at);
+		Item item = new ItemUnico(new BigDecimal(0), at);
 	}
 
 }

@@ -1,5 +1,6 @@
 package br.edu.ifpi.eventos.modelo.item;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -24,11 +25,11 @@ public abstract class Item extends Subject{
 	@Id
 	@GeneratedValue
 	protected long id;
-	protected double preco;
+	protected BigDecimal preco;
 	@ManyToMany
 	private List<Inscricao> inscricoes;
 	
-	public Item(double preco) {
+	public Item(BigDecimal preco) {
 		this.preco = preco;
 		this.inscricoes = new ArrayList<Inscricao>();
 	}
@@ -41,11 +42,12 @@ public abstract class Item extends Subject{
 		limparNotificacao();
 	}
 
-	public double getPreco() {
+	public BigDecimal getPreco() {
+		System.out.println("precooo"+preco.toString());
 		return preco;
 	}
 
-	public void setPreco(double preco) {
+	public void setPreco(BigDecimal preco) {
 		this.preco = preco;
 		setNotificacao("Novo preço: " + preco);
 		notifyObservers();

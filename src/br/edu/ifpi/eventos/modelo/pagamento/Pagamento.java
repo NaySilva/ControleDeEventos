@@ -1,6 +1,8 @@
 package br.edu.ifpi.eventos.modelo.pagamento;
 
 
+import java.math.BigDecimal;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -25,9 +27,11 @@ public class Pagamento {
 		this.pago = false;
 	}
 	
-	public void pagarInscricao(double valor){
-		double total = inscricao.calcularTotalComDesconto();
-		if (total == valor) {
+	public void pagarInscricao(BigDecimal valor){
+		System.out.println("OIIIIIIIII\n"+valor.toString());
+		BigDecimal total = inscricao.calcularTotalComDesconto();
+		System.out.println(inscricao.calcularTotalComDesconto().toString());
+		if (total.equals(valor)) {
 			pago = true;
 			horarioPagamento = Agenda.noMomento;
 		}else pago = false;		
