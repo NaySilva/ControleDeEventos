@@ -43,7 +43,6 @@ public abstract class Item extends Subject{
 	}
 
 	public BigDecimal getPreco() {
-		System.out.println("precooo"+preco.toString());
 		return preco;
 	}
 

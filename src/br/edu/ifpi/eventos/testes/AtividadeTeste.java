@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,8 +34,8 @@ public class AtividadeTeste {
 	
 	@Before
 	public void inicializacao(){
-		agenda = new Agenda(LocalDate.of(2016, 8, 8), LocalTime.of(8,0), LocalDate.of(2016, 8, 8), LocalTime.of(12, 0));
-		agenda2 = new Agenda(LocalDate.of(2016, 8, 8), LocalTime.of(14,0), LocalDate.of(2016, 8, 8), LocalTime.of(18, 0));
+		agenda = new Agenda(LocalDateTime.of(2016, 8, 8, 8, 0), LocalDateTime.of(2016, 8, 8, 12, 0));
+		agenda2 = new Agenda(LocalDateTime.of(2016, 8, 8, 14, 0), LocalDateTime.of(2016, 8, 8, 18, 0));
 		local = new EspacoFisico("sala", TipoEspacoFisico.Sala);
 		local.adicionarHorarios(agenda);
 	}

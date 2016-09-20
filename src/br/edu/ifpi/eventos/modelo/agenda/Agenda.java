@@ -1,7 +1,6 @@
 package br.edu.ifpi.eventos.modelo.agenda;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,79 +10,52 @@ public class Agenda {
 	@Id
 	@GeneratedValue
 	private Long id;
-	private LocalDate diaComeco;
-	private LocalTime horaComeco;
-	private LocalDate diaFim;
-	private LocalTime horaFim;
+	private LocalDateTime comeco;
+	private LocalDateTime fim;
 	
-	public final static Agenda noMomento = new Agenda(LocalDate.now(), LocalTime.now());
+	public final static Agenda noMomento = new Agenda(LocalDateTime.now());
 	
 	
-	public Agenda(LocalDate dia, LocalTime hora) {
-		this.diaComeco = dia;
-		this.horaComeco = hora;
-		this.diaFim = dia;
-		this.horaFim = hora;
+	public Agenda(LocalDateTime horario) {
+		this.comeco = horario;
+		this.fim = horario;
 	}
 
-	public Agenda(LocalDate diaComeco, LocalTime horaComeco, LocalDate diaFim, LocalTime horaFim) {
-		this.diaComeco = diaComeco;
-		this.horaComeco = horaComeco;
-		this.diaFim = diaFim;
-		this.horaFim = horaFim;
+	public Agenda(LocalDateTime comeco, LocalDateTime fim) {
+		this.comeco = comeco;
+		this.fim = fim;
 	}
 
-	public boolean compararHorario(Agenda ag){
-		boolean antes = antesDoComeco(ag.diaComeco, ag.horaComeco) && antesDoComeco(ag.diaFim, ag.horaFim);
-		boolean depois = depoisDoFim(ag.diaComeco, ag.horaComeco) && depoisDoFim(ag.diaFim, ag.horaFim);
+	public boolean semInterferenciaNoHorario(Agenda ag){
+		boolean antes = antesDoComeco(ag.comeco) && antesDoComeco(ag.fim);
+		boolean depois = depoisDoFim(ag.comeco) && depoisDoFim(ag.fim);
 		return antes || depois;	
 	}
 	
 	public boolean dentroDoHorario(Agenda ag){
-		return noMeio(ag.diaComeco, ag.horaComeco) && noMeio(ag.diaFim, ag.horaFim);
+		return !antesDoComeco(ag.comeco) && !depoisDoFim(ag.fim);
+	}
+
+	public boolean antesDoComeco(LocalDateTime horario){
+		return comeco.compareTo(horario)>0;
 	}
 	
-	public boolean noMeio(LocalDate data, LocalTime hora){
-		return !antesDoComeco(data, hora) && !depoisDoFim(data, hora);
-	}
-	
-	public boolean depoisDoFim(LocalDate data, LocalTime hora){
-		boolean diaAnterior = diaFim.compareTo(data) < 0;
-		boolean mesmoDia = diaFim.equals(data);
-		boolean horaAnterior = horaFim.compareTo(hora)<0;
-		return diaAnterior || (mesmoDia && horaAnterior);
+	public boolean depoisDoFim(LocalDateTime horario){
+		return fim.compareTo(horario)<0;
 	}
 	
 	public int compareAgendaTo(Agenda agenda){
-		if (diaComeco.equals(agenda.diaComeco)) return horaComeco.compareTo(agenda.horaComeco);
-		return (diaComeco.compareTo(agenda.diaComeco));
-	}
-	
-	public boolean antesDoComeco(LocalDate data, LocalTime hora){
-		boolean diaPosterior = diaComeco.compareTo(data)>0;
-		boolean mesmoDia = diaComeco.equals(data);
-		boolean horaPosterior = horaComeco.compareTo(hora)>0;
-		return diaPosterior || (mesmoDia && horaPosterior);
+		if (comeco.equals(agenda.comeco)) return fim.compareTo(agenda.fim); 
+		return (comeco.compareTo(agenda.comeco));
 	}
 
-	public LocalDate getDiaComeco() {
-		return diaComeco;
+	public LocalDateTime getComeco() {
+		return comeco;
 	}
 
-	public LocalTime getHoraComeco() {
-		return horaComeco;
+	public LocalDateTime getFim() {
+		return fim;
 	}
-
-	public LocalDate getDiaFim() {
-		return diaFim;
-	}
-
-	public LocalTime getHoraFim() {
-		return horaFim;
-	}
-	
-	
-
 	
 
 }

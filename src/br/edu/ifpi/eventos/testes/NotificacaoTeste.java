@@ -2,8 +2,7 @@ package br.edu.ifpi.eventos.testes;
 
 import static org.junit.Assert.*;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 
 import org.junit.Test;
 
@@ -23,8 +22,8 @@ public class NotificacaoTeste {
 
 	@Test
 	public void mostrarNotificacaoAoAdicionarAtividadeNoEventoDepoisDeJaTaInscrito() throws HorarioIndisponivelException {
-		Agenda ag1 = new Agenda(LocalDate.of(2016, 9, 1), LocalTime.of(8,0), LocalDate.of(2016,9,1), LocalTime.of(11, 0));
-		Agenda ag2 = new Agenda(LocalDate.of(2016, 9, 1), LocalTime.of(10,0), LocalDate.of(2016,9,1), LocalTime.of(11, 0));
+		Agenda ag1 = new Agenda(LocalDateTime.of(2016, 9, 1, 8, 0), LocalDateTime.of(2016, 9, 1, 11, 0));
+		Agenda ag2 = new Agenda(LocalDateTime.of(2016, 9, 1, 10, 0), LocalDateTime.of(2016, 9, 1, 11, 0));
 		EspacoFisico local = new EspacoFisico("sala A", TipoEspacoFisico.Sala);
 		local.adicionarHorarios(ag1);
 		local.adicionarHorarios(ag2);
@@ -40,8 +39,8 @@ public class NotificacaoTeste {
 	
 	@Test
 	public void naoMostrarNotificacaoAoAdicionarAtividadeNoEventoDepoisDeJaTaInscrito() throws HorarioIndisponivelException {
-		Agenda ag1 = new Agenda(LocalDate.of(2016, 9, 1), LocalTime.of(8,0), LocalDate.of(2016,9,1), LocalTime.of(11, 0));
-		Agenda ag2 = new Agenda(LocalDate.of(2016, 9, 1), LocalTime.of(10,0), LocalDate.of(2016,9,1), LocalTime.of(11, 0));
+		Agenda ag1 = new Agenda(LocalDateTime.of(2016, 9, 1, 8, 0), LocalDateTime.of(2016, 9, 1, 11, 0));
+		Agenda ag2 = new Agenda(LocalDateTime.of(2016, 9, 1, 10, 0), LocalDateTime.of(2016, 9, 1, 11, 0));
 		EspacoFisico local = new EspacoFisico("sala A", TipoEspacoFisico.Sala);
 		local.adicionarHorarios(ag1);
 		local.adicionarHorarios(ag2);

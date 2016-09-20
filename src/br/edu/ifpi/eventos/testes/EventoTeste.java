@@ -2,8 +2,7 @@ package br.edu.ifpi.eventos.testes;
 
 import static org.junit.Assert.*;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,9 +27,9 @@ public class EventoTeste {
 	
 	@Before
 	public void inicializacao(){
-		ag1 = new Agenda(LocalDate.of(2016,9,29), LocalTime.of(14, 00), LocalDate.of(2016, 9, 30), LocalTime.of(18, 00));
-		ag2 = new Agenda(LocalDate.of(2016,9,29), LocalTime.of(8, 00), LocalDate.of(2016, 9, 29), LocalTime.of(12, 0));
-		ag3 = new Agenda(LocalDate.of(2016, 9, 11), LocalTime.of(0, 1), LocalDate.of(2016, 9, 28), LocalTime.of(23, 59));
+		ag1 = new Agenda(LocalDateTime.of(2016, 9, 29, 14, 0), LocalDateTime.of(2016, 9, 30, 18, 0));
+		ag2 = new Agenda(LocalDateTime.of(2016, 9, 29, 8, 0), LocalDateTime.of(2016, 9, 29, 12, 0));
+		ag3 = new Agenda(LocalDateTime.of(2016, 9, 11, 0, 1), LocalDateTime.of(2016, 9, 28, 23, 59));
 		sem = new Evento("Semana da Quimica", TipoDeEvento.Semana).comInscricoesPara(ag1);
 		sim = new Evento("Simposio de programação", TipoDeEvento.Simposio).comInscricoesPara(ag3);
 		mc = new Atividade("Nanotecnologia", TipoDeAtividade.Minicurso);

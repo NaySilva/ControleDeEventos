@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 
@@ -28,7 +29,7 @@ public class PagamentoTeste {
 	
 	@Before
 	public void inicializacao(){
-		ag1 = new Agenda(LocalDate.of(2016, 9, 11), LocalTime.of(8, 00), LocalDate.of(2016, 9, 29), LocalTime.of(18, 00));
+		ag1 = new Agenda(LocalDateTime.of(2016, 9, 11, 8, 0), LocalDateTime.of(2016, 9, 29, 18, 0));
 		sem = new Evento("Semana de Quimica",TipoDeEvento.Semana);
 		perfil = new PerfilParticipante(new Usuario());
 		insc = new Inscricao(sem, perfil);
@@ -49,8 +50,8 @@ public class PagamentoTeste {
 	@Test
 	public void Dia_Do_Pagamento_É_Hoje(){
 		pagamento.pagarInscricao(new BigDecimal(0));
-		LocalDate dia = pagamento.getHorarioPagamento().getDiaFim();
-		assertEquals(LocalDate.now(), dia);
+		LocalDateTime dia = pagamento.getHorarioPagamento().getFim();
+		assertEquals(LocalDateTime.now().toLocalDate(), dia.toLocalDate());
 	}
 	
 	

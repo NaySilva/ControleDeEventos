@@ -3,6 +3,7 @@ package br.edu.ifpi.eventos.testes;
 import static org.junit.Assert.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 import org.junit.Test;
@@ -27,18 +28,18 @@ public class EspacoFisicoTeste {
 	@Test
 	public void horarioDisponivelParaOLocal(){
 		EspacoFisico ef = new EspacoFisico("Sala 1", TipoEspacoFisico.Sala);
-		Agenda agDoLocal = new Agenda(LocalDate.of(2016, 9, 4),LocalTime.of(0, 0),LocalDate.of(2016, 9, 4),LocalTime.of(23, 59));
+		Agenda agDoLocal = new Agenda(LocalDateTime.of(2016, 9, 4, 0, 0), LocalDateTime.of(2016, 9, 4, 23, 59));
 		ef.adicionarHorarios(agDoLocal);
-		Agenda ag = new Agenda(LocalDate.of(2016, 9, 4), LocalTime.of(8, 0), LocalDate.of(2016,9,4)	, LocalTime.of(12, 0));
+		Agenda ag = new Agenda(LocalDateTime.of(2016, 9, 4, 8, 0), LocalDateTime.of(2016, 9, 4, 12, 0));
 		assertEquals(true, ef.disponivelNoHorario(ag));
 	}
 	
 	@Test 
 	public void HorarioNaoDisponivelParaOLocal(){
 		EspacoFisico ef = new EspacoFisico("Sala 1", TipoEspacoFisico.Sala);
-		Agenda agDoLocal = new Agenda(LocalDate.of(2016, 9, 4),LocalTime.of(0, 0),LocalDate.of(2016, 9, 4),LocalTime.of(23, 59));
+		Agenda agDoLocal = new Agenda(LocalDateTime.of(2016, 9, 4, 0, 0), LocalDateTime.of(2016, 9, 4, 23, 59));
 		ef.adicionarHorarios(agDoLocal);
-		Agenda ag = new Agenda(LocalDate.of(2016, 9, 5), LocalTime.of(8, 0), LocalDate.of(2016,9,5), LocalTime.of(12, 0));
+		Agenda ag = new Agenda(LocalDateTime.of(2016, 9, 5, 8, 0), LocalDateTime.of(2016, 9, 5, 12, 0));
 		assertEquals(false, ef.disponivelNoHorario(ag));
 	}
 

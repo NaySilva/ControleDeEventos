@@ -3,8 +3,7 @@ package br.edu.ifpi.eventos.testes;
 import static org.junit.Assert.*;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -42,10 +41,10 @@ public class InscricaoTeste {
 	
 	@Before
 	public void Inicializacao() throws HorarioIndisponivelException, AtividadeNaoAptaParaItemException {
-		ag1 = new Agenda(LocalDate.of(2016, 9, 30), LocalTime.of(8, 0), LocalDate.of(2016, 9, 30), LocalTime.of(12, 0));
-		ag2 = new Agenda(LocalDate.of(2016, 9, 30), LocalTime.of(14, 0), LocalDate.of(2016, 9, 30), LocalTime.of(18,00));
-		val1 = new Agenda(LocalDate.of(2016, 9, 30), LocalTime.of(23, 59));
-		val2 = new Agenda(LocalDate.of(2016, 8, 24), LocalTime.of(23, 59));
+		ag1 = new Agenda(LocalDateTime.of(2016, 9, 30, 8, 0), LocalDateTime.of(2016, 9, 30, 12, 0));
+		ag2 = new Agenda(LocalDateTime.of(2016, 9, 30, 14, 0), LocalDateTime.of(2016, 9, 30, 18, 0));
+		val1 = new Agenda(LocalDateTime.of(2016, 9, 30, 23, 59));
+		val2 = new Agenda(LocalDateTime.of(2016, 8, 24, 23, 59));
 		sim = new Evento("Simposio de Programação", TipoDeEvento.Simposio);
 		perfil = new PerfilParticipante(new Usuario());
 		ins = new Inscricao(sim, perfil);

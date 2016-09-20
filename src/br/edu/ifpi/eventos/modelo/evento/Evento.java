@@ -68,8 +68,7 @@ public class Evento extends Subject{
 	}
 
 	public void verificarData(Agenda agenda) {
-		Agenda noMomento = Agenda.noMomento;
-		if (agenda.depoisDoFim(noMomento.getDiaFim(), noMomento.getHoraFim())){
+		if (agenda.depoisDoFim(Agenda.noMomento.getFim())){
 			throw new IllegalArgumentException("Data Passada");
 		}
 	}

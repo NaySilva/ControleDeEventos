@@ -28,9 +28,7 @@ public class Pagamento {
 	}
 	
 	public void pagarInscricao(BigDecimal valor){
-		System.out.println("OIIIIIIIII\n"+valor.toString());
 		BigDecimal total = inscricao.calcularTotalComDesconto();
-		System.out.println(inscricao.calcularTotalComDesconto().toString());
 		if (total.equals(valor)) {
 			pago = true;
 			horarioPagamento = Agenda.noMomento;
