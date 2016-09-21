@@ -21,6 +21,7 @@ import br.edu.ifpi.eventos.modelo.cupompromocional.CupomPromocional;
 import br.edu.ifpi.eventos.modelo.cupompromocional.Lote_I;
 import br.edu.ifpi.eventos.modelo.cupompromocional.Palestras_50;
 import br.edu.ifpi.eventos.modelo.espacofisico.EspacoFisico;
+import br.edu.ifpi.eventos.modelo.espacofisico.EspacoFisicoBuilder;
 import br.edu.ifpi.eventos.modelo.espacofisico.TipoEspacoFisico;
 import br.edu.ifpi.eventos.modelo.evento.Evento;
 import br.edu.ifpi.eventos.modelo.evento.TipoDeEvento;
@@ -49,7 +50,7 @@ public class InscricaoTeste {
 		sim = new Evento();
 		perfil = new PerfilParticipante(new Usuario());
 		ins = new Inscricao(sim, perfil);
-		EspacoFisico local = new EspacoFisico("sala A", TipoEspacoFisico.Sala);
+		EspacoFisico local = new EspacoFisicoBuilder().comDescricao("sala A").doTipo(TipoEspacoFisico.Sala).getEspacoFisico();
 		local.adicionarHorarios(ag1);
 		local.adicionarHorarios(ag2);
 		mc = new AtividadeBuilder().comNome("Jogos").doTipo(TipoDeAtividade.Minicurso).emLocal(local).noHorario(ag1).pagavel().getAtividade();

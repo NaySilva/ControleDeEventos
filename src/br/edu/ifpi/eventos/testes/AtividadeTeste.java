@@ -16,6 +16,7 @@ import br.edu.ifpi.eventos.modelo.atividade.Atividade;
 import br.edu.ifpi.eventos.modelo.atividade.AtividadeBuilder;
 import br.edu.ifpi.eventos.modelo.atividade.TipoDeAtividade;
 import br.edu.ifpi.eventos.modelo.espacofisico.EspacoFisico;
+import br.edu.ifpi.eventos.modelo.espacofisico.EspacoFisicoBuilder;
 import br.edu.ifpi.eventos.modelo.espacofisico.TipoEspacoFisico;
 import br.edu.ifpi.eventos.modelo.evento.Evento;
 import br.edu.ifpi.eventos.modelo.evento.EventoBuilder;
@@ -36,7 +37,7 @@ public class AtividadeTeste {
 	public void inicializacao(){
 		agenda = new Agenda(LocalDateTime.of(2016, 8, 8, 8, 0), LocalDateTime.of(2016, 8, 8, 12, 0));
 		agenda2 = new Agenda(LocalDateTime.of(2016, 8, 8, 14, 0), LocalDateTime.of(2016, 8, 8, 18, 0));
-		local = new EspacoFisico("sala", TipoEspacoFisico.Sala);
+		local = new EspacoFisicoBuilder().comDescricao("sala").doTipo(TipoEspacoFisico.Sala).getEspacoFisico();
 		local.adicionarHorarios(agenda);
 	}
 

@@ -19,30 +19,22 @@ public class EspacoFisico {
 	@Id
 	@GeneratedValue
 	private Long id;
-	private String descricao;
-	private TipoEspacoFisico tipo;
-	private int capacidade;
-	private String endereco;
+	protected String descricao;
+	protected TipoEspacoFisico tipo;
+	protected int capacidade;
+	protected String endereco;
 	@OneToOne
-	private EspacoFisico localExterno;
+	protected EspacoFisico localExterno;
 	@OneToMany
 	private List<EspacoFisico> locaisInternos;
 	@OneToMany
 	private List<Agenda> horarios;
 	@OneToOne(mappedBy="local")
-	private Atividade atividade;
+	protected Atividade atividade;
 	
-	public EspacoFisico(String descricao, TipoEspacoFisico tipo) {
-		this.descricao = descricao;
-		this.tipo = tipo;
+	public EspacoFisico() {
 		this.locaisInternos = new ArrayList<EspacoFisico>();
 		this.horarios = new ArrayList<Agenda>();
-	}
-	
-	public EspacoFisico comLocalExterno(EspacoFisico local){
-		this.localExterno = local;
-		local.adicionarLocalInterno(this);
-		return this;
 	}
 	
 	public void adicionarLocalInterno(EspacoFisico local){
@@ -81,6 +73,5 @@ public class EspacoFisico {
 		}
 		return false;
 	}
-	
 
 }

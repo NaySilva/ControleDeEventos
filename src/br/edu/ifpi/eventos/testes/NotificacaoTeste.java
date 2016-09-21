@@ -12,6 +12,7 @@ import br.edu.ifpi.eventos.modelo.atividade.Atividade;
 import br.edu.ifpi.eventos.modelo.atividade.AtividadeBuilder;
 import br.edu.ifpi.eventos.modelo.atividade.TipoDeAtividade;
 import br.edu.ifpi.eventos.modelo.espacofisico.EspacoFisico;
+import br.edu.ifpi.eventos.modelo.espacofisico.EspacoFisicoBuilder;
 import br.edu.ifpi.eventos.modelo.espacofisico.TipoEspacoFisico;
 import br.edu.ifpi.eventos.modelo.evento.Evento;
 import br.edu.ifpi.eventos.modelo.evento.EventoBuilder;
@@ -26,7 +27,7 @@ public class NotificacaoTeste {
 	public void mostrarNotificacaoAoAdicionarAtividadeNoEventoDepoisDeJaTaInscrito() throws HorarioIndisponivelException {
 		Agenda ag1 = new Agenda(LocalDateTime.of(2016, 9, 1, 8, 0), LocalDateTime.of(2016, 9, 1, 11, 0));
 		Agenda ag2 = new Agenda(LocalDateTime.of(2016, 9, 1, 10, 0), LocalDateTime.of(2016, 9, 1, 11, 0));
-		EspacoFisico local = new EspacoFisico("sala A", TipoEspacoFisico.Sala);
+		EspacoFisico local = new EspacoFisicoBuilder().comDescricao("sala A").doTipo(TipoEspacoFisico.Sala).getEspacoFisico();
 		local.adicionarHorarios(ag1);
 		local.adicionarHorarios(ag2);
 		Atividade atividade = new AtividadeBuilder().comNome("Palestra").doTipo(TipoDeAtividade.Palestra).emLocal(local).noHorario(ag1).getAtividade();
@@ -43,7 +44,7 @@ public class NotificacaoTeste {
 	public void naoMostrarNotificacaoAoAdicionarAtividadeNoEventoDepoisDeJaTaInscrito() throws HorarioIndisponivelException {
 		Agenda ag1 = new Agenda(LocalDateTime.of(2016, 9, 1, 8, 0), LocalDateTime.of(2016, 9, 1, 11, 0));
 		Agenda ag2 = new Agenda(LocalDateTime.of(2016, 9, 1, 10, 0), LocalDateTime.of(2016, 9, 1, 11, 0));
-		EspacoFisico local = new EspacoFisico("sala A", TipoEspacoFisico.Sala);
+		EspacoFisico local = new EspacoFisicoBuilder().comDescricao("sala A").doTipo(TipoEspacoFisico.Sala).getEspacoFisico();
 		local.adicionarHorarios(ag1);
 		local.adicionarHorarios(ag2);
 		Atividade atividade = new AtividadeBuilder().comNome("Palestra").doTipo(TipoDeAtividade.Palestra).emLocal(local).noHorario(ag1).getAtividade();

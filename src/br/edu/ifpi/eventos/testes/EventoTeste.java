@@ -14,6 +14,7 @@ import br.edu.ifpi.eventos.modelo.atividade.Atividade;
 import br.edu.ifpi.eventos.modelo.atividade.AtividadeBuilder;
 import br.edu.ifpi.eventos.modelo.atividade.TipoDeAtividade;
 import br.edu.ifpi.eventos.modelo.espacofisico.EspacoFisico;
+import br.edu.ifpi.eventos.modelo.espacofisico.EspacoFisicoBuilder;
 import br.edu.ifpi.eventos.modelo.espacofisico.TipoEspacoFisico;
 import br.edu.ifpi.eventos.modelo.evento.Evento;
 import br.edu.ifpi.eventos.modelo.evento.EventoBuilder;
@@ -64,7 +65,7 @@ public class EventoTeste {
 	
 	@Test
 	public void mostrarAtvidadesOrdenadas() throws HorarioIndisponivelException{
-		EspacoFisico ef = new EspacoFisico("Sala", TipoEspacoFisico.Sala);
+		EspacoFisico ef = new EspacoFisicoBuilder().comDescricao("Sala").doTipo(TipoEspacoFisico.Sala).getEspacoFisico();
 		ef.adicionarHorarios(ag1);
 		ef.adicionarHorarios(ag2);
 		Atividade at1 = new AtividadeBuilder().comNome("at1").doTipo(TipoDeAtividade.CoffeBreak).emLocal(ef).noHorario(ag1).getAtividade();
