@@ -26,6 +26,7 @@ import br.edu.ifpi.eventos.modelo.item.Item;
 import br.edu.ifpi.eventos.modelo.item.ItemUnico;
 import br.edu.ifpi.eventos.modelo.perfil.PerfilParticipante;
 import br.edu.ifpi.eventos.modelo.responsabilidade.Responsabilidade;
+import br.edu.ifpi.eventos.modelo.usuario.Pessoa;
 import br.edu.ifpi.eventos.modelo.usuario.Usuario;
 
 public class AtividadeTeste {
@@ -71,7 +72,7 @@ public class AtividadeTeste {
 	@Test
 	public void permitir_Incluir_Responsaveis_Para_Uma_Atividade(){
 		Atividade at = new AtividadeBuilder().comNome("Palestra").doTipo(TipoDeAtividade.Palestra).getAtividade();
-		Responsabilidade res = new Responsabilidade(at, new Usuario());
+		Responsabilidade res = new Responsabilidade(at, new Pessoa());
 		assertEquals(true, at.getResponsaveis().contains(res));
 	}
 	

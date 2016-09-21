@@ -3,18 +3,14 @@ package br.edu.ifpi.eventos.modelo.inscricao;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Observable;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.Transient;
 
 import br.edu.ifpi.eventos.excecoes.AtividadeInexistenteNoEventoException;
 import br.edu.ifpi.eventos.excecoes.AtividadeRepetidaException;
@@ -25,7 +21,6 @@ import br.edu.ifpi.eventos.modelo.item.Item;
 import br.edu.ifpi.eventos.modelo.item.ItemUnico;
 import br.edu.ifpi.eventos.modelo.pagamento.Pagamento;
 import br.edu.ifpi.eventos.modelo.perfil.PerfilParticipante;
-import br.edu.ifpi.eventos.modelo.perfil.TipoDeParticipacao;
 import br.edu.ifpi.eventos.util.Subject;
 @Entity
 public class Inscricao extends Subject{
@@ -55,12 +50,12 @@ public class Inscricao extends Subject{
 
 	public void adicionarItem(Item item) throws Exception {
 			item.adicionarNoCarrinho(this);
-			setNotificacao("Novo Produto foi adicionado");
-			notifyObservers();
 	}
 	
 	public void adicionarUmItem(Item item){
 		carrinho.add(item);
+		setNotificacao("Novo Produto foi adicionado");
+		notifyObservers();
 	}
 	
 	public void retricoesDeAtividade(ItemUnico item) throws AtividadeRepetidaException, AtividadeInexistenteNoEventoException, InscricaoPagaException{
@@ -73,7 +68,6 @@ public class Inscricao extends Subject{
 		BigDecimal totalBruto = new BigDecimal(0);
 		for (Item p : getCarrinho()) {
 			totalBruto = totalBruto.add(p.getPreco());
-			System.out.println("ENTROU\n"+ totalBruto.toString());
 		}
 		return totalBruto;
 	}

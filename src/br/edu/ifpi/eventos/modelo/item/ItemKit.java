@@ -28,6 +28,9 @@ public class ItemKit extends Item{
 
 	@Override
 	public void adicionarNoCarrinho(Inscricao inscricao) throws Exception {
+		for (ItemUnico itemUnico : itens) {
+			inscricao.retricoesDeAtividade(itemUnico);
+		}
 		inscricao.adicionarItem(this);
 	}
 	
