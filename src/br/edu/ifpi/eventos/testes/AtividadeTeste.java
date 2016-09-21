@@ -3,9 +3,7 @@ package br.edu.ifpi.eventos.testes;
 import static org.junit.Assert.*;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +13,7 @@ import org.junit.Test;
 import br.edu.ifpi.eventos.excecoes.HorarioIndisponivelException;
 import br.edu.ifpi.eventos.modelo.agenda.Agenda;
 import br.edu.ifpi.eventos.modelo.atividade.Atividade;
+import br.edu.ifpi.eventos.modelo.atividade.AtividadeBuilder;
 import br.edu.ifpi.eventos.modelo.atividade.TipoDeAtividade;
 import br.edu.ifpi.eventos.modelo.espacofisico.EspacoFisico;
 import br.edu.ifpi.eventos.modelo.espacofisico.TipoEspacoFisico;
@@ -42,18 +41,18 @@ public class AtividadeTeste {
 
 	@Test
 	public void mudarHorarioPassandoPelasRestricoes() throws HorarioIndisponivelException {
-		Atividade atividade = new Atividade("At1", TipoDeAtividade.MesaRedonda).emLocal(local).noHorario(agenda);
+		Atividade atividade = new AtividadeBuilder().comNome("At1").doTipo(TipoDeAtividade.MesaRedonda).emLocal(local).noHorario(agenda).getAtividade();
 		assertEquals(agenda, atividade.getAgenda());
 	}
 	
 	@Test(expected=HorarioIndisponivelException.class)
 	public void erroAoPassarUmHorarioNaoDisponivelNoLocal() throws HorarioIndisponivelException{
-		Atividade atividade = new Atividade("At1", TipoDeAtividade.MesaRedonda).emLocal(local).noHorario(agenda2);		
+		Atividade atividade = new AtividadeBuilder().comNome("At1").doTipo(TipoDeAtividade.MesaRedonda).emLocal(local).noHorario(agenda2).getAtividade();		
 	}
 	
 	@Test
 	public void listarInscritosPorAtividade() throws Exception{
-		Atividade atividade = new Atividade("At1", TipoDeAtividade.MesaRedonda).emLocal(local).noHorario(agenda);		
+		Atividade atividade = new AtividadeBuilder().comNome("At1").doTipo(TipoDeAtividade.MesaRedonda).emLocal(local).noHorario(agenda).getAtividade();	
 		Evento ev = new Evento("ev", TipoDeEvento.Congresso);
 		ev.adicionarAtividade(atividade);
 		atividade.setPagavel(true);
@@ -70,14 +69,14 @@ public class AtividadeTeste {
 	
 	@Test
 	public void permitir_Incluir_Responsaveis_Para_Uma_Atividade(){
-		Atividade at = new Atividade("Palestra", TipoDeAtividade.Palestra);
+		Atividade at = new AtividadeBuilder().comNome("Palestra").doTipo(TipoDeAtividade.Palestra).getAtividade();
 		Responsabilidade res = new Responsabilidade(at, new Usuario());
 		assertEquals(true, at.getResponsaveis().contains(res));
 	}
 	
 	@Test
 	public void Marcar_Atividade_Como_Realizada(){
-		Atividade at = new Atividade("Palestra", TipoDeAtividade.Palestra);
+		Atividade at = new AtividadeBuilder().comNome("Palestra").doTipo(TipoDeAtividade.Palestra).getAtividade();
 		at.setRealizado(true);
 		assertEquals(true, at.isRealizado());
 	}

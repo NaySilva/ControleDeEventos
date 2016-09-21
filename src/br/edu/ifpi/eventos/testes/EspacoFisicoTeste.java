@@ -2,15 +2,11 @@ package br.edu.ifpi.eventos.testes;
 
 import static org.junit.Assert.*;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 
 import org.junit.Test;
 
 import br.edu.ifpi.eventos.modelo.agenda.Agenda;
-import br.edu.ifpi.eventos.modelo.atividade.Atividade;
-import br.edu.ifpi.eventos.modelo.atividade.TipoDeAtividade;
 import br.edu.ifpi.eventos.modelo.espacofisico.EspacoFisico;
 import br.edu.ifpi.eventos.modelo.espacofisico.TipoEspacoFisico;
 

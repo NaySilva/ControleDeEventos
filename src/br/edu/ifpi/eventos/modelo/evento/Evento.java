@@ -107,12 +107,8 @@ public class Evento extends Subject{
 		notifyObservers();
 	}
 	
-	public List<Atividade> getAtividadesC() {
+	public List<Atividade> getAtividades() {
 		return Collections.unmodifiableList(atividades);
-	}
-	
-	protected List<Atividade> getAtividades(){
-		return atividades;
 	}
 	
 	public List<Inscricao> getInscricoes() {
@@ -132,32 +128,10 @@ public class Evento extends Subject{
 		notificacao += mensagem;
 	}
 	
-	public List<Atividade> mostrarAtividadesOrdenadasPorAgenda(){
-		List<Agenda> agendas = new ArrayList<Agenda>();
-		List<Atividade> atividadesOrdernadas = new ArrayList<Atividade>();
-		for (Atividade at : atividades) {
-			agendas.add(at.getAgenda());
-		}
-		while(!agendas.isEmpty()){
-			int proxima = posicaoDaProximaAtividade(agendas);
-			atividadesOrdernadas.add(atividades.get(proxima));
-			agendas.remove(proxima);
-		}
-		return atividadesOrdernadas;
-	}
-
-	public int posicaoDaProximaAtividade(List<Agenda> agendas) {
-		int pos = 0;
-		for (int i = 0; i < agendas.size(); i++) {
-			pos = i;
-			for (Agenda agenda : agendas) {
-				if (agendas.get(i).compareAgendaTo(agenda)>0){
-					pos=0;
-					break;
-				}
-			}
-		}
-		return pos;
+	public List<Atividade> atividadesOrdenadas(){
+		List<Atividade> atividadesOrdenadas = this.atividades;
+		atividadesOrdenadas.sort((a1, a2) -> a1.getAgenda().compareAgendaTo(a2.getAgenda()));
+		return atividadesOrdenadas;
 	}
 	
 	public void setStatus(StatusDoEvento status) {

@@ -65,7 +65,7 @@ public class Inscricao extends Subject{
 	
 	public void retricoesDeAtividade(ItemUnico item) throws AtividadeRepetidaException, AtividadeInexistenteNoEventoException, InscricaoPagaException{
 		if (carrinho.contains(item)) throw new AtividadeRepetidaException();
-		if (!evento.getAtividadesC().contains(item.getAtividade())) throw new AtividadeInexistenteNoEventoException();
+		if (!evento.getAtividades().contains(item.getAtividade())) throw new AtividadeInexistenteNoEventoException();
 		if (pagamento.isPago()) throw new InscricaoPagaException();
 	}
 	

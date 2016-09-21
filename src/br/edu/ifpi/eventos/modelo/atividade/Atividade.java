@@ -7,9 +7,6 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Transient;
@@ -39,23 +36,8 @@ public class Atividade extends Subject {
 	private boolean pagavel;
 	private boolean realizado;
 	
-	Atividade(){}
-	
-	public Atividade(String nome, TipoDeAtividade tipo) {
-		this.nome = nome;
-		this.tipo = tipo;
-		this.pagavel=true;
+	public Atividade() {
 		this.responsaveis = new ArrayList<Responsabilidade>();
-	}
-	
-	public Atividade emLocal(EspacoFisico local){
-		setLocal(local);
-		return this;
-	}
-	
-	public Atividade noHorario(Agenda agenda) throws HorarioIndisponivelException{
-		setAgenda(agenda);
-		return this;
 	}
 
 	public Agenda getAgenda() {
@@ -111,8 +93,8 @@ public class Atividade extends Subject {
 		this.nome = nome;
 	}
 	
-	public void setTipo(String tipo) {
-		this.tipo = TipoDeAtividade.porValor(tipo);
+	public void setTipo(TipoDeAtividade tipo) {
+		this.tipo = tipo;
 	}
 	
 	public Evento getEvento() {
