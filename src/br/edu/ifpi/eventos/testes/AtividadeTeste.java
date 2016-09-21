@@ -18,6 +18,7 @@ import br.edu.ifpi.eventos.modelo.atividade.TipoDeAtividade;
 import br.edu.ifpi.eventos.modelo.espacofisico.EspacoFisico;
 import br.edu.ifpi.eventos.modelo.espacofisico.TipoEspacoFisico;
 import br.edu.ifpi.eventos.modelo.evento.Evento;
+import br.edu.ifpi.eventos.modelo.evento.EventoBuilder;
 import br.edu.ifpi.eventos.modelo.evento.TipoDeEvento;
 import br.edu.ifpi.eventos.modelo.inscricao.Inscricao;
 import br.edu.ifpi.eventos.modelo.item.Item;
@@ -53,7 +54,7 @@ public class AtividadeTeste {
 	@Test
 	public void listarInscritosPorAtividade() throws Exception{
 		Atividade atividade = new AtividadeBuilder().comNome("At1").doTipo(TipoDeAtividade.MesaRedonda).emLocal(local).noHorario(agenda).getAtividade();	
-		Evento ev = new Evento("ev", TipoDeEvento.Congresso);
+		Evento ev = new EventoBuilder().comNome("ev").doTipo(TipoDeEvento.Congresso).getEvento();
 		ev.adicionarAtividade(atividade);
 		atividade.setPagavel(true);
 		Inscricao ins = new Inscricao(ev, new PerfilParticipante(new Usuario()));

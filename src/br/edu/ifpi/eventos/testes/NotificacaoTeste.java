@@ -14,6 +14,7 @@ import br.edu.ifpi.eventos.modelo.atividade.TipoDeAtividade;
 import br.edu.ifpi.eventos.modelo.espacofisico.EspacoFisico;
 import br.edu.ifpi.eventos.modelo.espacofisico.TipoEspacoFisico;
 import br.edu.ifpi.eventos.modelo.evento.Evento;
+import br.edu.ifpi.eventos.modelo.evento.EventoBuilder;
 import br.edu.ifpi.eventos.modelo.evento.TipoDeEvento;
 import br.edu.ifpi.eventos.modelo.inscricao.Inscricao;
 import br.edu.ifpi.eventos.modelo.perfil.PerfilParticipante;
@@ -30,7 +31,7 @@ public class NotificacaoTeste {
 		local.adicionarHorarios(ag2);
 		Atividade atividade = new AtividadeBuilder().comNome("Palestra").doTipo(TipoDeAtividade.Palestra).emLocal(local).noHorario(ag1).getAtividade();
 		Atividade atividade2 = new AtividadeBuilder().comNome("minicurso").doTipo(TipoDeAtividade.Minicurso).emLocal(local).noHorario(ag2).getAtividade();
-		Evento evento = new Evento("Ev", TipoDeEvento.Simposio);
+		Evento evento = new EventoBuilder().comNome("Ev").doTipo(TipoDeEvento.Simposio).getEvento();
 		PerfilParticipante perfil = new PerfilParticipante(new Usuario());
 		Inscricao inscricao = new Inscricao(evento, perfil);
 		evento.adicionarAtividade(atividade);
@@ -47,7 +48,7 @@ public class NotificacaoTeste {
 		local.adicionarHorarios(ag2);
 		Atividade atividade = new AtividadeBuilder().comNome("Palestra").doTipo(TipoDeAtividade.Palestra).emLocal(local).noHorario(ag1).getAtividade();
 		Atividade atividade2 = new AtividadeBuilder().comNome("minicurso").doTipo(TipoDeAtividade.Minicurso).emLocal(local).noHorario(ag2).getAtividade();
-		Evento evento = new Evento("Ev", TipoDeEvento.Simposio);
+		Evento evento = new EventoBuilder().comNome("Ev").doTipo(TipoDeEvento.Simposio).getEvento();
 		PerfilParticipante perfil = new PerfilParticipante(new Usuario());
 		evento.adicionarAtividade(atividade);
 		Inscricao inscricao = new Inscricao(evento, perfil);

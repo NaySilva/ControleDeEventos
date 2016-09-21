@@ -16,6 +16,7 @@ import br.edu.ifpi.eventos.modelo.atividade.TipoDeAtividade;
 import br.edu.ifpi.eventos.modelo.espacofisico.EspacoFisico;
 import br.edu.ifpi.eventos.modelo.espacofisico.TipoEspacoFisico;
 import br.edu.ifpi.eventos.modelo.evento.Evento;
+import br.edu.ifpi.eventos.modelo.evento.EventoBuilder;
 import br.edu.ifpi.eventos.modelo.evento.StatusDoEvento;
 import br.edu.ifpi.eventos.modelo.evento.TipoDeEvento;
 
@@ -30,8 +31,8 @@ public class EventoTeste {
 		ag1 = new Agenda(LocalDateTime.of(2016, 9, 29, 14, 0), LocalDateTime.of(2016, 9, 30, 18, 0));
 		ag2 = new Agenda(LocalDateTime.of(2016, 9, 29, 8, 0), LocalDateTime.of(2016, 9, 29, 12, 0));
 		ag3 = new Agenda(LocalDateTime.of(2016, 9, 11, 0, 1), LocalDateTime.of(2016, 9, 28, 23, 59));
-		sem = new Evento("Semana da Quimica", TipoDeEvento.Semana).comInscricoesPara(ag1);
-		sim = new Evento("Simposio de programação", TipoDeEvento.Simposio).comInscricoesPara(ag3);
+		sem = new EventoBuilder().comNome("Semana da Quimica").doTipo(TipoDeEvento.Semana).comInscricoesPara(ag1).getEvento();
+		sim = new EventoBuilder().comNome("Simposio de programação").doTipo(TipoDeEvento.Simposio).comInscricoesPara(ag3).getEvento();
 		mc = new AtividadeBuilder().comNome("Nanotecnologia").doTipo(TipoDeAtividade.Minicurso).getAtividade();
 	}
 
@@ -55,9 +56,9 @@ public class EventoTeste {
 	
 	@Test
 	public void criarUmEventoCompostoComDoisEventosSatelites(){
-		Evento ec = new Evento("EC", TipoDeEvento.Congresso);
-		Evento es = new Evento("ev1", TipoDeEvento.Simposio).comEventoPrincipal(ec);
-		Evento es2 = new Evento("ev2", TipoDeEvento.Simposio).comEventoPrincipal(ec);
+		Evento ec = new Evento();
+		Evento es = new EventoBuilder().comEventoPrincipal(ec).getEvento();
+		Evento es2 = new EventoBuilder().comEventoPrincipal(ec).getEvento();
 		assertEquals(true, ec.getEventosSatelites().contains(es) & ec.getEventosSatelites().contains(es2));
 	}
 	

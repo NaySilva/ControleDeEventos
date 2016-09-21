@@ -46,7 +46,7 @@ public class InscricaoTeste {
 		ag2 = new Agenda(LocalDateTime.of(2016, 9, 30, 14, 0), LocalDateTime.of(2016, 9, 30, 18, 0));
 		val1 = new Agenda(LocalDateTime.of(2016, 9, 30, 23, 59));
 		val2 = new Agenda(LocalDateTime.of(2016, 8, 24, 23, 59));
-		sim = new Evento("Simposio de Programação", TipoDeEvento.Simposio);
+		sim = new Evento();
 		perfil = new PerfilParticipante(new Usuario());
 		ins = new Inscricao(sim, perfil);
 		EspacoFisico local = new EspacoFisico("sala A", TipoEspacoFisico.Sala);

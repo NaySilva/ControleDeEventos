@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import br.edu.ifpi.eventos.modelo.equipe.Equipe;
 import br.edu.ifpi.eventos.modelo.evento.Evento;
+import br.edu.ifpi.eventos.modelo.evento.EventoBuilder;
 import br.edu.ifpi.eventos.modelo.evento.TipoDeEvento;
 import br.edu.ifpi.eventos.modelo.perfil.PerfilOrganizador;
 import br.edu.ifpi.eventos.modelo.perfil.PerfilParticipante;
@@ -20,7 +21,7 @@ public class PerfilTeste {
 		PerfilOrganizador perfil = new PerfilOrganizador(usu);
 		Usuario usu1 = new Usuario();
 		Usuario usu2 = new Usuario();
-		Evento ev = new Evento("ev", TipoDeEvento.Simposio);
+		Evento ev = new EventoBuilder().comNome("ev").doTipo(TipoDeEvento.Simposio).getEvento();
 		Equipe eq1 = new Equipe("limpeza", perfil, ev);
 		eq1.adicionarPerfil(new PerfilOrganizador(usu1));
 		eq1.adicionarPerfil(new PerfilOrganizador(usu2));

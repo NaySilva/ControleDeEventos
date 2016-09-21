@@ -45,28 +45,13 @@ public class Evento extends Subject{
 	@OneToOne
 	private EspacoFisico local;
 	
-	public Evento(){}
-	
-	public Evento(String nome, TipoDeEvento tipo) {
-		this.nome = nome;
-		this.tipo = tipo;
+	public Evento() {
 		this.status = StatusDoEvento.EmAndamento;
 		this.atividades = new ArrayList<Atividade>();
 		this.inscricoes = new ArrayList<Inscricao>();
 		this.eventosSatelites = new ArrayList<Evento>();
 	}
 	
-	public Evento comEventoPrincipal(Evento principal){
-		this.eventoPrincipal = principal;
-		principal.adicionarEventosSatelites(this);
-		return this;
-	}
-	
-	public Evento comInscricoesPara(Agenda agenda){
-		this.periodoDeInscricao = agenda;
-		return this;
-	}
-
 	public void verificarData(Agenda agenda) {
 		if (agenda.depoisDoFim(Agenda.noMomento.getFim())){
 			throw new IllegalArgumentException("Data Passada");
@@ -156,12 +141,21 @@ public class Evento extends Subject{
 		this.nome = nome;
 	}
 	
-	public void setTipo(String tipo) {
-		this.tipo = TipoDeEvento.porValor(tipo);
+	public void setTipo(TipoDeEvento tipo) {
+		this.tipo = tipo;
 	}
 	
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public void setEventoPrincipal(Evento principal) {
+		this.eventoPrincipal = principal;		
+	}
+
+	public void setLocal(EspacoFisico espacoFisico) {
+		this.local = espacoFisico;
+		
 	}
 	
 }

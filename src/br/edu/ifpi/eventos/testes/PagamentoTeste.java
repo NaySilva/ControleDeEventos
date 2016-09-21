@@ -3,9 +3,7 @@ package br.edu.ifpi.eventos.testes;
 import static org.junit.Assert.*;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 
 
 import org.junit.Before;
@@ -13,6 +11,7 @@ import org.junit.Test;
 
 import br.edu.ifpi.eventos.modelo.agenda.Agenda;
 import br.edu.ifpi.eventos.modelo.evento.Evento;
+import br.edu.ifpi.eventos.modelo.evento.EventoBuilder;
 import br.edu.ifpi.eventos.modelo.evento.TipoDeEvento;
 import br.edu.ifpi.eventos.modelo.inscricao.Inscricao;
 import br.edu.ifpi.eventos.modelo.pagamento.Pagamento;
@@ -30,7 +29,7 @@ public class PagamentoTeste {
 	@Before
 	public void inicializacao(){
 		ag1 = new Agenda(LocalDateTime.of(2016, 9, 11, 8, 0), LocalDateTime.of(2016, 9, 29, 18, 0));
-		sem = new Evento("Semana de Quimica",TipoDeEvento.Semana);
+		sem = new EventoBuilder().comNome("Semana de Quimica").doTipo(TipoDeEvento.Semana).getEvento();
 		perfil = new PerfilParticipante(new Usuario());
 		insc = new Inscricao(sem, perfil);
 		pagamento = new Pagamento(insc);
@@ -54,8 +53,4 @@ public class PagamentoTeste {
 		assertEquals(LocalDateTime.now().toLocalDate(), dia.toLocalDate());
 	}
 	
-	
-	
-	
-
 }
