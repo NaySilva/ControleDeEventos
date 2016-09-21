@@ -54,10 +54,9 @@ public class AtividadeTeste {
 	
 	@Test
 	public void listarInscritosPorAtividade() throws Exception{
-		Atividade atividade = new AtividadeBuilder().comNome("At1").doTipo(TipoDeAtividade.MesaRedonda).emLocal(local).noHorario(agenda).getAtividade();	
+		Atividade atividade = new AtividadeBuilder().comNome("At1").doTipo(TipoDeAtividade.MesaRedonda).emLocal(local).noHorario(agenda).pagavel().getAtividade();	
 		Evento ev = new EventoBuilder().comNome("ev").doTipo(TipoDeEvento.Congresso).getEvento();
 		ev.adicionarAtividade(atividade);
-		atividade.setPagavel(true);
 		Inscricao ins = new Inscricao(ev, new PerfilParticipante(new Usuario()));
 		Item item = new ItemUnico(new BigDecimal("30"), atividade);
 		ins.adicionarItem(item);
@@ -76,11 +75,5 @@ public class AtividadeTeste {
 		assertEquals(true, at.getResponsaveis().contains(res));
 	}
 	
-	@Test
-	public void Marcar_Atividade_Como_Realizada(){
-		Atividade at = new AtividadeBuilder().comNome("Palestra").doTipo(TipoDeAtividade.Palestra).getAtividade();
-		at.setRealizado(true);
-		assertEquals(true, at.isRealizado());
-	}
 	
 }

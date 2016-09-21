@@ -26,24 +26,24 @@ public class Evento extends Subject{
 	@Id
 	@GeneratedValue
 	private Long id;
-	private String nome;
+	protected String nome;
 	@OneToMany(mappedBy="evento")
-	private List<Inscricao> inscricoes;
+	protected List<Inscricao> inscricoes;
 	@OneToOne
-	private Evento eventoPrincipal;
+	protected Evento eventoPrincipal;
 	@ManyToMany
 	private List<Evento> eventosSatelites;
-	private TipoDeEvento tipo;
-	private StatusDoEvento status;
+	protected TipoDeEvento tipo;
+	protected StatusDoEvento status;
 	@OneToMany
 	@JoinColumn(name="evento_id")
 	private List<Atividade> atividades;
 	@OneToOne
-	private Agenda periodoDeInscricao;
+	protected Agenda periodoDeInscricao;
 	@OneToMany(mappedBy="evento")
 	private List<Equipe> equipes;
 	@OneToOne
-	private EspacoFisico local;
+	protected EspacoFisico local;
 	
 	public Evento() {
 		this.status = StatusDoEvento.EmAndamento;
@@ -135,27 +135,6 @@ public class Evento extends Subject{
 	
 	public Long getId() {
 		return id;
-	}
-	
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-	
-	public void setTipo(TipoDeEvento tipo) {
-		this.tipo = tipo;
-	}
-	
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public void setEventoPrincipal(Evento principal) {
-		this.eventoPrincipal = principal;		
-	}
-
-	public void setLocal(EspacoFisico espacoFisico) {
-		this.local = espacoFisico;
-		
 	}
 	
 }

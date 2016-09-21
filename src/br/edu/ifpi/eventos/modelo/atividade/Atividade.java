@@ -23,18 +23,17 @@ public class Atividade extends Subject {
 	@Id
 	@GeneratedValue
 	private Long id;
-	private String nome;
+	protected String nome;
 	@OneToOne
-	private Agenda agenda;
+	protected Agenda agenda;
 	@Transient
-	private Evento evento;
-	private TipoDeAtividade tipo;
+	protected Evento evento;
+	protected TipoDeAtividade tipo;
 	@OneToOne
-	private EspacoFisico local;
+	protected EspacoFisico local;
 	@OneToMany(mappedBy="atividade")
 	private List<Responsabilidade> responsaveis;
-	private boolean pagavel;
-	private boolean realizado;
+	protected boolean pagavel;
 	
 	public Atividade() {
 		this.responsaveis = new ArrayList<Responsabilidade>();
@@ -53,6 +52,7 @@ public class Atividade extends Subject {
 			throw new HorarioIndisponivelException();
 		}
 	}
+	
 	
 	public String getNome() {
 		return nome;
@@ -109,19 +109,4 @@ public class Atividade extends Subject {
 		return pagavel;
 	}
 	
-	public void setPagavel(boolean pagavel) {
-		this.pagavel = pagavel;
-	}
-	
-	public void setRealizado(boolean realizado) {
-		this.realizado = realizado;
-	}
-	
-	public boolean isRealizado() {
-		return realizado;
-	}
-	
-	public void setId(Long id) {
-		this.id = id;
-	}
 }

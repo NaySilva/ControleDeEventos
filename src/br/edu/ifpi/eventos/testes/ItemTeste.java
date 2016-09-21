@@ -17,8 +17,7 @@ public class ItemTeste {
 
 	@Test(expected=AtividadeNaoAptaParaItemException.class)
 	public void So_Criar_Item_Se_Atividade_For_Pagavel() throws AtividadeNaoAptaParaItemException {
-		Atividade at = new AtividadeBuilder().comNome("Palestra").doTipo(TipoDeAtividade.Palestra).getAtividade();
-		at.setPagavel(false);
+		Atividade at = new AtividadeBuilder().comNome("Palestra").doTipo(TipoDeAtividade.Palestra).naoPagavel().getAtividade();
 		Item item = new ItemUnico(new BigDecimal(0), at);
 	}
 
