@@ -32,7 +32,7 @@ public class EspacoFisico {
 	@OneToOne(mappedBy="local")
 	protected Atividade atividade;
 	
-	public EspacoFisico() {
+	protected EspacoFisico() {
 		this.locaisInternos = new ArrayList<EspacoFisico>();
 		this.horarios = new ArrayList<Agenda>();
 	}

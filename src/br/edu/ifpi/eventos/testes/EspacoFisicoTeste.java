@@ -23,7 +23,7 @@ public class EspacoFisicoTeste {
 	}
 	
 	@Test
-	public void horarioDisponivelParaOLocal(){
+	public void horario_Disponivel_Para_O_Local(){
 		EspacoFisico ef = new EspacoFisicoBuilder().comDescricao("Sala 1").doTipo(TipoEspacoFisico.Sala).getEspacoFisico();
 		Agenda agDoLocal = new Agenda(LocalDateTime.of(2016, 9, 4, 0, 0), LocalDateTime.of(2016, 9, 4, 23, 59));
 		ef.adicionarHorarios(agDoLocal);
@@ -32,7 +32,7 @@ public class EspacoFisicoTeste {
 	}
 	
 	@Test 
-	public void HorarioNaoDisponivelParaOLocal(){
+	public void Horario_Nao_Disponivel_Para_O_Local(){
 		EspacoFisico ef = new EspacoFisicoBuilder().comDescricao("Sala 1").doTipo(TipoEspacoFisico.Sala).getEspacoFisico();
 		Agenda agDoLocal = new Agenda(LocalDateTime.of(2016, 9, 4, 0, 0), LocalDateTime.of(2016, 9, 4, 23, 59));
 		ef.adicionarHorarios(agDoLocal);

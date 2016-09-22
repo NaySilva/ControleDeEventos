@@ -14,6 +14,7 @@ import javax.persistence.OneToOne;
 
 import br.edu.ifpi.eventos.excecoes.AtividadeInexistenteNoEventoException;
 import br.edu.ifpi.eventos.excecoes.AtividadeRepetidaException;
+import br.edu.ifpi.eventos.excecoes.CupomInativoException;
 import br.edu.ifpi.eventos.excecoes.InscricaoPagaException;
 import br.edu.ifpi.eventos.modelo.cupompromocional.CupomPromocional;
 import br.edu.ifpi.eventos.modelo.evento.Evento;
@@ -95,9 +96,11 @@ public class Inscricao extends Subject{
 		return cupom;
 	}
 	
-	public void setCupom(CupomPromocional cupom) {
+	public void setCupom(CupomPromocional cupom) throws Exception {
 		if (cupom.getAtivo()){
 			this.cupom = cupom;
+		}else{
+			throw new CupomInativoException();
 		}
 	}
 

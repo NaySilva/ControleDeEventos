@@ -2,11 +2,8 @@ package br.edu.ifpi.eventos.testes;
 
 import static org.junit.Assert.*;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import br.edu.ifpi.eventos.modelo.agenda.Agenda;

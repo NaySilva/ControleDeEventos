@@ -59,10 +59,10 @@ public class AtividadeTeste {
 		atividade = new AtividadeBuilder().comNome("At1").doTipo(TipoDeAtividade.MesaRedonda).emLocal(local).noHorario(agenda).pagavel().getAtividade();	
 		Evento ev = new EventoBuilder().comNome("ev").doTipo(TipoDeEvento.Congresso).getEvento();
 		ev.adicionarAtividade(atividade);
-		Inscricao ins = new Inscricao(ev, new PerfilParticipante(new Usuario(new Pessoa())));
+		Inscricao ins = new Inscricao(ev, new PerfilParticipante(new Usuario(new Pessoa("Maria"))));
 		Item item = new ItemUnico(new BigDecimal("30"), atividade);
 		ins.adicionarItem(item);
-		Inscricao ins2 = new Inscricao(ev, new PerfilParticipante(new Usuario(new Pessoa())));
+		Inscricao ins2 = new Inscricao(ev, new PerfilParticipante(new Usuario(new Pessoa("João"))));
 		ins2.adicionarItem(item);
 		List<Inscricao> lista = new ArrayList<>();
 		lista.add(ins);
@@ -73,7 +73,7 @@ public class AtividadeTeste {
 	@Test
 	public void permitir_Incluir_Responsaveis_Para_Uma_Atividade(){
 		Atividade at = new AtividadeBuilder().comNome("Palestra").doTipo(TipoDeAtividade.Palestra).getAtividade();
-		Responsabilidade res = new Responsabilidade(at, new Pessoa());
+		Responsabilidade res = new Responsabilidade(at, new Pessoa("Maria"));
 		assertEquals(true, at.getResponsaveis().contains(res));
 	}
 	

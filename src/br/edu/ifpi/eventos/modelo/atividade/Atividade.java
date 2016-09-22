@@ -35,7 +35,7 @@ public class Atividade extends Subject {
 	private List<Responsabilidade> responsaveis;
 	protected boolean pagavel;
 	
-	public Atividade() {
+	protected Atividade() {
 		this.responsaveis = new ArrayList<Responsabilidade>();
 	}
 

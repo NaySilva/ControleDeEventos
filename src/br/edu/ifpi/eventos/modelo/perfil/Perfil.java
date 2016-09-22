@@ -1,8 +1,5 @@
 package br.edu.ifpi.eventos.modelo.perfil;
 
-import java.util.List;
-
-import javax.annotation.Generated;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +7,6 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
-import javax.persistence.Transient;
 
 import br.edu.ifpi.eventos.modelo.usuario.Usuario;
 import br.edu.ifpi.eventos.util.Observer;

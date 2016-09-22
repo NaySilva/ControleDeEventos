@@ -7,7 +7,6 @@ import java.util.List;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 
 import br.edu.ifpi.eventos.modelo.equipe.Equipe;
 import br.edu.ifpi.eventos.modelo.usuario.Usuario;
@@ -21,7 +20,6 @@ public class PerfilOrganizador extends Perfil {
 
 	public PerfilOrganizador(Usuario usuario) {
 		super(usuario);
-
 		this.equipes = new ArrayList<Equipe>();
 	}
 	

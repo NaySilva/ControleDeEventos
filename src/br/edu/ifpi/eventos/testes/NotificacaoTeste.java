@@ -34,7 +34,7 @@ public class NotificacaoTeste {
 		Atividade atividade = new AtividadeBuilder().comNome("Palestra").doTipo(TipoDeAtividade.Palestra).emLocal(local).noHorario(ag1).getAtividade();
 		Atividade atividade2 = new AtividadeBuilder().comNome("minicurso").doTipo(TipoDeAtividade.Minicurso).emLocal(local).noHorario(ag2).getAtividade();
 		Evento evento = new EventoBuilder().comNome("Ev").doTipo(TipoDeEvento.Simposio).getEvento();
-		PerfilParticipante perfil = new PerfilParticipante(new Usuario(new Pessoa()));
+		PerfilParticipante perfil = new PerfilParticipante(new Usuario(new Pessoa("Maria")));
 		Inscricao inscricao = new Inscricao(evento, perfil);
 		evento.adicionarAtividade(atividade);
 		String mensagem = "Nova notificação do evento Ev:\nNova atividade adicionada: Palestra - Palestra";
@@ -51,7 +51,7 @@ public class NotificacaoTeste {
 		Atividade atividade = new AtividadeBuilder().comNome("Palestra").doTipo(TipoDeAtividade.Palestra).emLocal(local).noHorario(ag1).getAtividade();
 		Atividade atividade2 = new AtividadeBuilder().comNome("minicurso").doTipo(TipoDeAtividade.Minicurso).emLocal(local).noHorario(ag2).getAtividade();
 		Evento evento = new EventoBuilder().comNome("Ev").doTipo(TipoDeEvento.Simposio).getEvento();
-		PerfilParticipante perfil = new PerfilParticipante(new Usuario(new Pessoa()));
+		PerfilParticipante perfil = new PerfilParticipante(new Usuario(new Pessoa("Maria")));
 		evento.adicionarAtividade(atividade);
 		Inscricao inscricao = new Inscricao(evento, perfil);
 		assertEquals("", evento.getNotificacao());

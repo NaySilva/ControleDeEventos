@@ -11,6 +11,7 @@ import org.junit.Test;
 import br.edu.ifpi.eventos.excecoes.AtividadeInexistenteNoEventoException;
 import br.edu.ifpi.eventos.excecoes.AtividadeNaoAptaParaItemException;
 import br.edu.ifpi.eventos.excecoes.AtividadeRepetidaException;
+import br.edu.ifpi.eventos.excecoes.CupomInativoException;
 import br.edu.ifpi.eventos.excecoes.HorarioIndisponivelException;
 import br.edu.ifpi.eventos.excecoes.InscricaoPagaException;
 import br.edu.ifpi.eventos.modelo.agenda.Agenda;
@@ -24,7 +25,7 @@ import br.edu.ifpi.eventos.modelo.espacofisico.EspacoFisico;
 import br.edu.ifpi.eventos.modelo.espacofisico.EspacoFisicoBuilder;
 import br.edu.ifpi.eventos.modelo.espacofisico.TipoEspacoFisico;
 import br.edu.ifpi.eventos.modelo.evento.Evento;
-import br.edu.ifpi.eventos.modelo.evento.TipoDeEvento;
+import br.edu.ifpi.eventos.modelo.evento.EventoBuilder;
 import br.edu.ifpi.eventos.modelo.inscricao.Inscricao;
 import br.edu.ifpi.eventos.modelo.item.Item;
 import br.edu.ifpi.eventos.modelo.item.ItemUnico;
@@ -48,8 +49,8 @@ public class InscricaoTeste {
 		ag2 = new Agenda(LocalDateTime.of(2016, 9, 30, 14, 0), LocalDateTime.of(2016, 9, 30, 18, 0));
 		val1 = new Agenda(LocalDateTime.of(2016, 9, 30, 23, 59));
 		val2 = new Agenda(LocalDateTime.of(2016, 8, 24, 23, 59));
-		sim = new Evento();
-		perfil = new PerfilParticipante(new Usuario(new Pessoa()));
+		sim = new EventoBuilder().getEvento();
+		perfil = new PerfilParticipante(new Usuario(new Pessoa("Maria")));
 		ins = new Inscricao(sim, perfil);
 		EspacoFisico local = new EspacoFisicoBuilder().comDescricao("sala A").doTipo(TipoEspacoFisico.Sala).getEspacoFisico();
 		local.adicionarHorarios(ag1);
@@ -108,6 +109,15 @@ public class InscricaoTeste {
 	}
 	
 	@Test
+	public void Valor_Total_Bruto_Da_Inscricao() throws Exception{
+		sim.adicionarAtividade(mc);
+		ins.adicionarItem(item1);
+		sim.adicionarAtividade(p);
+		ins.adicionarItem(item2);
+		assertEquals(new BigDecimal(130.0).toPlainString(), ins.calcularTotalBruto().toPlainString());
+	}
+	
+	@Test
 	public void Verificar_Valor_Total_Com_Desconto_De_Uma_Inscricao_Completa_E_Com_Cupons() throws Exception{
 		sim.adicionarAtividade(mc);
 		ins.adicionarItem(item1);
@@ -117,10 +127,9 @@ public class InscricaoTeste {
 		assertEquals(65, ins.calcularTotalComDesconto().doubleValue(), 0.00001);
 	}
 
-	@Test
-	public void Nao_Deve_Aceitar_Desconto_De_Cupons_Nao_Ativos(){
+	@Test(expected=CupomInativoException.class)
+	public void Nao_Deve_Aceitar_Desconto_De_Cupons_Nao_Ativos() throws Exception{
 		ins.setCupom(l2);
-		assertEquals(false, ins.getCupom()==l2);
 	}
 	
 		

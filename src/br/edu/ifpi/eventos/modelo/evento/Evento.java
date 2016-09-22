@@ -3,7 +3,6 @@ package br.edu.ifpi.eventos.modelo.evento;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Observable;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,7 +17,6 @@ import br.edu.ifpi.eventos.modelo.atividade.Atividade;
 import br.edu.ifpi.eventos.modelo.equipe.Equipe;
 import br.edu.ifpi.eventos.modelo.espacofisico.EspacoFisico;
 import br.edu.ifpi.eventos.modelo.inscricao.Inscricao;
-import br.edu.ifpi.eventos.util.Observer;
 import br.edu.ifpi.eventos.util.Subject;
 
 @Entity
@@ -45,17 +43,12 @@ public class Evento extends Subject{
 	@OneToOne
 	protected EspacoFisico local;
 	
-	public Evento() {
+	
+	protected Evento() {
 		this.status = StatusDoEvento.EmAndamento;
 		this.atividades = new ArrayList<Atividade>();
 		this.inscricoes = new ArrayList<Inscricao>();
 		this.eventosSatelites = new ArrayList<Evento>();
-	}
-	
-	public void verificarData(Agenda agenda) {
-		if (agenda.antes(Agenda.noMomento.getFim())){
-			throw new IllegalArgumentException("Data Passada");
-		}
 	}
 	
 	public void verificarPeriodoDeInscricao(){
@@ -64,7 +57,6 @@ public class Evento extends Subject{
 			status = StatusDoEvento.InscricoesAbertas;
 		}
 	}
-	
 	
 	public void adicionarInscricao(Inscricao inscricao){
 		inscricoes.add(inscricao);

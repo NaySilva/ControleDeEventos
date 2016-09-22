@@ -7,7 +7,6 @@ import javax.persistence.ManyToOne;
 
 import br.edu.ifpi.eventos.modelo.atividade.Atividade;
 import br.edu.ifpi.eventos.modelo.usuario.Pessoa;
-import br.edu.ifpi.eventos.modelo.usuario.Usuario;
 
 @Entity
 public class Responsabilidade {
@@ -35,4 +34,15 @@ public class Responsabilidade {
 		this.miniCurriculo = miniCurriculo;
 	}
 
+	public String getMiniCurriculo() {
+		return miniCurriculo;
+	}
+	
+	public boolean isResponsavelPrincipal() {
+		return responsavelPrincipal;
+	}
+	
+	public Pessoa getResponsavel() {
+		return responsavel;
+	}
 }

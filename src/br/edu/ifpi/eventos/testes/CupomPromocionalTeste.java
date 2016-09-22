@@ -49,7 +49,7 @@ public class CupomPromocionalTeste {
 		ev.adicionarAtividade(at);
 		CupomPromocional l1 = new CupomGlobal("Palestra30", val, new BigDecimal(50));
 		Item item = new ItemUnico(new BigDecimal(100), at);
-		Inscricao inscricao = new Inscricao(ev, new PerfilParticipante(new Usuario(new Pessoa())));
+		Inscricao inscricao = new Inscricao(ev, new PerfilParticipante(new Usuario(new Pessoa("Maria"))));
 		inscricao.adicionarItem(item);
 		inscricao.setCupom(l1);
 		assertEquals(new BigDecimal(50.0).toBigInteger(), l1.valorDoDesconto(inscricao).toBigInteger());
@@ -63,7 +63,7 @@ public class CupomPromocionalTeste {
 		ev.adicionarAtividade(at);
 		CupomPromocional p30 = new CupomPorAtividade("Palestra_30", val, new BigDecimal(30), TipoDeAtividade.Palestra);
 		Item item = new ItemUnico(new BigDecimal(100), at);
-		Inscricao inscricao = new Inscricao(ev, new PerfilParticipante(new Usuario(new Pessoa())));
+		Inscricao inscricao = new Inscricao(ev, new PerfilParticipante(new Usuario(new Pessoa("Maria"))));
 		inscricao.adicionarItem(item);
 		inscricao.setCupom(p30);
 		assertEquals(new BigDecimal(30.0).toBigInteger(), p30.valorDoDesconto(inscricao).toBigInteger());

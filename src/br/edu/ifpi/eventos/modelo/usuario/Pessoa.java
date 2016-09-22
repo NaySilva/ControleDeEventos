@@ -22,7 +22,10 @@ public class Pessoa {
 	@OneToMany(mappedBy="responsavel")
 	private List<Responsabilidade> resposabilidades;
 	
-	public Pessoa() {
+	Pessoa(){}
+	
+	public Pessoa(String nome) {
+		this.nome = nome;
 		this.resposabilidades = new ArrayList<Responsabilidade>();
 	}
 	
@@ -32,6 +35,14 @@ public class Pessoa {
 	
 	public String getNome() {
 		return nome;
+	}
+	
+	public String getCpf() {
+		return cpf;
+	}
+	
+	public String getEmail() {
+		return email;
 	}
 
 }

@@ -18,10 +18,10 @@ public class PerfilTeste {
 
 	@Test
 	public void criarEquipeDeUmEvento() {
-		Usuario usu = new Usuario(new Pessoa());
+		Usuario usu = new Usuario(new Pessoa("Maria"));
 		PerfilOrganizador perfil = new PerfilOrganizador(usu);
-		Usuario usu1 = new Usuario(new Pessoa());
-		Usuario usu2 = new Usuario(new Pessoa());
+		Usuario usu1 = new Usuario(new Pessoa("João"));
+		Usuario usu2 = new Usuario(new Pessoa("Ana"));
 		Evento ev = new EventoBuilder().comNome("ev").doTipo(TipoDeEvento.Simposio).getEvento();
 		Equipe eq1 = new Equipe("limpeza", perfil, ev);
 		eq1.adicionarPerfil(new PerfilOrganizador(usu1));
@@ -31,7 +31,7 @@ public class PerfilTeste {
 	
 	@Test
 	public void Podera_Identificar_Tipo_De_Participante_No_Perfil_Participante(){
-		Usuario usu = new Usuario(new Pessoa());
+		Usuario usu = new Usuario(new Pessoa("Maria"));
 		PerfilParticipante perfil = new PerfilParticipante(usu).comTipoDeParticipacao(TipoDeParticipacao.Estudante);
 		assertEquals(TipoDeParticipacao.Estudante, perfil.getTipo());
 	}

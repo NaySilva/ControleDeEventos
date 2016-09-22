@@ -57,7 +57,7 @@ public class EventoTeste {
 	
 	@Test
 	public void criarUmEventoCompostoComDoisEventosSatelites(){
-		Evento ec = new Evento();
+		Evento ec = new EventoBuilder().getEvento();
 		Evento es = new EventoBuilder().comEventoPrincipal(ec).getEvento();
 		Evento es2 = new EventoBuilder().comEventoPrincipal(ec).getEvento();
 		assertEquals(true, ec.getEventosSatelites().contains(es) & ec.getEventosSatelites().contains(es2));
@@ -75,6 +75,5 @@ public class EventoTeste {
 		List<Atividade> atividades = sem.atividadesOrdenadas();
 		assertEquals(at2, atividades.get(0));
 	}
-
 
 }
