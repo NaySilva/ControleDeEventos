@@ -39,7 +39,7 @@ public class Inscricao extends Subject{
 	@OneToOne
 	private CupomPromocional cupom;
 	
-	Inscricao() {}
+	protected Inscricao() {}
 	
 	public Inscricao(Evento evento, PerfilParticipante perfil){
 		this.evento = evento;

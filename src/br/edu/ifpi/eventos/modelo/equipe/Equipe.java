@@ -7,12 +7,9 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.Transient;
 
 import br.edu.ifpi.eventos.modelo.evento.Evento;
 import br.edu.ifpi.eventos.modelo.perfil.PerfilOrganizador;
@@ -30,6 +27,8 @@ public class Equipe {
 	@ManyToMany(mappedBy="equipes")
 	private List<PerfilOrganizador> organizadores;
 	
+	protected Equipe(){}
+	
 	public Equipe(String descricao, PerfilOrganizador dono, Evento evento) {
 		this.descricao = descricao;
 		this.dono = dono;
@@ -37,7 +36,6 @@ public class Equipe {
 		this.organizadores = new ArrayList<PerfilOrganizador>();
 	}
 	
-
 	public void adicionarPerfil(PerfilOrganizador perfil){
 		this.organizadores.add(perfil);
 		perfil.adicionarEquipe(this);
@@ -51,4 +49,7 @@ public class Equipe {
 		return Collections.unmodifiableList(organizadores);
 	}
 
+	public String getDescricao() {
+		return descricao;
+	}
 }

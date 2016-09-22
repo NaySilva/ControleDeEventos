@@ -15,6 +15,7 @@ public class Agenda {
 	
 	public final static Agenda noMomento = new Agenda(LocalDateTime.now());
 	
+	protected Agenda(){}
 	
 	public Agenda(LocalDateTime horario) {
 		this.comeco = horario;

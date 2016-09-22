@@ -1,4 +1,4 @@
-package br.edu.ifpi.eventos.modelo.usuario;
+package br.edu.ifpi.eventos.modelo.pessoa;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +22,7 @@ public class Pessoa {
 	@OneToMany(mappedBy="responsavel")
 	private List<Responsabilidade> resposabilidades;
 	
-	Pessoa(){}
+	protected Pessoa(){}
 	
 	public Pessoa(String nome) {
 		this.nome = nome;
@@ -43,6 +43,23 @@ public class Pessoa {
 	
 	public String getEmail() {
 		return email;
+	}
+	
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+	
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	
+	@Override
+	public String toString() {
+		return "Pessoa com nome: "+ nome;
 	}
 
 }

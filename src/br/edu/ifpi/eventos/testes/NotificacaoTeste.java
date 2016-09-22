@@ -19,7 +19,7 @@ import br.edu.ifpi.eventos.modelo.evento.EventoBuilder;
 import br.edu.ifpi.eventos.modelo.evento.TipoDeEvento;
 import br.edu.ifpi.eventos.modelo.inscricao.Inscricao;
 import br.edu.ifpi.eventos.modelo.perfil.PerfilParticipante;
-import br.edu.ifpi.eventos.modelo.usuario.Pessoa;
+import br.edu.ifpi.eventos.modelo.pessoa.Pessoa;
 import br.edu.ifpi.eventos.modelo.usuario.Usuario;
 
 public class NotificacaoTeste {

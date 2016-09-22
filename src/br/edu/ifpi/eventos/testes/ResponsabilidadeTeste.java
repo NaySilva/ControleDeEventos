@@ -4,10 +4,9 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import br.edu.ifpi.eventos.modelo.atividade.Atividade;
 import br.edu.ifpi.eventos.modelo.atividade.AtividadeBuilder;
+import br.edu.ifpi.eventos.modelo.pessoa.Pessoa;
 import br.edu.ifpi.eventos.modelo.responsabilidade.Responsabilidade;
-import br.edu.ifpi.eventos.modelo.usuario.Pessoa;
 
 public class ResponsabilidadeTeste {
 

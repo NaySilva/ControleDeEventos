@@ -1,9 +1,6 @@
 package br.edu.ifpi.eventos.modelo.cupompromocional;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,6 +21,8 @@ public abstract class CupomPromocional {
 	private Agenda validade;
 	protected BigDecimal porcentagem;
 	private boolean ativo;
+	
+	protected CupomPromocional(){}
 	
 	public CupomPromocional(String descricao, Agenda validade, BigDecimal porcentagem) {
 		this.descricao = descricao;

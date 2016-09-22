@@ -2,9 +2,6 @@ package br.edu.ifpi.eventos.modelo.evento;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
@@ -17,9 +14,6 @@ public class EventoDao extends GenericJPADAO<Evento>{
 	public EventoDao() {
 		super(Evento.class);
 	}
-	
-	@PersistenceContext
-	EntityManager manager;
 	
 	public List<Evento> eventosParticipandoPorPerfil(Long id){
 		TypedQuery<Evento> query = manager.createQuery("select e from Evento e, Inscricao i, PerfilParticipante p where e.id = i.evento.id and i.perfil.id = p.id and p.usuario.id = :paramId", Evento.class);

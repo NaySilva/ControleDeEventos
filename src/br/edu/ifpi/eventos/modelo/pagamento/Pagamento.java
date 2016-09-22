@@ -22,6 +22,8 @@ public class Pagamento {
 	private Agenda horarioPagamento;
 	private boolean pago;
 	
+	protected Pagamento(){}
+	
 	public Pagamento(Inscricao inscricao) {
 		this.inscricao = inscricao;
 		this.pago = false;

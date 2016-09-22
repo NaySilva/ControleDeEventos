@@ -28,6 +28,8 @@ public abstract class Item extends Subject{
 	@ManyToMany
 	private List<Inscricao> inscricoes;
 	
+	protected Item(){}
+	
 	public Item(BigDecimal preco) {
 		this.preco = preco;
 		this.inscricoes = new ArrayList<Inscricao>();

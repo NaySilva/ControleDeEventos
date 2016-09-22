@@ -43,7 +43,6 @@ public class Evento extends Subject{
 	@OneToOne
 	protected EspacoFisico local;
 	
-	
 	protected Evento() {
 		this.status = StatusDoEvento.EmAndamento;
 		this.atividades = new ArrayList<Atividade>();

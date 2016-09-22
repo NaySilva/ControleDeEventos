@@ -30,7 +30,7 @@ import br.edu.ifpi.eventos.modelo.inscricao.Inscricao;
 import br.edu.ifpi.eventos.modelo.item.Item;
 import br.edu.ifpi.eventos.modelo.item.ItemUnico;
 import br.edu.ifpi.eventos.modelo.perfil.PerfilParticipante;
-import br.edu.ifpi.eventos.modelo.usuario.Pessoa;
+import br.edu.ifpi.eventos.modelo.pessoa.Pessoa;
 import br.edu.ifpi.eventos.modelo.usuario.Usuario;
 
 public class InscricaoTeste {

@@ -9,6 +9,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 
 import br.edu.ifpi.eventos.modelo.perfil.PerfilParticipante;
+import br.edu.ifpi.eventos.modelo.pessoa.Pessoa;
 @Entity
 public class Usuario {
 	
@@ -22,10 +23,10 @@ public class Usuario {
 	@Transient
 	private List<PerfilParticipante> perfis;
 	
-	Usuario(){}
+	protected Usuario(){}
 	
 	public Usuario(Pessoa pessoa){
-		
+		this.pessoa = pessoa;
 	}
 
 	public String getLogin() {
@@ -57,7 +58,13 @@ public class Usuario {
 		return "Usuario [id=" + id + ", nome=" + pessoa.getNome() + ", login=" + login + ", senha=" + senha + "]";
 	}
 	
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
+	}
 	
+	public Pessoa getPessoa() {
+		return pessoa;
+	}
 	
 	
 	

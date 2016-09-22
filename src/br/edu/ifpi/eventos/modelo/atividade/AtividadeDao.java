@@ -1,7 +1,5 @@
 package br.edu.ifpi.eventos.modelo.atividade;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
@@ -15,11 +13,6 @@ public class AtividadeDao extends GenericJPADAO<Atividade>{
 	public AtividadeDao() {
 		super(Atividade.class);
 	}
-	
-
-	@PersistenceContext
-	EntityManager manager;
-
 
 	public Evento acharEvento(Long id) {
 		TypedQuery<Evento> query = manager.createQuery("from evento where id = :paramId", Evento.class);
