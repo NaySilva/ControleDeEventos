@@ -33,6 +33,7 @@ public class AtividadeTeste {
 	
 	Agenda agenda, agenda2;
 	EspacoFisico local;
+	Atividade atividade;
 	
 	@Before
 	public void inicializacao(){
@@ -44,24 +45,24 @@ public class AtividadeTeste {
 
 	@Test
 	public void mudarHorarioPassandoPelasRestricoes() throws HorarioIndisponivelException {
-		Atividade atividade = new AtividadeBuilder().comNome("At1").doTipo(TipoDeAtividade.MesaRedonda).emLocal(local).noHorario(agenda).getAtividade();
+		atividade = new AtividadeBuilder().comNome("At1").doTipo(TipoDeAtividade.MesaRedonda).emLocal(local).noHorario(agenda).getAtividade();
 		assertEquals(agenda, atividade.getAgenda());
 	}
 	
 	@Test(expected=HorarioIndisponivelException.class)
-	public void erroAoPassarUmHorarioNaoDisponivelNoLocal() throws HorarioIndisponivelException{
-		Atividade atividade = new AtividadeBuilder().comNome("At1").doTipo(TipoDeAtividade.MesaRedonda).emLocal(local).noHorario(agenda2).getAtividade();		
+	public void erro_Ao_Passar_Um_Horario_Nao_Disponivel_No_Local() throws HorarioIndisponivelException{
+		atividade = new AtividadeBuilder().comNome("At1").doTipo(TipoDeAtividade.MesaRedonda).emLocal(local).noHorario(agenda2).getAtividade();		
 	}
 	
 	@Test
 	public void listarInscritosPorAtividade() throws Exception{
-		Atividade atividade = new AtividadeBuilder().comNome("At1").doTipo(TipoDeAtividade.MesaRedonda).emLocal(local).noHorario(agenda).pagavel().getAtividade();	
+		atividade = new AtividadeBuilder().comNome("At1").doTipo(TipoDeAtividade.MesaRedonda).emLocal(local).noHorario(agenda).pagavel().getAtividade();	
 		Evento ev = new EventoBuilder().comNome("ev").doTipo(TipoDeEvento.Congresso).getEvento();
 		ev.adicionarAtividade(atividade);
-		Inscricao ins = new Inscricao(ev, new PerfilParticipante(new Usuario()));
+		Inscricao ins = new Inscricao(ev, new PerfilParticipante(new Usuario(new Pessoa())));
 		Item item = new ItemUnico(new BigDecimal("30"), atividade);
 		ins.adicionarItem(item);
-		Inscricao ins2 = new Inscricao(ev, new PerfilParticipante(new Usuario()));
+		Inscricao ins2 = new Inscricao(ev, new PerfilParticipante(new Usuario(new Pessoa())));
 		ins2.adicionarItem(item);
 		List<Inscricao> lista = new ArrayList<>();
 		lista.add(ins);

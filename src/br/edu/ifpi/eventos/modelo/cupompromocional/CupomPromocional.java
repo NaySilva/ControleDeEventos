@@ -15,20 +15,25 @@ import br.edu.ifpi.eventos.modelo.inscricao.Inscricao;
 
 @Entity
 public abstract class CupomPromocional {
+	
 	@Id
 	@GeneratedValue
 	private Long id;
+	protected String descricao;
 	@OneToOne
 	private Agenda validade;
+	protected BigDecimal porcentagem;
 	private boolean ativo;
 	
-	public CupomPromocional(Agenda validade) {
+	public CupomPromocional(String descricao, Agenda validade, BigDecimal porcentagem) {
+		this.descricao = descricao;
 		this.validade = validade;
+		this.porcentagem = porcentagem;
 		verificarAValidade();
 	}
 	
 	public void verificarAValidade(){
-		ativo = validade.depoisDoFim(Agenda.noMomento.getFim()) ? false : true;
+		ativo = validade.antes(Agenda.noMomento.getFim()) ? false : true;
 	}
 	
 	public abstract BigDecimal valorDoDesconto(Inscricao inscricao);

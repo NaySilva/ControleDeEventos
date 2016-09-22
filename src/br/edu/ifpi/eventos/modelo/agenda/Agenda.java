@@ -27,20 +27,20 @@ public class Agenda {
 	}
 
 	public boolean semInterferenciaNoHorario(Agenda ag){
-		boolean antes = antesDoComeco(ag.comeco) && antesDoComeco(ag.fim);
-		boolean depois = depoisDoFim(ag.comeco) && depoisDoFim(ag.fim);
+		boolean antes = depois(ag.comeco) && depois(ag.fim);
+		boolean depois = antes(ag.comeco) && antes(ag.fim);
 		return antes || depois;	
 	}
 	
 	public boolean dentroDoHorario(Agenda ag){
-		return !antesDoComeco(ag.comeco) && !depoisDoFim(ag.fim);
+		return !depois(ag.comeco) && !antes(ag.fim);
 	}
 
-	public boolean antesDoComeco(LocalDateTime horario){
+	public boolean depois(LocalDateTime horario){
 		return comeco.compareTo(horario)>0;
 	}
 	
-	public boolean depoisDoFim(LocalDateTime horario){
+	public boolean antes(LocalDateTime horario){
 		return fim.compareTo(horario)<0;
 	}
 	

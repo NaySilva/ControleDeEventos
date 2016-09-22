@@ -52,8 +52,6 @@ public class Atividade extends Subject {
 			throw new HorarioIndisponivelException();
 		}
 	}
-	
-	
 	public String getNome() {
 		return nome;
 	}

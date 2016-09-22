@@ -5,15 +5,15 @@ import java.math.BigDecimal;
 import br.edu.ifpi.eventos.modelo.agenda.Agenda;
 import br.edu.ifpi.eventos.modelo.inscricao.Inscricao;
 
-public class Lote_I extends CupomPromocional{
+public class CupomGlobal extends CupomPromocional{
 
-	public Lote_I(Agenda validade) {
-		super(validade);
+	public CupomGlobal(String descricao, Agenda validade, BigDecimal porcentagem) {
+		super(descricao, validade, porcentagem);
 	}
 	
 
 	public BigDecimal valorDoDesconto(Inscricao inscricao) {
-		BigDecimal poncentagem = new BigDecimal("0.5");
+		BigDecimal poncentagem = porcentagem.divide(new BigDecimal(100));
 		BigDecimal resultado = inscricao.calcularTotalBruto().multiply(poncentagem) ;
 		return resultado;
 	}

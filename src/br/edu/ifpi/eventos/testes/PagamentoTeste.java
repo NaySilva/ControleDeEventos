@@ -16,6 +16,7 @@ import br.edu.ifpi.eventos.modelo.evento.TipoDeEvento;
 import br.edu.ifpi.eventos.modelo.inscricao.Inscricao;
 import br.edu.ifpi.eventos.modelo.pagamento.Pagamento;
 import br.edu.ifpi.eventos.modelo.perfil.PerfilParticipante;
+import br.edu.ifpi.eventos.modelo.usuario.Pessoa;
 import br.edu.ifpi.eventos.modelo.usuario.Usuario;
 
 public class PagamentoTeste {
@@ -30,7 +31,7 @@ public class PagamentoTeste {
 	public void inicializacao(){
 		ag1 = new Agenda(LocalDateTime.of(2016, 9, 11, 8, 0), LocalDateTime.of(2016, 9, 29, 18, 0));
 		sem = new EventoBuilder().comNome("Semana de Quimica").doTipo(TipoDeEvento.Semana).getEvento();
-		perfil = new PerfilParticipante(new Usuario());
+		perfil = new PerfilParticipante(new Usuario(new Pessoa()));
 		insc = new Inscricao(sem, perfil);
 		pagamento = new Pagamento(insc);
 	}

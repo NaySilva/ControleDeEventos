@@ -53,7 +53,7 @@ public class Evento extends Subject{
 	}
 	
 	public void verificarData(Agenda agenda) {
-		if (agenda.depoisDoFim(Agenda.noMomento.getFim())){
+		if (agenda.antes(Agenda.noMomento.getFim())){
 			throw new IllegalArgumentException("Data Passada");
 		}
 	}

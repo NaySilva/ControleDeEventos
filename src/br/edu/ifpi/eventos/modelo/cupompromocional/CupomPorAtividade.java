@@ -7,24 +7,25 @@ import br.edu.ifpi.eventos.modelo.atividade.TipoDeAtividade;
 import br.edu.ifpi.eventos.modelo.inscricao.Inscricao;
 import br.edu.ifpi.eventos.modelo.item.Item;
 import br.edu.ifpi.eventos.modelo.item.ItemUnico;
-public class Palestras_50 extends CupomPromocional{
+public class CupomPorAtividade extends CupomPromocional{
+	
+	private TipoDeAtividade tipo;
 
-	public Palestras_50(Agenda validade) {
-		super(validade);
+	public CupomPorAtividade(String descricao, Agenda validade, BigDecimal porcentagem, TipoDeAtividade tipo) {
+		super(descricao, validade, porcentagem);
+		this.tipo = tipo;
 	}
-
 
 	@Override
 	public BigDecimal valorDoDesconto(Inscricao inscricao) {
-		BigDecimal resultado = new BigDecimal("0");
+		BigDecimal resultado = new BigDecimal(0);
 		for (Item item : inscricao.getCarrinho()) {
 			if(item instanceof ItemUnico){
-				if (((ItemUnico) item).getAtividade().getTipo().equals(TipoDeAtividade.Palestra)){
-					resultado = resultado.add(item.getPreco().multiply(new BigDecimal("0.5")));
+				if (((ItemUnico) item).getAtividade().getTipo().equals(tipo)){
+					resultado = resultado.add(item.getPreco().multiply(porcentagem.divide(new BigDecimal(100))));
 				}
 			}
 		}
 		return resultado;
 	}
-
 }

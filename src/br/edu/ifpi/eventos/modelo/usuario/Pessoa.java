@@ -29,5 +29,9 @@ public class Pessoa {
 	public void adicionarResposabilidade(Responsabilidade responsabilidade){
 		this.resposabilidades.add(responsabilidade);
 	}
+	
+	public String getNome() {
+		return nome;
+	}
 
 }

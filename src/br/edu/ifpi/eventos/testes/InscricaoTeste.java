@@ -18,8 +18,8 @@ import br.edu.ifpi.eventos.modelo.atividade.Atividade;
 import br.edu.ifpi.eventos.modelo.atividade.AtividadeBuilder;
 import br.edu.ifpi.eventos.modelo.atividade.TipoDeAtividade;
 import br.edu.ifpi.eventos.modelo.cupompromocional.CupomPromocional;
-import br.edu.ifpi.eventos.modelo.cupompromocional.Lote_I;
-import br.edu.ifpi.eventos.modelo.cupompromocional.Palestras_50;
+import br.edu.ifpi.eventos.modelo.cupompromocional.CupomGlobal;
+import br.edu.ifpi.eventos.modelo.cupompromocional.CupomPorAtividade;
 import br.edu.ifpi.eventos.modelo.espacofisico.EspacoFisico;
 import br.edu.ifpi.eventos.modelo.espacofisico.EspacoFisicoBuilder;
 import br.edu.ifpi.eventos.modelo.espacofisico.TipoEspacoFisico;
@@ -29,6 +29,7 @@ import br.edu.ifpi.eventos.modelo.inscricao.Inscricao;
 import br.edu.ifpi.eventos.modelo.item.Item;
 import br.edu.ifpi.eventos.modelo.item.ItemUnico;
 import br.edu.ifpi.eventos.modelo.perfil.PerfilParticipante;
+import br.edu.ifpi.eventos.modelo.usuario.Pessoa;
 import br.edu.ifpi.eventos.modelo.usuario.Usuario;
 
 public class InscricaoTeste {
@@ -48,7 +49,7 @@ public class InscricaoTeste {
 		val1 = new Agenda(LocalDateTime.of(2016, 9, 30, 23, 59));
 		val2 = new Agenda(LocalDateTime.of(2016, 8, 24, 23, 59));
 		sim = new Evento();
-		perfil = new PerfilParticipante(new Usuario());
+		perfil = new PerfilParticipante(new Usuario(new Pessoa()));
 		ins = new Inscricao(sim, perfil);
 		EspacoFisico local = new EspacoFisicoBuilder().comDescricao("sala A").doTipo(TipoEspacoFisico.Sala).getEspacoFisico();
 		local.adicionarHorarios(ag1);
@@ -56,9 +57,9 @@ public class InscricaoTeste {
 		mc = new AtividadeBuilder().comNome("Jogos").doTipo(TipoDeAtividade.Minicurso).emLocal(local).noHorario(ag1).pagavel().getAtividade();
 		p = new AtividadeBuilder().comNome("Python").doTipo(TipoDeAtividade.Palestra).emLocal(local).noHorario(ag2).pagavel().getAtividade();
 		p2 = new AtividadeBuilder().comNome("Refatorando").doTipo(TipoDeAtividade.Palestra).emLocal(local).noHorario(ag2).pagavel().getAtividade();
-		p50 = new Palestras_50(val1);
-		l1 = new Lote_I(val1);
-		l2 = new Lote_I(val2);
+		p50 = new CupomPorAtividade("Palestra50", val1, new BigDecimal(50), TipoDeAtividade.Palestra);
+		l1 = new CupomGlobal("Lote_I", val1, new BigDecimal(50));
+		l2 = new CupomGlobal("Lote_II", val2, new BigDecimal(50));
 		item1 = new ItemUnico(new BigDecimal(50), mc);
 		item2 = new ItemUnico(new BigDecimal(80), p);
 		item3 = new ItemUnico(new BigDecimal(40), p2);
@@ -104,14 +105,6 @@ public class InscricaoTeste {
 	@Test(expected=AtividadeInexistenteNoEventoException.class)
 	public void Nao_Deve_Incluir_Atividade_Nao_Cadastrada_No_Evento() throws Exception{
 		ins.adicionarItem(item2);
-	}
-	
-	@Test
-	public void Adicionar_Cupom_Palestras_50_E_Verificar_Desconto() throws Exception{
-		sim.adicionarAtividade(p);
-		ins.adicionarItem(item2);
-		ins.setCupom(p50);
-		assertEquals(new BigDecimal(40.0).doubleValue(),p50.valorDoDesconto(ins).doubleValue(),0.000001);
 	}
 	
 	@Test

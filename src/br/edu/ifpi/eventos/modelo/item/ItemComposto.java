@@ -12,12 +12,12 @@ import javax.persistence.ManyToMany;
 import br.edu.ifpi.eventos.modelo.inscricao.Inscricao;
 @Entity
 @DiscriminatorValue("item_kit")
-public class ItemKit extends Item{
+public class ItemComposto extends Item{
 	
 	@ManyToMany
 	private List<ItemUnico> itens;
 	
-	public ItemKit(BigDecimal preco) {
+	public ItemComposto(BigDecimal preco) {
 		super(preco);
 		this.itens = new ArrayList<ItemUnico>();
 	}

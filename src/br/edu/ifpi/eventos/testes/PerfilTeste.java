@@ -11,16 +11,17 @@ import br.edu.ifpi.eventos.modelo.evento.TipoDeEvento;
 import br.edu.ifpi.eventos.modelo.perfil.PerfilOrganizador;
 import br.edu.ifpi.eventos.modelo.perfil.PerfilParticipante;
 import br.edu.ifpi.eventos.modelo.perfil.TipoDeParticipacao;
+import br.edu.ifpi.eventos.modelo.usuario.Pessoa;
 import br.edu.ifpi.eventos.modelo.usuario.Usuario;
 
 public class PerfilTeste {
 
 	@Test
 	public void criarEquipeDeUmEvento() {
-		Usuario usu = new Usuario();
+		Usuario usu = new Usuario(new Pessoa());
 		PerfilOrganizador perfil = new PerfilOrganizador(usu);
-		Usuario usu1 = new Usuario();
-		Usuario usu2 = new Usuario();
+		Usuario usu1 = new Usuario(new Pessoa());
+		Usuario usu2 = new Usuario(new Pessoa());
 		Evento ev = new EventoBuilder().comNome("ev").doTipo(TipoDeEvento.Simposio).getEvento();
 		Equipe eq1 = new Equipe("limpeza", perfil, ev);
 		eq1.adicionarPerfil(new PerfilOrganizador(usu1));
@@ -30,7 +31,7 @@ public class PerfilTeste {
 	
 	@Test
 	public void Podera_Identificar_Tipo_De_Participante_No_Perfil_Participante(){
-		Usuario usu = new Usuario();
+		Usuario usu = new Usuario(new Pessoa());
 		PerfilParticipante perfil = new PerfilParticipante(usu).comTipoDeParticipacao(TipoDeParticipacao.Estudante);
 		assertEquals(TipoDeParticipacao.Estudante, perfil.getTipo());
 	}
