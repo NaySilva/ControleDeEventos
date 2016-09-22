@@ -23,6 +23,8 @@ import br.edu.ifpi.eventos.modelo.pessoa.Pessoa;
 import br.edu.ifpi.eventos.modelo.usuario.Usuario;
 
 public class NotificacaoTeste {
+	
+	Inscricao inscricao;
 
 	@Test
 	public void mostrarNotificacaoAoAdicionarAtividadeNoEventoDepoisDeJaTaInscrito() throws HorarioIndisponivelException {
@@ -32,10 +34,9 @@ public class NotificacaoTeste {
 		local.adicionarHorarios(ag1);
 		local.adicionarHorarios(ag2);
 		Atividade atividade = new AtividadeBuilder().comNome("Palestra").doTipo(TipoDeAtividade.Palestra).emLocal(local).noHorario(ag1).getAtividade();
-		Atividade atividade2 = new AtividadeBuilder().comNome("minicurso").doTipo(TipoDeAtividade.Minicurso).emLocal(local).noHorario(ag2).getAtividade();
 		Evento evento = new EventoBuilder().comNome("Ev").doTipo(TipoDeEvento.Simposio).getEvento();
 		PerfilParticipante perfil = new PerfilParticipante(new Usuario(new Pessoa("Maria")));
-		Inscricao inscricao = new Inscricao(evento, perfil);
+		inscricao = new Inscricao(evento, perfil);
 		evento.adicionarAtividade(atividade);
 		String mensagem = "Nova notificação do evento Ev:\nNova atividade adicionada: Palestra - Palestra";
 		assertEquals(mensagem, evento.getNotificacao());
@@ -49,11 +50,10 @@ public class NotificacaoTeste {
 		local.adicionarHorarios(ag1);
 		local.adicionarHorarios(ag2);
 		Atividade atividade = new AtividadeBuilder().comNome("Palestra").doTipo(TipoDeAtividade.Palestra).emLocal(local).noHorario(ag1).getAtividade();
-		Atividade atividade2 = new AtividadeBuilder().comNome("minicurso").doTipo(TipoDeAtividade.Minicurso).emLocal(local).noHorario(ag2).getAtividade();
 		Evento evento = new EventoBuilder().comNome("Ev").doTipo(TipoDeEvento.Simposio).getEvento();
 		PerfilParticipante perfil = new PerfilParticipante(new Usuario(new Pessoa("Maria")));
 		evento.adicionarAtividade(atividade);
-		Inscricao inscricao = new Inscricao(evento, perfil);
+		inscricao = new Inscricao(evento, perfil);
 		assertEquals("", evento.getNotificacao());
 	}
 

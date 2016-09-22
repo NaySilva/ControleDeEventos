@@ -12,13 +12,14 @@ import br.edu.ifpi.eventos.modelo.espacofisico.EspacoFisico;
 import br.edu.ifpi.eventos.modelo.espacofisico.EspacoFisicoBuilder;
 
 public class EspacoFisicoTeste {
+	EspacoFisico ef, ef1, ef11, ef12;
 
 	@Test
 	public void local_Fisico_Com_Locais_Internos_Dentro_DeLocais_Internos() {
-		EspacoFisico ef = new EspacoFisicoBuilder().comDescricao("Campus X").doTipo(TipoEspacoFisico.Campus).getEspacoFisico();
-		EspacoFisico ef1 =  new EspacoFisicoBuilder().comDescricao("Predio A").doTipo(TipoEspacoFisico.Predio).comLocalExterno(ef).getEspacoFisico();
-		EspacoFisico ef11 = new EspacoFisicoBuilder().comDescricao("Auditorio C").doTipo(TipoEspacoFisico.Auditorio).comLocalExterno(ef1).getEspacoFisico();
-		EspacoFisico ef12 = new EspacoFisicoBuilder().comDescricao("Sala 3").doTipo(TipoEspacoFisico.Sala).comLocalExterno(ef1).getEspacoFisico();
+		ef = new EspacoFisicoBuilder().comDescricao("Campus X").doTipo(TipoEspacoFisico.Campus).getEspacoFisico();
+		ef1 =  new EspacoFisicoBuilder().comDescricao("Predio A").doTipo(TipoEspacoFisico.Predio).comLocalExterno(ef).getEspacoFisico();
+		ef11 = new EspacoFisicoBuilder().comDescricao("Auditorio C").doTipo(TipoEspacoFisico.Auditorio).comLocalExterno(ef1).getEspacoFisico();
+		ef12 = new EspacoFisicoBuilder().comDescricao("Sala 3").doTipo(TipoEspacoFisico.Sala).comLocalExterno(ef1).getEspacoFisico();
 		assertEquals(true, ef.getLocaisInternos().contains(ef1) & (ef1.getLocaisInternos().size()==2));
 	}
 	
