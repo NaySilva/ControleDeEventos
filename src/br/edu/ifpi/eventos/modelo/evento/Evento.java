@@ -12,12 +12,14 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import br.edu.ifpi.eventos.enums.StatusDoEvento;
+import br.edu.ifpi.eventos.enums.TipoDeEvento;
 import br.edu.ifpi.eventos.modelo.agenda.Agenda;
 import br.edu.ifpi.eventos.modelo.atividade.Atividade;
 import br.edu.ifpi.eventos.modelo.equipe.Equipe;
 import br.edu.ifpi.eventos.modelo.espacofisico.EspacoFisico;
 import br.edu.ifpi.eventos.modelo.inscricao.Inscricao;
-import br.edu.ifpi.eventos.util.Subject;
+import br.edu.ifpi.eventos.notificacao.Subject;
 
 @Entity
 public class Evento extends Subject{

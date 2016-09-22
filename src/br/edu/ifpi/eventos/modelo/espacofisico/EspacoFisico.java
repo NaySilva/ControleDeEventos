@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import br.edu.ifpi.eventos.enums.TipoEspacoFisico;
 import br.edu.ifpi.eventos.modelo.agenda.Agenda;
 import br.edu.ifpi.eventos.modelo.atividade.Atividade;
 

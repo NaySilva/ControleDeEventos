@@ -2,8 +2,8 @@ package br.edu.ifpi.eventos.modelo.cupompromocional;
 
 import java.math.BigDecimal;
 
+import br.edu.ifpi.eventos.enums.TipoDeAtividade;
 import br.edu.ifpi.eventos.modelo.agenda.Agenda;
-import br.edu.ifpi.eventos.modelo.atividade.TipoDeAtividade;
 import br.edu.ifpi.eventos.modelo.inscricao.Inscricao;
 import br.edu.ifpi.eventos.modelo.item.Item;
 import br.edu.ifpi.eventos.modelo.item.ItemUnico;

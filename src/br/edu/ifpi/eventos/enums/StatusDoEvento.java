@@ -1,4 +1,4 @@
-package br.edu.ifpi.eventos.modelo.evento;
+package br.edu.ifpi.eventos.enums;
 
 public enum StatusDoEvento {
 	

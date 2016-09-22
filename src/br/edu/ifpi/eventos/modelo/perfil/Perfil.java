@@ -9,7 +9,7 @@ import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 
 import br.edu.ifpi.eventos.modelo.usuario.Usuario;
-import br.edu.ifpi.eventos.util.Observer;
+import br.edu.ifpi.eventos.notificacao.Observer;
 
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)

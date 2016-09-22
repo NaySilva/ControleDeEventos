@@ -8,18 +8,18 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
+import br.edu.ifpi.eventos.enums.StatusDoEvento;
+import br.edu.ifpi.eventos.enums.TipoDeAtividade;
+import br.edu.ifpi.eventos.enums.TipoDeEvento;
+import br.edu.ifpi.eventos.enums.TipoEspacoFisico;
 import br.edu.ifpi.eventos.excecoes.HorarioIndisponivelException;
 import br.edu.ifpi.eventos.modelo.agenda.Agenda;
 import br.edu.ifpi.eventos.modelo.atividade.Atividade;
 import br.edu.ifpi.eventos.modelo.atividade.AtividadeBuilder;
-import br.edu.ifpi.eventos.modelo.atividade.TipoDeAtividade;
 import br.edu.ifpi.eventos.modelo.espacofisico.EspacoFisico;
 import br.edu.ifpi.eventos.modelo.espacofisico.EspacoFisicoBuilder;
-import br.edu.ifpi.eventos.modelo.espacofisico.TipoEspacoFisico;
 import br.edu.ifpi.eventos.modelo.evento.Evento;
 import br.edu.ifpi.eventos.modelo.evento.EventoBuilder;
-import br.edu.ifpi.eventos.modelo.evento.StatusDoEvento;
-import br.edu.ifpi.eventos.modelo.evento.TipoDeEvento;
 
 public class EventoTeste {
 	

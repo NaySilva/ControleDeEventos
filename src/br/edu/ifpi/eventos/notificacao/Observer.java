@@ -1,4 +1,4 @@
-package br.edu.ifpi.eventos.util;
+package br.edu.ifpi.eventos.notificacao;
 
 public interface Observer {
 		

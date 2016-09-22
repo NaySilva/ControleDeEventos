@@ -6,10 +6,10 @@ import java.math.BigDecimal;
 
 import org.junit.Test;
 
+import br.edu.ifpi.eventos.enums.TipoDeAtividade;
 import br.edu.ifpi.eventos.excecoes.AtividadeNaoAptaParaItemException;
 import br.edu.ifpi.eventos.modelo.atividade.Atividade;
 import br.edu.ifpi.eventos.modelo.atividade.AtividadeBuilder;
-import br.edu.ifpi.eventos.modelo.atividade.TipoDeAtividade;
 import br.edu.ifpi.eventos.modelo.item.Item;
 import br.edu.ifpi.eventos.modelo.item.ItemUnico;
 

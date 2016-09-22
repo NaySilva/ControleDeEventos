@@ -1,4 +1,4 @@
-package br.edu.ifpi.eventos.util;
+package br.edu.ifpi.eventos.notificacao;
 
 import java.util.ArrayList;
 import java.util.List;

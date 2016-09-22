@@ -1,5 +1,6 @@
 package br.edu.ifpi.eventos.modelo.atividade;
 
+import br.edu.ifpi.eventos.enums.TipoDeAtividade;
 import br.edu.ifpi.eventos.excecoes.HorarioIndisponivelException;
 import br.edu.ifpi.eventos.modelo.agenda.Agenda;
 import br.edu.ifpi.eventos.modelo.espacofisico.EspacoFisico;

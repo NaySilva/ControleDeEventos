@@ -1,4 +1,4 @@
-package br.edu.ifpi.eventos.modelo.perfil;
+package br.edu.ifpi.eventos.enums;
 
 public enum TipoDeParticipacao {
 	

@@ -14,7 +14,7 @@ import javax.persistence.InheritanceType;
 import javax.persistence.ManyToMany;
 
 import br.edu.ifpi.eventos.modelo.inscricao.Inscricao;
-import br.edu.ifpi.eventos.util.Subject;
+import br.edu.ifpi.eventos.notificacao.Subject;
 
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE) 

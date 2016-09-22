@@ -8,6 +8,7 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
+import br.edu.ifpi.eventos.enums.TipoDeParticipacao;
 import br.edu.ifpi.eventos.modelo.inscricao.Inscricao;
 import br.edu.ifpi.eventos.modelo.usuario.Usuario;
 

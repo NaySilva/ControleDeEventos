@@ -1,5 +1,6 @@
 package br.edu.ifpi.eventos.modelo.evento;
 
+import br.edu.ifpi.eventos.enums.TipoDeEvento;
 import br.edu.ifpi.eventos.modelo.agenda.Agenda;
 import br.edu.ifpi.eventos.modelo.espacofisico.EspacoFisico;
 

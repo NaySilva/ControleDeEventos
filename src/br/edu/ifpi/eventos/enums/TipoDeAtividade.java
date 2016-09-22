@@ -1,4 +1,4 @@
-package br.edu.ifpi.eventos.modelo.atividade;
+package br.edu.ifpi.eventos.enums;
 
 public enum TipoDeAtividade {
 	

@@ -11,12 +11,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 
+import br.edu.ifpi.eventos.enums.TipoDeAtividade;
 import br.edu.ifpi.eventos.excecoes.HorarioIndisponivelException;
 import br.edu.ifpi.eventos.modelo.agenda.Agenda;
 import br.edu.ifpi.eventos.modelo.espacofisico.EspacoFisico;
 import br.edu.ifpi.eventos.modelo.evento.Evento;
 import br.edu.ifpi.eventos.modelo.responsabilidade.Responsabilidade;
-import br.edu.ifpi.eventos.util.Subject;
+import br.edu.ifpi.eventos.notificacao.Subject;
 @Entity
 public class Atividade extends Subject {
 	

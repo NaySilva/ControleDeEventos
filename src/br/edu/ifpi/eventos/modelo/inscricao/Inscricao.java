@@ -22,7 +22,7 @@ import br.edu.ifpi.eventos.modelo.item.Item;
 import br.edu.ifpi.eventos.modelo.item.ItemUnico;
 import br.edu.ifpi.eventos.modelo.pagamento.Pagamento;
 import br.edu.ifpi.eventos.modelo.perfil.PerfilParticipante;
-import br.edu.ifpi.eventos.util.Subject;
+import br.edu.ifpi.eventos.notificacao.Subject;
 @Entity
 public class Inscricao extends Subject{
 	@Id

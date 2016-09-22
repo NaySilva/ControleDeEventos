@@ -7,10 +7,10 @@ import java.time.LocalDateTime;
 
 import org.junit.Test;
 
+import br.edu.ifpi.eventos.enums.TipoDeAtividade;
 import br.edu.ifpi.eventos.modelo.agenda.Agenda;
 import br.edu.ifpi.eventos.modelo.atividade.Atividade;
 import br.edu.ifpi.eventos.modelo.atividade.AtividadeBuilder;
-import br.edu.ifpi.eventos.modelo.atividade.TipoDeAtividade;
 import br.edu.ifpi.eventos.modelo.cupompromocional.CupomGlobal;
 import br.edu.ifpi.eventos.modelo.cupompromocional.CupomPorAtividade;
 import br.edu.ifpi.eventos.modelo.cupompromocional.CupomPromocional;

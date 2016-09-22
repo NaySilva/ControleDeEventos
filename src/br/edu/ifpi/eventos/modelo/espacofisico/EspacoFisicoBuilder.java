@@ -1,5 +1,6 @@
 package br.edu.ifpi.eventos.modelo.espacofisico;
 
+import br.edu.ifpi.eventos.enums.TipoEspacoFisico;
 import br.edu.ifpi.eventos.modelo.atividade.Atividade;
 
 public class EspacoFisicoBuilder {

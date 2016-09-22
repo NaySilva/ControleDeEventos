@@ -6,10 +6,10 @@ import java.time.LocalDateTime;
 
 import org.junit.Test;
 
+import br.edu.ifpi.eventos.enums.TipoEspacoFisico;
 import br.edu.ifpi.eventos.modelo.agenda.Agenda;
 import br.edu.ifpi.eventos.modelo.espacofisico.EspacoFisico;
 import br.edu.ifpi.eventos.modelo.espacofisico.EspacoFisicoBuilder;
-import br.edu.ifpi.eventos.modelo.espacofisico.TipoEspacoFisico;
 
 public class EspacoFisicoTeste {
 

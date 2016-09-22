@@ -4,13 +4,13 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import br.edu.ifpi.eventos.enums.TipoDeEvento;
+import br.edu.ifpi.eventos.enums.TipoDeParticipacao;
 import br.edu.ifpi.eventos.modelo.equipe.Equipe;
 import br.edu.ifpi.eventos.modelo.evento.Evento;
 import br.edu.ifpi.eventos.modelo.evento.EventoBuilder;
-import br.edu.ifpi.eventos.modelo.evento.TipoDeEvento;
 import br.edu.ifpi.eventos.modelo.perfil.PerfilOrganizador;
 import br.edu.ifpi.eventos.modelo.perfil.PerfilParticipante;
-import br.edu.ifpi.eventos.modelo.perfil.TipoDeParticipacao;
 import br.edu.ifpi.eventos.modelo.pessoa.Pessoa;
 import br.edu.ifpi.eventos.modelo.usuario.Usuario;
 

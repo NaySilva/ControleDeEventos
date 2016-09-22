@@ -9,10 +9,10 @@ import java.time.LocalDateTime;
 import org.junit.Before;
 import org.junit.Test;
 
+import br.edu.ifpi.eventos.enums.TipoDeEvento;
 import br.edu.ifpi.eventos.modelo.agenda.Agenda;
 import br.edu.ifpi.eventos.modelo.evento.Evento;
 import br.edu.ifpi.eventos.modelo.evento.EventoBuilder;
-import br.edu.ifpi.eventos.modelo.evento.TipoDeEvento;
 import br.edu.ifpi.eventos.modelo.inscricao.Inscricao;
 import br.edu.ifpi.eventos.modelo.pagamento.Pagamento;
 import br.edu.ifpi.eventos.modelo.perfil.PerfilParticipante;
