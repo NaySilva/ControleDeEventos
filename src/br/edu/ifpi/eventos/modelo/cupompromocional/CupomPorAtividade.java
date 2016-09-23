@@ -8,7 +8,7 @@ import br.edu.ifpi.eventos.modelo.inscricao.Inscricao;
 import br.edu.ifpi.eventos.modelo.item.Item;
 import br.edu.ifpi.eventos.modelo.item.ItemUnico;
 public class CupomPorAtividade extends CupomPromocional{
-	
+	//Esse tipo especifica qual o tipo de atividade esse cupom vale
 	private TipoDeAtividade tipo;
 
 	public CupomPorAtividade(String descricao, Agenda validade, BigDecimal porcentagem, TipoDeAtividade tipo) {

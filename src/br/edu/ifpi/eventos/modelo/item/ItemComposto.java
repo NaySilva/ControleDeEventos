@@ -17,6 +17,7 @@ public class ItemComposto extends Item{
 	@ManyToMany
 	private List<ItemUnico> itens;
 	
+	//O preco é unico por todos os item desse kit
 	public ItemComposto(BigDecimal preco) {
 		super(preco);
 		this.itens = new ArrayList<ItemUnico>();

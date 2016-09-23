@@ -26,8 +26,10 @@ public class Agenda {
 		this.comeco = comeco;
 		this.fim = fim;
 	}
-
+	
 	public boolean semInterferenciaNoHorario(Agenda ag){
+		//return true se esta agenda termina antes de começar a agenda do parametro
+		//ou se esta agenda começa depois de terminar a agenda do parametro
 		boolean antes = depois(ag.comeco) && depois(ag.fim);
 		boolean depois = antes(ag.comeco) && antes(ag.fim);
 		return antes || depois;	

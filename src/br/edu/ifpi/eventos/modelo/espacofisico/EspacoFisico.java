@@ -69,6 +69,7 @@ public class EspacoFisico {
 	}
 	
 	public boolean disponivelNoHorario(Agenda agenda){
+		//verifica se tem disponibilidade no local
 		for (Agenda ag : horarios) {
 			if (ag.dentroDoHorario(agenda)) return true;
 		}

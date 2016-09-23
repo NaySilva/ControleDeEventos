@@ -35,6 +35,7 @@ public abstract class Item extends Subject{
 		this.inscricoes = new ArrayList<Inscricao>();
 	}
 
+	//cada tipo de item tem uma maneira diferente de se adicionarNoCarrinho
 	public abstract void adicionarNoCarrinho(Inscricao inscricao) throws Exception;
 	
 	public void adicionarInscricao(Inscricao inscricao){

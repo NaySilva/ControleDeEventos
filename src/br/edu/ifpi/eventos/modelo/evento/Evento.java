@@ -45,6 +45,8 @@ public class Evento extends Subject{
 	@OneToOne
 	protected EspacoFisico local;
 	
+	//protecte por causa do builder dentro dessa pacote que instancia classe evento,
+	//evita também que fora do pacote não instancia por esse construtor
 	protected Evento() {
 		this.status = StatusDoEvento.EmAndamento;
 		this.atividades = new ArrayList<Atividade>();
@@ -107,6 +109,7 @@ public class Evento extends Subject{
 	}
 	
 	public List<Atividade> atividadesOrdenadas(){
+		//ordenar atividade por agenda em ordem crescente
 		List<Atividade> atividadesOrdenadas = this.atividades;
 		atividadesOrdenadas.sort((a1, a2) -> a1.getAgenda().compareAgendaTo(a2.getAgenda()));
 		return atividadesOrdenadas;
